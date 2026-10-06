@@ -23,7 +23,7 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	//추가
 	@Override
 	public void add(MemberDto item) {
-		sql.insert("member.add", item);
+		sql.insert("member.insertMember", item);
 	}
 
 	
