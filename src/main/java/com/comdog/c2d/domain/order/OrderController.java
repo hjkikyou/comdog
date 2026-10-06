@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.comdog.c2d.dto.OrderDetailDto;
-import com.comdog.c2d.dto.OrderListDto;
+import com.comdog.c2d.domain.order.dto.OrderDetailDto;
+import com.comdog.c2d.domain.order.dto.OrderListDto;
 
 
 @Controller

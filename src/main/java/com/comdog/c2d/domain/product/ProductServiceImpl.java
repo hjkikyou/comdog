@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.comdog.c2d.domain.contract.ContractDao;
-import com.comdog.c2d.dto.ProductDto;
+import com.comdog.c2d.domain.product.dto.ProductDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {

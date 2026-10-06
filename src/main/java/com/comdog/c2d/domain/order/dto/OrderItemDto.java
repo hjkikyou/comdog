@@ -1,4 +1,4 @@
-package com.comdog.c2d.dto;
+package com.comdog.c2d.domain.order.dto;
 
 
 /* 상세 화면이나 장바구니에 들어갈 개별 상품 정보 */

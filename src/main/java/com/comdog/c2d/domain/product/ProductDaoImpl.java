@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.ProductDto;
+import com.comdog.c2d.domain.product.dto.ProductDto;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {

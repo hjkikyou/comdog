@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.ContractInsertDto;
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.domain.contract.dto.ContractInsertDto;
+import com.comdog.c2d.domain.contract.dto.ContractListDto;
 
 @Repository //DB와 연결되는 DAO 컴포넌트임을 명시
 public class ContractDaoImpl implements ContractDao {

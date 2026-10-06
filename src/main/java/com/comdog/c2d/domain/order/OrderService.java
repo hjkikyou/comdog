@@ -3,8 +3,8 @@ package com.comdog.c2d.domain.order;
 import java.util.List;
 import java.util.Map;
 
-import com.comdog.c2d.dto.OrderDetailDto;
-import com.comdog.c2d.dto.OrderListDto;
+import com.comdog.c2d.domain.order.dto.OrderDetailDto;
+import com.comdog.c2d.domain.order.dto.OrderListDto;
 
 public interface OrderService {
 

@@ -2,7 +2,7 @@ package com.comdog.c2d.domain.member;
 
 import java.util.List;
 
-import com.comdog.c2d.dto.MemberDto;
+import com.comdog.c2d.domain.member.dto.MemberDto;
 
 public interface AdminMemberService {
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.dto.MemberDto;
+import com.comdog.c2d.domain.member.dto.MemberDto;
 
 @Controller
 @RequestMapping("/admin/member")

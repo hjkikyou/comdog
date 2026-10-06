@@ -2,7 +2,7 @@ package com.comdog.c2d.domain.product;
 
 import java.util.List;
 
-import com.comdog.c2d.dto.ProductDto;
+import com.comdog.c2d.domain.product.dto.ProductDto;
 
 public interface ProductService {
 		

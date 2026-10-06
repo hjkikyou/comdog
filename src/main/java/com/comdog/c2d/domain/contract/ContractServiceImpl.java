@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comdog.c2d.dto.ContractInsertDto;
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.domain.contract.dto.ContractInsertDto;
+import com.comdog.c2d.domain.contract.dto.ContractListDto;
 
 @Service
 	public class ContractServiceImpl implements ContractService {

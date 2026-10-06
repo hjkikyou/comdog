@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comdog.c2d.dto.OrderDetailDto;
-import com.comdog.c2d.dto.OrderListDto;
+import com.comdog.c2d.domain.order.dto.OrderDetailDto;
+import com.comdog.c2d.domain.order.dto.OrderListDto;
 
 @Service
 public class OrderServiceImpl implements OrderService {

@@ -1,4 +1,4 @@
-package com.comdog.c2d.dto;
+package com.comdog.c2d.domain.product.dto;
 
 import java.util.List;
 import java.util.Map;

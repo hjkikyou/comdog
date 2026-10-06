@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.comdog.c2d.dto.ProductDto;
+import com.comdog.c2d.domain.product.dto.ProductDto;
 
 /***************사용자 페이지********************/
 @Controller

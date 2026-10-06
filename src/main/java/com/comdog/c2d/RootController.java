@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.comdog.c2d.dto.ProductDto;
+import com.comdog.c2d.domain.product.dto.ProductDto;
 
 @Controller
 public class RootController {

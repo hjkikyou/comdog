@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.dto.MemberDto;
+import com.comdog.c2d.domain.member.dto.MemberDto;
 
 import jakarta.servlet.http.HttpSession;
 

@@ -1,4 +1,4 @@
-package com.comdog.c2d.dto;
+package com.comdog.c2d.domain.contract.dto;
 
 import java.time.LocalDate;
 

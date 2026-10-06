@@ -1,4 +1,4 @@
-package com.comdog.c2d.dto;
+package com.comdog.c2d.domain.order.dto;
 
 import java.time.LocalDateTime;
 

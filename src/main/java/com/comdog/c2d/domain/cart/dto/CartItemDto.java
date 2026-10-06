@@ -1,4 +1,4 @@
-package com.comdog.c2d.dto;
+package com.comdog.c2d.domain.cart.dto;
 
 import java.math.BigDecimal;
 

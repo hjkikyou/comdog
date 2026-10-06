@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.OrderDetailDto;
-import com.comdog.c2d.dto.OrderListDto;
+import com.comdog.c2d.domain.order.dto.OrderDetailDto;
+import com.comdog.c2d.domain.order.dto.OrderListDto;
 
 @Repository
 public class OrderDaoImpl implements OrderDao {

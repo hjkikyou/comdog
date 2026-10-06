@@ -3,8 +3,8 @@ package com.comdog.c2d.domain.contract;
 import java.util.List;
 import java.util.Map;
 
-import com.comdog.c2d.dto.ContractInsertDto;
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.domain.contract.dto.ContractInsertDto;
+import com.comdog.c2d.domain.contract.dto.ContractListDto;
 
 public interface ContractService {
 
