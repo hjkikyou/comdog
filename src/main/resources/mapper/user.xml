@@ -5,7 +5,7 @@
 
 <mapper namespace="user">
 <!--  회원 등록  -->
-<insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto" useGeneratedKeys="true" keyProperty="id"> 
+<insert id="insertMember" parameterType="com.comdog.c2d.domain.member.dto.MemberDto" useGeneratedKeys="true" keyProperty="id"> 
 INSERT INTO member ( email, password, name, phone, birth_date, gender_digit, user_type, 
 is_subscribed, created_at ) 
 VALUES ( #{email}, #{password}, #{name}, #{phone}, #{birthDate}, #{genderDigit},

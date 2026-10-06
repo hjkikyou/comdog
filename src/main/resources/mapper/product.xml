@@ -7,7 +7,7 @@
     <!-- ════════════════════════════════
          상품 공통 resultMap
     ════════════════════════════════ -->
-    <resultMap id="ProductResultMap" type="com.comdog.c2d.dto.ProductDto">
+    <resultMap id="ProductResultMap" type="com.comdog.c2d.domain.product.dto.ProductDto">
         <id     property="productId"      column="product_id" />
         <result property="categoryId"     column="category_id" />
         <result property="name"           column="name" />
@@ -79,7 +79,7 @@
 
     <!-- 기간별 렌탈가 (활성화된 것만) -->
     <select id="selectRentalPrices"
-            resultType="com.comdog.c2d.dto.ProductDto$RentalPriceDto">
+            resultType="com.comdog.c2d.domain.product.dto.ProductDto$RentalPriceDto">
         SELECT
             rental_price_id AS rentalPriceId,
             duration,

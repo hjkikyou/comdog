@@ -5,7 +5,7 @@
 
 <mapper namespace="order">
 
-    <select id="findAllOrders" parameterType="map" resultType="com.comdog.c2d.dto.OrderListDto">
+    <select id="findAllOrders" parameterType="map" resultType="com.comdog.c2d.domain.order.dto.OrderListDto">
         SELECT 
             o.order_id       AS orderId,
             o.total_amount   AS totalAmount,
@@ -36,7 +36,7 @@
         ORDER BY o.created_at DESC
     </select>
     
-    <resultMap id="OrderDetailResultMap" type="com.comdog.c2d.dto.OrderDetailDto">
+    <resultMap id="OrderDetailResultMap" type="com.comdog.c2d.domain.order.dto.OrderDetailDto">
         <id property="orderId" column="order_id" />
         <result property="totalAmount" column="total_amount" />
         <result property="orderStatus" column="order_status" />
@@ -51,7 +51,7 @@
         <result property="memberPhone" column="member_phone" />
         <result property="memberEmail" column="member_email" />
         
-        <collection property="orderItems" ofType="com.comdog.c2d.dto.OrderItemDto">
+        <collection property="orderItems" ofType="com.comdog.c2d.domain.order.dto.OrderItemDto">
             <result property="productName" column="product_name" />
             <result property="orderPrice" column="order_price" />
             <result property="count" column="count" />

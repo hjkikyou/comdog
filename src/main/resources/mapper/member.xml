@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-    <resultMap id="MemberResultMap" type="com.comdog.c2d.dto.MemberDto">
+    <resultMap id="MemberResultMap" type="com.comdog.c2d.domain.member.dto.MemberDto">
         <id property="id" column="member_id" />
         <result property="email" column="email" />
         <result property="password" column="password" />
@@ -24,7 +24,7 @@
         WHERE member_id = #{id}
     </select>
 
-    <insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto">
+    <insert id="insertMember" parameterType="com.comdog.c2d.domain.member.dto.MemberDto">
         INSERT INTO member (
             email, password, name, phone,
             birth_date, gender_digit, user_type, is_subscribed
@@ -34,7 +34,7 @@
         )
     </insert>
 
-    <select id="login" parameterType="com.comdog.c2d.dto.MemberDto" resultType="com.comdog.c2d.dto.MemberDto">
+    <select id="login" parameterType="com.comdog.c2d.domain.member.dto.MemberDto" resultType="com.comdog.c2d.domain.member.dto.MemberDto">
         SELECT 
             member_id AS id, email, password, name, user_type AS userType
         FROM member
@@ -47,7 +47,7 @@
         WHERE email = #{email}
     </select>
 
-    <update id="update" parameterType="com.comdog.c2d.dto.MemberDto">
+    <update id="update" parameterType="com.comdog.c2d.domain.member.dto.MemberDto">
         UPDATE member
         SET
             email = #{email},

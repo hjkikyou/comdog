@@ -5,7 +5,7 @@
 <mapper namespace="contract">
 
 
-    <select id="searchContracts" parameterType="map" resultType="com.comdog.c2d.dto.ContractListDto">
+    <select id="searchContracts" parameterType="map" resultType="com.comdog.c2d.domain.contract.dto.ContractListDto">
         SELECT
             contract_id AS contractId,
             member_id AS memberId,
@@ -37,7 +37,7 @@
         WHERE contract_id = #{contractId}
     </update>
 
-    <insert id="insertContract" parameterType="com.comdog.c2d.dto.ContractInsertDto">
+    <insert id="insertContract" parameterType="com.comdog.c2d.domain.contract.dto.ContractInsertDto">
         INSERT INTO contract (
             member_id, order_id, product_id, monthly_fee, duration, 
             contract_type, contract_status, start_date, end_date
