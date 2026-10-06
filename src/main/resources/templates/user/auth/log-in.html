@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/log-in.css}">
+    <title>comdog 로그인</title>
+</head>
+
+<main layout:fragment="container" class="login-wrapper">
+    <div class="login-container">
+        
+        <div class="logo-area">
+            <h1>COMDOG</h1>
+            <p>컴퓨터 구매 & 인수형 렌탈</p>
+        </div>
+
+			<form class="login-form" th:action="@{/user/auth/log-in}" method="post">   
+		         
+          
+            <div class="input-group">
+                <input type="text" id="username" name="email" placeholder="아이디(이메일)" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="비밀번호" required>
+                <button type="button" class="btn-toggle-password" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="login-options">
+                <label class="save-id">
+                    <input type="checkbox" name="saveEmail"> 아이디 저장
+                </label>
+                <div class="find-links">
+                    <a href="/find-account">아이디 찾기</a> / <a href="/find-account">비밀번호 찾기</a>
+                </div>
+            </div>
+            
+              <!-- 기존: 컨트롤러와 키가 안 맞아 안 뜸 -->
+            <!--   컨트롤러는 param.error(URL 파라미터)가 아니라 loginError(model 속성)로 보내고 있으니 둘이 안 맞음.
+            <div th:if="${param.error}" 
+             style="color: #FF6B6B; font-size: 13px; margin-bottom: 15px; text-align: center;">
+                이메일 또는 비밀번호가 일치하지 않습니다.
+            </div> -->
+            
+            
+            <!--  메시지를 "추가"하는 곳은 컨트롤러의 else 분기(model.addAttribute("loginError", ...))이고,
+             그 메시지를 "표시"하는 곳은 log-in.html의 th:if="${loginError}" div 입니다
+             이 둘의 키(loginError)만 똑같이 맞으면 작동 -->
+             <!-- 컨트롤러는 이미 loginError로 보내고 있을 가능성이 높으니, 
+             실제로는 html의 param.error를 loginError로 바꾸는 것만으로 해결 -->
+            <div th:if="${loginError}" th:text="${loginError}"
+     		style="color: #FF6B6B; font-size: 13px; margin-bottom: 15px; text-align: center;">
+			</div>
+            
+            
+            
+
+            <button type="submit" class="btn-login">로그인</button>
+        </form>
+
+        <div class="divider">
+            <span>회원가입하면 더 많은 혜택을 받으실 수 있어요!</span>
+        </div>
+
+        <a th:href="@{/sign-up-form}" class="btn-signup">회원가입</a>
+
+        <div class="banner-area">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="wave"></div>
+        </div>
+
+        <div class="login-footer">
+            <div class="footer-links">
+                <a href="#">이용약관</a> | <a href="#">위치서비스 이용약관</a> | <a href="#">개인정보 처리방침</a>
+            </div>
+            <p class="corp">@entertainnment.corp</p>
+            <p class="contact">문의전화 : 1566-7787 (평일 09:00 - 18:00, 유료)</p>
+        </div>
+
+    </div>
+</main>
+</html>

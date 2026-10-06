@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <title>이벤트 & 기획전</title>
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+</head>
+
+<body>
+    <main layout:fragment="container" class="event-container">
+
+        <!-- ── 페이지 헤더 ── -->
+        <header class="page-header">
+            <h2>이벤트&amp;기획전</h2>
+            <div class="login-area">
+                <span>로그인 하시면 <a href="#">이벤트 당첨현황</a>을 자세히 확인하실 수 있습니다.</span>
+                <button class="btn-login">로그인</button>
+            </div>
+        </header>
+
+        <!-- ── 강력추천 섹션 ── -->
+        <section class="section-recommend">
+            <h3 class="section-title"><span>강력추천!</span> 이벤트&amp;기획전</h3>
+            <div class="card-grid">
+                <div class="card recommend-card">
+                    <div class="img-box" style="background-color: #111; color: white;">이미지 영역</div>
+                    <div class="text-box">
+                        <span class="category">특가+적립금</span>
+                        <h4 class="title">쉿! 컴퓨존만 쓰던 제품 풉니다</h4>
+                        <span class="date">2026. 04. 22 ~ 2026. 06. 22</span>
+                    </div>
+                </div>
+                <div class="card recommend-card">
+                    <div class="img-box" style="background-color: #d1b1a8;">이미지 영역</div>
+                    <div class="text-box">
+                        <span class="category">구매왕,경품</span>
+                        <h4 class="title">ABKO 6월 혜택</h4>
+                        <span class="date">2026. 06. 01 ~ 2026. 06. 30</span>
+                    </div>
+                </div>
+                <div class="card recommend-card">
+                    <div class="img-box" style="background-color: #3b3061; color: white;">이미지 영역</div>
+                    <div class="text-box">
+                        <span class="category">이벤트</span>
+                        <h4 class="title">HP 워크스테이션 업그레이드 이벤트</h4>
+                        <span class="date">2026. 05. 08 ~ 2026. 06. 30</span>
+                    </div>
+                </div>
+                <div class="card recommend-card">
+                    <div class="img-box" style="background-color: #e5e5e0;">이미지 영역</div>
+                    <div class="text-box">
+                        <span class="category">사은품</span>
+                        <h4 class="title">EZVIZ 스마트 도어벨 사은품 증정</h4>
+                        <span class="date">2026. 05. 07 ~ 2026. 08. 31</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 배너 섹션 ── -->
+        <section class="section-banner">
+            <div class="banner banner-top">
+                <p>로그인하고 출석체크 혜택 받아가세요! <strong>6월 출석체크 이벤트</strong></p>
+            </div>
+            <div class="banner banner-bottom">
+                <p>최고의 업무 환경을 위한 <strong>커머셜 데스크탑 1위, HP</strong></p>
+            </div>
+        </section>
+
+        <!-- ── 이벤트 목록 섹션 ── -->
+        <section class="section-event-list">
+
+            <!--
+                필터 바 – 2행 구조
+                1행: 경품 타입 셀렉트 | 이벤트 타입 셀렉트
+                2행: 최근등록순(라디오) | 마감임박순(라디오) | 구분선 | 당첨인원순 | 경쟁률순 | 찜한이벤트 | 당첨자발표
+            -->
+            <div class="filter-bar">
+
+                <!-- 1행: 셀렉트 -->
+                <div class="filter-row-select">
+                    <select>
+                        <option>🎁 경품 타입</option>
+                        <option>상품권</option>
+                        <option>포인트</option>
+                        <option>현물</option>
+                    </select>
+                    <select>
+                        <option>🎉 이벤트 타입</option>
+                        <option>댓글</option>
+                        <option>퀴즈</option>
+                        <option>게임</option>
+                    </select>
+                </div>
+
+                <!-- 2행: 정렬 라디오 + 기타 버튼 -->
+                <div class="filter-row-buttons">
+
+                    <!-- 라디오 택1: 최근등록순 / 마감임박순 -->
+                    <input type="radio" name="sort" id="sort-recent" class="sort-radio" checked>
+                    <label for="sort-recent" class="sort-btn">✨ 최근등록순</label>
+
+                    <input type="radio" name="sort" id="sort-deadline" class="sort-radio">
+                    <label for="sort-deadline" class="sort-btn">⏳ 마감임박순</label>
+
+                    <!-- 구분선 -->
+                    <span class="filter-divider"></span>
+
+                    <!-- 기타 버튼 -->
+                    <button class="etc-btn">👥 당첨인원순</button>
+                    <button class="etc-btn">🔥 경쟁률순</button>
+                    <button class="etc-btn">❤️ 찜한 이벤트</button>
+                    <button class="etc-btn">📢 당첨자 발표</button>
+                </div>
+            </div>
+
+            <!-- 카드 그리드 12장 -->
+            <div class="card-grid">
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #2b2b2b;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge blue-text">댓글</span>
+                                <span class="badge red-bg">오늘오픈</span>
+                            </div>
+                            <span class="d-day">D-6</span>
+                        </div>
+                        <h4 class="title">Seagate FireCuda X Vault Gaming HDD 데이터복구 댓글 이벤트!</h4>
+                        <p class="prize">네이버페이 포인트 1만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #e6f3ff;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge green-text">퀴즈</span>
+                                <span class="badge red-bg">오늘오픈</span>
+                            </div>
+                            <span class="d-day">D-6</span>
+                        </div>
+                        <h4 class="title">ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB) 제품찾기 이벤트!</h4>
+                        <p class="prize">신세계상품권 1만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #d1eeff;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge green-text">퀴즈</span>
+                                <span class="badge red-bg">오늘오픈</span>
+                            </div>
+                            <span class="d-day">D-6</span>
+                        </div>
+                        <h4 class="title">ADATA DDR5-5600 CL46 ARMAX 파인인포 (16GB) 제품찾기 이벤트!</h4>
+                        <p class="prize">신세계상품권 1만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #fff3e0;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge purple-text">게임</span>
+                                <span class="badge red-bg">오늘오픈</span>
+                            </div>
+                            <span class="d-day">D-6</span>
+                        </div>
+                        <h4 class="title">ASRock B650M Pro X3D 에즈윈 룰렛!</h4>
+                        <p class="prize">네이버페이 포인트 2만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #f0e6ff;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge blue-text">댓글</span>
+                            </div>
+                            <span class="d-day">D-10</span>
+                        </div>
+                        <h4 class="title">SAMSUNG 990 PRO NVMe SSD 2TB 체험단 모집 이벤트!</h4>
+                        <p class="prize">삼성 990 PRO 2TB 1명</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #e8ffe8;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge green-text">퀴즈</span>
+                            </div>
+                            <span class="d-day">D-12</span>
+                        </div>
+                        <h4 class="title">MSI MAG B760M 박격포 WIFI 제품 상식 퀴즈 이벤트!</h4>
+                        <p class="prize">스타벅스 아메리카노 5매</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #fff0f0;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge purple-text">게임</span>
+                            </div>
+                            <span class="d-day">D-14</span>
+                        </div>
+                        <h4 class="title">ASUS ROG SWIFT OLED PG27AQDM 스핀 룰렛 이벤트!</h4>
+                        <p class="prize">CGV 영화예매권 2매</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #e0f4ff;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge blue-text">댓글</span>
+                            </div>
+                            <span class="d-day">D-15</span>
+                        </div>
+                        <h4 class="title">Corsair iCUE LINK H150i RGB 쿨러 댓글 이벤트!</h4>
+                        <p class="prize">네이버페이 포인트 3만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #fef9e6;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge green-text">퀴즈</span>
+                            </div>
+                            <span class="d-day">D-18</span>
+                        </div>
+                        <h4 class="title">WD Black SN850X 2TB PS5 성능 퀴즈 이벤트!</h4>
+                        <p class="prize">신세계상품권 1만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #eaf3e8;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge purple-text">게임</span>
+                            </div>
+                            <span class="d-day">D-20</span>
+                        </div>
+                        <h4 class="title">GIGABYTE RTX 4070 Ti SUPER GAMING OC 슬롯머신!</h4>
+                        <p class="prize">카카오페이 포인트 1만원</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #ede8ff;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge blue-text">댓글</span>
+                            </div>
+                            <span class="d-day">D-22</span>
+                        </div>
+                        <h4 class="title">be quiet! Dark Power 13 1000W 파워 서플라이 댓글 이벤트!</h4>
+                        <p class="prize">네이버페이 포인트 2만원권</p>
+                    </div>
+                </div>
+
+                <div class="card list-card">
+                    <div class="img-box" style="background-color: #fde8e8;">
+                        <span class="heart-icon">🤍</span>
+                    </div>
+                    <div class="text-box">
+                        <div class="badges">
+                            <div class="left-badges">
+                                <span class="badge green-text">퀴즈</span>
+                            </div>
+                            <span class="d-day">D-25</span>
+                        </div>
+                        <h4 class="title">NZXT H9 Flow ATX 미드타워 케이스 퀴즈 이벤트!</h4>
+                        <p class="prize">쿠팡캐시 5,000원</p>
+                    </div>
+                </div>
+
+            </div><!-- /.card-grid -->
+
+            <!-- ── 페이지네이션 ── -->
+            <nav class="pagination" aria-label="페이지 네비게이션">
+                <button class="page-btn arrow">«</button>
+                <button class="page-btn arrow">‹</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+                <button class="page-btn arrow">›</button>
+                <button class="page-btn arrow">»</button>
+            </nav>
+
+        </section>
+
+    </main>
+
+    <script>
+        // 기타 버튼 토글
+        document.querySelectorAll('.etc-btn').forEach(btn => {
+            btn.addEventListener('click', () => btn.classList.toggle('active'));
+        });
+
+        // 페이지네이션
+        document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.page-btn:not(.arrow)').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

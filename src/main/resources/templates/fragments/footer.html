@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<footer th:fragment="footerFragment" class="site-footer">
+
+    <!-- ── 상단: 로고 + 5단 컬럼 ── -->
+    <div class="footer-top">
+        <div class="footer-container">
+
+            <!-- 로고 -->
+            <div class="footer-logo">
+                <h2 class="logo-text">comdog</h2>
+                <p class="logo-sub">컴퓨터 구매, 렌탈은 컴독!</p>
+            </div>
+
+            <!-- 5개 컬럼 -->
+            <div class="footer-columns">
+
+                <!-- 공지사항 / 이벤트 탭 -->
+                <div class="col col--notice">
+                    <div class="tab-header">
+                        <button class="tab-btn tab-btn--active">공지사항</button>
+                        <button class="tab-btn">이벤트</button>
+                    </div>
+                    <ul class="notice-list">
+                        <li>
+                            <a href="#">5월 연휴 영업 안내</a>
+                            <span class="notice-date">2026-05-11</span>
+                        </li>
+                        <li>
+                            <a href="#">퀵서비스 배송지역 확대 안내</a>
+                            <span class="notice-date">2026-05-11</span>
+                        </li>
+                        <li>
+                            <a href="#">xxxxx</a>
+                            <span class="notice-date">2026-05-11</span>
+                        </li>
+                        <li>
+                            <a href="#">xxxxx</a>
+                            <span class="notice-date">2026-05-11</span>
+                        </li>
+                        <li>
+                            <a href="#">xxxxx</a>
+                            <span class="notice-date">2026-05-11</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 배송 서비스 -->
+                <div class="col">
+                    <h3 class="col-title">배송 서비스</h3>
+                    <ul class="link-list">
+                        <li><a href="#">택배배송 배송추적 <i class="fa-solid fa-chevron-down"></i></a></li>
+                        <li><a href="#">오늘도착 배송가능지역조회 <i class="fa-solid fa-chevron-down"></i></a></li>
+                        <li><a href="#">새벽도착 배송가능지역조회 <i class="fa-solid fa-chevron-down"></i></a></li>
+                        <li><a href="#">퀵서비스 운송료/약정시간조회 <i class="fa-solid fa-chevron-down"></i></a></li>
+                        <li><a href="#">방문수령</a></li>
+                        <li><a href="#">택배무료 안내</a></li>
+                    </ul>
+                </div>
+
+                <!-- 결제 서비스 -->
+                <div class="col">
+                    <h3 class="col-title">결제 서비스</h3>
+                    <ul class="link-list">
+                        <li><a href="#">신용카드 무이자 할부</a></li>
+                        <li><a href="#">전자세금계산서</a></li>
+                        <li><a href="#">현금영수증</a></li>
+                        <li><a href="#">결제계좌안내</a></li>
+                        <li><a href="#">카드 승인 내역</a></li>
+                        <li><a href="#">세금계산서 발행내역</a></li>
+                        <li><a href="#">취소/환불 안내</a></li>
+                    </ul>
+                </div>
+
+                <!-- 상담/문의 -->
+                <div class="col col--consulting">
+                    <h3 class="col-title">상담/문의</h3>
+                    <ul class="link-list">
+                        <li><a href="#">고객의 소리</a></li>
+                        <li><a href="#">구매전문상담</a></li>
+                        <li><a href="#">A/S 기술상담</a></li>
+                    </ul>
+                </div>
+
+                <!-- 매장안내 + SNS -->
+                <div class="col col--store">
+                    <h3 class="col-title">매장안내</h3>
+                    <button class="btn-store">매장찾기</button>
+
+                    <h3 class="col-title col-title--sns">SNS 링크</h3>
+                    <div class="sns-links">
+                        <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div><!-- /footer-columns -->
+        </div><!-- /footer-container -->
+    </div><!-- /footer-top -->
+
+    <!-- ── 중단: 약관 메뉴 ── -->
+    <div class="footer-policy">
+        <div class="footer-container">
+            <ul class="policy-menu">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" class="policy-menu__bold">개인정보처리방침</a></li>
+                <li><a href="#">청소년보호정책</a></li>
+                <li><a href="#">협력사</a></li>
+                <li><a href="#">광고안내</a></li>
+                <li><a href="#">앱 다운로드</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── 하단: 회사 정보 ── -->
+    <div class="footer-info">
+        <div class="footer-container">
+           <p>
+		    (주) 컴독 대표이사 : XXX &nbsp;|&nbsp; 사업자등록번호 : 106-77-080931
+		    <button class="btn-small">사업자정보확인</button>
+		    &nbsp;|&nbsp;
+		    xxxxx xx xxx 11-2 &nbsp;|&nbsp; E-mail : cod_help@comdog.co.kr &nbsp;|&nbsp; 호스팅 제공자 : (주)컴독 &nbsp;|&nbsp; 개인정보보호책임자 : xxx
+			</p>
+            <p>
+                통신판매업신고 : 제 2026-서울 강남-0001호 &nbsp;|&nbsp;
+                분쟁조정기관 : 소비자보호원, 전자거래분쟁중재위원회 &nbsp;|&nbsp;
+                에스크로 구매안전 서비스 이용가능
+                <button class="btn-small">자세히보기</button>
+            </p>
+            <p class="footer-info__service">
+                [방문상담, 구매, A/S] 본점 : xxxxx xx xxx 9-2
+                <button class="btn-small">영업시간 안내</button>
+                [택배A/S접수] 본점 : xxxxx xx xxx 9-2 xxx 3층 서비스팀 &nbsp;|&nbsp;
+                [고객센터] <strong>1588-8282 (팩스 042-123-4567)</strong>
+                <button class="btn-small">고객의 소리</button>
+                <button class="btn-small">문자상담</button>
+            </p>
+        </div>
+    </div>
+
+</footer>
+</html>

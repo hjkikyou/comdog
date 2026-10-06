@@ -1,0 +1,393 @@
+/* 기본 초기화 */
+* {
+    box-sizing: border-box;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+
+.signup-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #FAFAFA;
+}
+
+.signup-container {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 540px;
+    padding: 50px 40px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* 로고 영역 */
+.logo-area {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.logo-area h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #6C7A89;
+    letter-spacing: 2px;
+    margin: 0 0 5px 0;
+}
+.logo-area p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* 타이틀 */
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #000;
+}
+
+/* 폼 그룹 공통 (일반 입력창들은 회색 배경) */
+.form-group {
+    margin-bottom: 25px;
+}
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    height: 48px;
+    background-color: #F4F5F7;
+    border: 1px solid #EAEAEA;
+    padding: 0 16px;
+    font-size: 14px;
+    outline: none;
+    border-radius: 4px;
+}
+.form-group input:focus {
+    border-color: #8B7AFF;
+    background-color: #FFF;
+}
+
+/* 라디오 버튼 스타일 */
+.radio-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    height: 48px;
+}
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: #7664FF;
+    cursor: pointer;
+}
+
+/* 주민번호/성별 입력 영역 */
+.birth-group {
+    display: flex;
+    align-items: center;
+}
+.birth-input {
+    flex: 1;
+}
+.dash {
+    margin: 0 10px;
+    color: #666;
+    font-weight: bold;
+}
+.gender-input {
+    width: 50px !important;
+    text-align: center;
+}
+.mask-dots {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    gap: 6px;
+}
+.mask-dots span {
+    width: 10px;
+    height: 10px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+/* 이메일 입력 영역 */
+.email-group {
+    display: flex;
+    align-items: center;
+}
+.email-group #emailId {
+    flex: 1.3;
+}
+.email-domain-input {
+    flex: 1;
+}
+.at-symbol {
+    font-size: 18px;
+    margin: 0 8px;
+    color: #666;
+}
+.email-domain {
+    flex: 0.9;
+    height: 48px;
+    border: 1px solid #CCC;
+    padding: 0 8px;
+    margin-left: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #FFF;
+    border-radius: 4px;
+}
+/* 비밀번호 툴팁 (팝업) 관련 */
+.relative {
+    position: relative;
+}
+.pw-label {
+    display: flex;
+    align-items: center;
+}
+.btn-info {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    color: #333;
+    padding: 0;
+}
+.pw-tooltip {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    background-color: #F8F8F8;
+    border: 1px solid #DDD;
+    padding: 15px;
+    border-radius: 4px;
+    width: 380px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.pw-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 10px;
+    height: 10px;
+    background-color: #F8F8F8;
+    border-top: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    transform: rotate(45deg);
+}
+.tooltip-title {
+    font-weight: bold;
+    color: #666;
+    margin: 0 0 10px 0;
+}
+.pw-tooltip ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* 아이콘 포함 인풋창 (눈 모양) */
+.input-with-icon {
+    position: relative;
+}
+.btn-eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+/* 약관 동의 영역 */
+.terms-container {
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.terms-container label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+.terms-container label:last-child {
+    margin-bottom: 0;
+}
+.terms-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #7664FF;
+}
+.terms-container hr {
+    border: none;
+    border-top: 1px solid #EEE;
+    margin: 15px 0;
+}
+.required {
+    color: #0056FF;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.optional {
+    color: #888;
+    margin-right: 5px;
+}
+
+/* 제출 버튼 */
+.btn-submit {
+    width: 100%;
+    height: 56px;
+    background: linear-gradient(135deg, #9181FF 0%, #7664FF 100%);
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(118, 100, 255, 0.3);
+}
+
+/* 로그인 유도 링크 */
+.login-link-area {
+    text-align: center;
+    margin-top: 20px;
+}
+.login-link-area a {
+    color: #0056FF;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-link-area a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------------------
+   이메일 인증 레이아웃
+   - 초기: [인증 메일 발송] 단독
+   - 발송 후: [인증코드 입력칸] → [재전송] → [확인]
+------------------------------------------------------------- */
+.verify-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* 인증 영역 내부 버튼 공통 정렬 (아이콘+글자 나란히) */
+.verify-group button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+.verify-group .btn-icon {
+    flex-shrink: 0;
+}
+
+/* 1. 초기 상태: 인증 메일 발송 버튼 (단독 노출, 전체 너비) */
+.btn-send-code {
+    flex: 1;
+    background-color: #FFFFFF;
+    color: #7664FF;
+    border: 1px solid #7664FF;
+}
+.btn-send-code:hover {
+    background-color: #F8F7FF;
+}
+
+/* 2. 인증 코드 입력칸 (발송 후 노출, 가장 넓게 / 강조 디자인) */
+#verifyCode {
+    flex: 1.6;
+    height: 48px;
+    background-color: #FFFFFF;
+    border: 2px solid #9181FF;
+    border-radius: 4px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+#verifyCode:focus {
+    border-color: #7664FF;
+    box-shadow: 0 0 8px rgba(118, 100, 255, 0.3);
+}
+
+/* 3. 재전송 버튼 (코드 입력칸 우측 / 은은한 서브 버튼) */
+.btn-resend-style {
+    flex: 0.9;
+    background-color: #F8F5FF;
+    color: #5C3CFA;
+    border: 1px solid #EFE8FF;
+}
+.btn-resend-style:hover {
+    background-color: #EFE8FF;
+}
+
+/* 4. 확인 버튼 (메인 액션 / 꽉 찬 진한 보라색) */
+.btn-confirm-style {
+    flex: 0.9;
+    background: #5C3CFA;
+    color: #FFFFFF;
+    border: none;
+}
+.btn-confirm-style:hover {
+    background: #4A2BDE;
+    box-shadow: 0 2px 8px rgba(92, 60, 250, 0.3);
+}
+
+/* 피드백 메시지 */
+.feedback-msg {
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: 500;
+}
+.text-success { color: #28a745; }
+.text-error { color: #dc3545; }
+.text-info { color: #0056FF; }

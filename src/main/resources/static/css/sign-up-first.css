@@ -1,0 +1,72 @@
+/* 회원가입 폼 컨테이너 */
+.signup-container {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 480px;
+    padding: 50px 40px;
+    border: 1px solid #E0E0E0;
+    text-align: center;
+    
+    /* 레이아웃 내부에서 중앙 정렬되도록 추가 */
+    margin: 80px auto; 
+}
+
+.signup-container h1 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: #000000;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+
+/* 버튼 공통 스타일 */
+.signup-container .btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+}
+
+.signup-container .btn:hover {
+    opacity: 0.9;
+}
+
+.signup-container .btn .icon {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+/* 1. 이메일 버튼 */
+.signup-container .btn-email {
+    background-color: #FFFFFF;
+    color: #333333;
+    border: 1px solid #B0B0B0;
+}
+
+/* 2. 네이버 버튼 */
+.signup-container .btn-naver {
+    background-color: #03C75A;
+    color: #FFFFFF;
+    border: none;
+}
+
+/* 3. 카카오 버튼 */
+.signup-container .btn-kakao {
+    background-color: #FEE500;
+    color: #000000;
+    border: 1px solid #E5CE00;
+}

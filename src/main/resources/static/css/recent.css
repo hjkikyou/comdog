@@ -1,0 +1,299 @@
+/* 두 번째 이미지의 화사하고 산뜻한 테크 인프라 컬러 스키마 반영 */
+:root {
+    --bg-gradient-soft: linear-gradient(135deg, #ECEFFF 0%, #F4F7FF 100%);
+    --tech-primary-gradient: linear-gradient(90deg, #00C6FF 0%, #0072FF 100%); /* 두 번째 이미지의 산뜻한 블루 그라데이션 */
+    --tech-purple-gradient: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+
+    --navy-dark: #2E3A6B;         /* 깊이감 있는 세련된 텍스트용 네이비 */
+    --text-muted: #8892B0;        /* 보조 텍스트용 그레이 */
+    --surface-white: #FFFFFF;
+    --border-soft: #E4E9F7;
+    --radius-main: 16px;          /* 둥글고 정돈된 모서리 처리를 위한 기본 반경 */
+    --radius-button: 24px;        /* 두 번째 이미지 최하단 캡슐형 라운드 버튼 반영 */
+}
+
+body {
+    background: var(--bg-gradient-soft);
+    color: var(--navy-dark);
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.recent-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    background: var(--surface-white);
+    border-radius: var(--radius-main);
+    padding: 40px;
+    box-shadow: 0px 20px 50px rgba(46, 58, 107, 0.05);
+}
+
+/* 1. 상단 타이틀 구역 */
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    color: var(--navy-dark);
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.btn-clear-all {
+    background: transparent;
+    border: 1px solid #D1D9F0;
+    color: var(--text-muted);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear-all:hover {
+    background: #F4F7FF;
+    border-color: var(--navy-dark);
+    color: var(--navy-dark);
+}
+
+/* 2. 최근 본 상품 리스트 테이블 레이아웃 */
+.recent-table-wrapper {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-main);
+    overflow: hidden;
+}
+
+/* 테이블 헤더 */
+.table-thead {
+    display: flex;
+    background: #F8FAFF;
+    border-bottom: 1px solid var(--border-soft);
+    padding: 14px 20px;
+}
+
+.th-col {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy-dark);
+    text-align: center;
+}
+
+/* 테이블 본문 로우(Row) */
+.table-row {
+    display: flex;
+    align-items: center;
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--border-soft);
+    transition: background 0.25s ease;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row:hover {
+    background: #FAFCEF; /* 호버 시 투명하고 산뜻하게 밝아지는 피드백 효과 */
+}
+
+/* 컬럼별 너비 구조 분할 시스템 */
+.col-img    { width: 140px; display: flex; justify-content: center; }
+.col-info   { flex: 1; padding-left: 20px; text-align: left; }
+.col-price  { width: 180px; text-align: right; padding-right: 20px; }
+.col-action { width: 160px; display: flex; justify-content: center; }
+
+/* 3. 각 컬럼 세부 컴포넌트 디자인 */
+
+/* 상품 기기 이미지 썸네일 박스 */
+.product-img-box {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #F5F8FF 0%, #E9EFFE 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E2E8F7;
+}
+
+.tech-emoji {
+    font-size: 44px;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
+}
+
+/* 컴퓨터 맞춤형 스펙 정보 스타일 */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.brand-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4F46E5; /* 은은한 퍼플 톤 포인트 적용 */
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--navy-dark);
+    line-height: 1.4;
+}
+
+/* 스펙 태그 라인 디자인 */
+.tech-spec-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.spec-badge {
+    background: #EDF2FE;
+    color: #3B82F6;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #DBE5FC;
+}
+
+/* 가격 타이포그래피 */
+.price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.discount-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.discount-pct {
+    color: #EF4444;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.original-val {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.final-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1E3A8A; /* 가독성을 위한 인디고 블루 판매가 고정 */
+}
+
+/* 4. 액션 버튼 디자인 (두 번째 이미지 LEARN MORE 버튼 모티브 완벽 적용) */
+.action-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* 테크 그라데이션 주문하기 버튼 */
+.btn-tech-order {
+    background: var(--tech-primary-gradient);
+    color: var(--surface-white);
+    border: none;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 114, 255, 0.2);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-tech-order:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 장바구니 및 개별 삭제 버튼 */
+.btn-tech-cart {
+    background: var(--surface-white);
+    border: 1px solid #3B82F6;
+    color: #3B82F6;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-tech-cart:hover {
+    background: #EFF6FF;
+}
+
+.btn-tech-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.btn-tech-delete:hover {
+    color: #EF4444;
+}
+
+/* 5. 페이지네이션 컴포넌트 */
+.recent-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 35px;
+}
+
+.p-num, .p-arrow {
+    background: var(--surface-white);
+    border: 1px solid var(--border-soft);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--navy-dark);
+    transition: all 0.2s;
+}
+
+.p-num.active {
+    background: var(--tech-primary-gradient);
+    color: var(--surface-white);
+    border: none;
+    box-shadow: 0px 4px 12px rgba(0, 114, 255, 0.25);
+}
+
+.p-num:hover:not(.active), .p-arrow:hover {
+    background: #EFF3FF;
+    border-color: #3B82F6;
+}

@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <title>컴퓨터 구독 &amp; 렌탈 서비스</title>
+    <link rel="stylesheet" th:href="@{/css/sub-rental.css}">
+</head>
+
+<body>
+    <main layout:fragment="container" class="rental-container">
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section class="rental-hero">
+        <div class="rental-hero__bg-grid"></div>
+        <div class="rental-hero__glow rental-hero__glow--blue"></div>
+        <div class="rental-hero__glow rental-hero__glow--teal"></div>
+
+        <div class="rental-container rental-hero__inner">
+            <div class="rental-hero__text">
+                <span class="rental-badge">✦ 현명한 소비의 정석</span>
+                <h1 class="rental-hero__title">
+                    최고의 PC를<br>
+                    <em class="rental-em">구독</em>하세요
+                </h1>
+                <p class="rental-hero__desc">
+                    최신 장비를 초기 비용 없이, 원하는 기간만큼.<br>
+                    COMDOG 렌탈로 스마트하게 시작하세요.
+                </p>
+                <div class="rental-hero__actions">
+                    <a th:href="@{/rental/apply}" class="rental-btn rental-btn--primary rental-btn--lg">지금 구독 시작하기 →</a>
+                    <a th:href="@{/product/list(type=rental)}" class="rental-btn rental-btn--ghost rental-btn--lg">상품 둘러보기</a>
+                </div>
+                <div class="rental-hero__stats">
+                    <div class="rental-stat">
+                        <strong>3,200+</strong>
+                        <span>누적 고객</span>
+                    </div>
+                    <div class="rental-stat-divider"></div>
+                    <div class="rental-stat">
+                        <strong>98%</strong>
+                        <span>만족도</span>
+                    </div>
+                    <div class="rental-stat-divider"></div>
+                    <div class="rental-stat">
+                        <strong>최대 36개월</strong>
+                        <span>약정 선택</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rental-hero__visual">
+                <div class="rental-hero__card-wrap">
+                    <div class="rental-float-card">
+                        <div class="rental-float-card__screen">
+                            <div class="rental-float-card__bar"></div>
+                            <div class="rental-float-card__line rental-float-card__line--wide"></div>
+                            <div class="rental-float-card__line"></div>
+                            <div class="rental-float-card__boxes">
+                                <span class="rental-float-card__box rental-float-card__box--blue"></span>
+                                <span class="rental-float-card__box rental-float-card__box--teal"></span>
+                                <span class="rental-float-card__box rental-float-card__box--purple"></span>
+                            </div>
+                        </div>
+                        <div class="rental-float-card__base"></div>
+                    </div>
+
+                    <div class="rental-chip rental-chip--1">
+                        <span class="rental-chip__icon">💳</span>
+                        <div>
+                            <p class="rental-chip__label">월 구독료</p>
+                            <p class="rental-chip__value">39,900원~</p>
+                        </div>
+                    </div>
+                    <div class="rental-chip rental-chip--2">
+                        <span class="rental-chip__icon">✅</span>
+                        <div>
+                            <p class="rental-chip__label">AS 포함</p>
+                            <p class="rental-chip__value">전문 기사 방문</p>
+                        </div>
+                    </div>
+                    <div class="rental-chip rental-chip--3">
+                        <span class="rental-chip__icon">🔄</span>
+                        <div>
+                            <p class="rental-chip__label">업그레이드</p>
+                            <p class="rental-chip__value">언제든 가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rental-hero__scroll">
+            <span>스크롤하여 더 보기</span>
+            <span class="rental-hero__scroll-arrow">↓</span>
+        </div>
+    </section>
+
+    <!-- ══════════════════ BENEFITS ══════════════════ -->
+    <section class="rental-benefits" id="rental-benefits">
+        <div class="rental-container">
+            <div class="rental-section-header">
+                <span class="rental-section-tag">왜 렌탈인가요?</span>
+                <h2 class="rental-section-title">COMDOG만의 <em class="rental-em">3가지 핵심 혜택</em></h2>
+                <p class="rental-section-sub">복잡한 절차 없이, 합리적인 비용으로, 전문 관리까지 한 번에</p>
+            </div>
+
+            <div class="rental-benefits__grid">
+
+                <div class="rental-benefit-card">
+                    <div class="rental-benefit-card__icon rental-benefit-card__icon--blue">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="14" fill="url(#icon-grad-1)"/>
+                            <defs>
+                                <linearGradient id="icon-grad-1" x1="0" y1="0" x2="48" y2="48">
+                                    <stop stop-color="#3B82F6"/><stop offset="1" stop-color="#1D4ED8"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M14 24l8 8 12-14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>All-in-One 서비스</h3>
+                    <p>최신 디바이스, 맞춤 소프트웨어, 출장 관리 서비스를 <strong>단 하나의 계약</strong>으로 해결</p>
+                    <ul class="rental-benefit-card__list">
+                        <li>복잡한 절차 없음</li>
+                        <li>계약 후 빠른 배송 설치</li>
+                        <li>전담 담당자 배정</li>
+                    </ul>
+                </div>
+
+                <div class="rental-benefit-card rental-benefit-card--featured">
+                    <span class="rental-benefit-card__badge">인기</span>
+                    <div class="rental-benefit-card__icon rental-benefit-card__icon--teal">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="14" fill="url(#icon-grad-2)"/>
+                            <defs>
+                                <linearGradient id="icon-grad-2" x1="0" y1="0" x2="48" y2="48">
+                                    <stop stop-color="#06B6D4"/><stop offset="1" stop-color="#0891B2"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="13" y="20" width="22" height="14" rx="2" stroke="white" stroke-width="2.5"/>
+                            <path d="M18 20v-4a6 6 0 0112 0v4" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>합리적인 분납금</h3>
+                    <p>초기 비용 부담 없이 <strong>최대 36개월</strong> 다양한 선택 옵션의 맞춤형 요금 체계</p>
+                    <ul class="rental-benefit-card__list">
+                        <li>12 / 24 / 36개월 선택</li>
+                        <li>중도 해지 수수료 최소화</li>
+                        <li>만기 후 소유권 이전 가능</li>
+                    </ul>
+                </div>
+
+                <div class="rental-benefit-card">
+                    <div class="rental-benefit-card__icon rental-benefit-card__icon--purple">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="14" fill="url(#icon-grad-3)"/>
+                            <defs>
+                                <linearGradient id="icon-grad-3" x1="0" y1="0" x2="48" y2="48">
+                                    <stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#6D28D9"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M24 14v6m0 8v6m-10-10h6m8 0h6" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>관리 비용 절감</h3>
+                    <p>편리한 <strong>자동 업데이트</strong>와 문제 발생 시 전문가 출장 서비스로 유지비 절감</p>
+                    <ul class="rental-benefit-card__list">
+                        <li>자동 소프트웨어 업데이트</li>
+                        <li>48시간 내 출장 서비스</li>
+                        <li>하드웨어 고장 보장 포함</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ PRODUCTS ══════════════════ -->
+    <section class="rental-products" id="rental-products">
+        <div class="rental-container">
+            <div class="rental-section-header">
+                <span class="rental-section-tag">구독 상품</span>
+                <h2 class="rental-section-title">나에게 맞는 <em class="rental-em">플랜을 선택</em>하세요</h2>
+                <p class="rental-section-sub">개인부터 기업까지, 용도에 맞는 최적의 구성</p>
+            </div>
+
+            <!-- 탭 -->
+            <div class="rental-tabs" role="tablist">
+                <button class="rental-tab rental-tab--active" data-rental-tab="pc" type="button">데스크톱 PC</button>
+                <button class="rental-tab" data-rental-tab="laptop" type="button">노트북</button>
+                <button class="rental-tab" data-rental-tab="server" type="button">서버 / 기업용</button>
+            </div>
+
+            <!-- PC -->
+            <div class="rental-product-grid" data-rental-panel="pc">
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag">입문</span>
+                    <div class="rental-product-card__img">🖥️</div>
+                    <div class="rental-product-card__body">
+                        <h4>베이직 데스크톱</h4>
+                        <p class="rental-product-card__spec">Intel i5 · 16GB RAM · SSD 512GB</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">39,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">12개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=1)}" class="rental-btn rental-btn--card">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card rental-product-card--best">
+                    <span class="rental-product-card__tag rental-product-card__tag--best">인기</span>
+                    <div class="rental-product-card__img">🖥️</div>
+                    <div class="rental-product-card__body">
+                        <h4>스탠다드 데스크톱</h4>
+                        <p class="rental-product-card__spec">Intel i7 · 32GB RAM · SSD 1TB + HDD 2TB</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">59,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">24개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=2)}" class="rental-btn rental-btn--card rental-btn--card-best">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag rental-product-card__tag--pro">프리미엄</span>
+                    <div class="rental-product-card__img">🖥️</div>
+                    <div class="rental-product-card__body">
+                        <h4>프리미엄 워크스테이션</h4>
+                        <p class="rental-product-card__spec">Intel i9 · 64GB RAM · NVMe 2TB · RTX 4070</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">99,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">36개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=3)}" class="rental-btn rental-btn--card">구독 신청</a>
+                </div>
+
+            </div>
+
+            <!-- 노트북 -->
+            <div class="rental-product-grid rental-product-grid--hidden" data-rental-panel="laptop">
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag">입문</span>
+                    <div class="rental-product-card__img">💻</div>
+                    <div class="rental-product-card__body">
+                        <h4>베이직 노트북</h4>
+                        <p class="rental-product-card__spec">AMD Ryzen 5 · 16GB · SSD 512GB · 15.6"</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">44,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">12개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=4)}" class="rental-btn rental-btn--card">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card rental-product-card--best">
+                    <span class="rental-product-card__tag rental-product-card__tag--best">인기</span>
+                    <div class="rental-product-card__img">💻</div>
+                    <div class="rental-product-card__body">
+                        <h4>비즈니스 노트북</h4>
+                        <p class="rental-product-card__spec">Intel i7 · 16GB · SSD 1TB · 14" FHD</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">64,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">24개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=5)}" class="rental-btn rental-btn--card rental-btn--card-best">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag rental-product-card__tag--pro">크리에이터</span>
+                    <div class="rental-product-card__img">💻</div>
+                    <div class="rental-product-card__body">
+                        <h4>크리에이터 노트북</h4>
+                        <p class="rental-product-card__spec">Intel i9 · 32GB · NVMe 1TB · RTX 4060 · 16"</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">89,900</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">36개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=6)}" class="rental-btn rental-btn--card">구독 신청</a>
+                </div>
+
+            </div>
+
+            <!-- 서버 -->
+            <div class="rental-product-grid rental-product-grid--hidden" data-rental-panel="server">
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag">소기업</span>
+                    <div class="rental-product-card__img">🗄️</div>
+                    <div class="rental-product-card__body">
+                        <h4>스타터 서버</h4>
+                        <p class="rental-product-card__spec">Xeon E · 32GB ECC · SSD 2TB RAID</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">149,000</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">24개월 기준</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=7)}" class="rental-btn rental-btn--card">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card rental-product-card--best">
+                    <span class="rental-product-card__tag rental-product-card__tag--best">B2B 인기</span>
+                    <div class="rental-product-card__img">🗄️</div>
+                    <div class="rental-product-card__body">
+                        <h4>엔터프라이즈 서버</h4>
+                        <p class="rental-product-card__spec">Xeon Silver · 64GB ECC · NVMe 4TB · 이중화</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-from">월</span>
+                            <span class="rental-price-num">299,000</span>
+                            <span class="rental-price-unit">원~</span>
+                        </div>
+                        <p class="rental-product-card__period">36개월 기준 · 별도 문의</p>
+                    </div>
+                    <a th:href="@{/rental/apply(productId=8)}" class="rental-btn rental-btn--card rental-btn--card-best">구독 신청</a>
+                </div>
+
+                <div class="rental-product-card">
+                    <span class="rental-product-card__tag rental-product-card__tag--pro">맞춤형</span>
+                    <div class="rental-product-card__img">⚙️</div>
+                    <div class="rental-product-card__body">
+                        <h4>커스텀 구성</h4>
+                        <p class="rental-product-card__spec">요구사항에 맞는 맞춤 서버 구성 제공</p>
+                        <div class="rental-product-card__price">
+                            <span class="rental-price-num rental-price-num--sm">견적 문의</span>
+                        </div>
+                        <p class="rental-product-card__period">전담 컨설턴트 배정</p>
+                    </div>
+                    <a th:href="@{/rental/inquiry}" class="rental-btn rental-btn--card">상담 신청</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ STEPS ══════════════════ -->
+    <section class="rental-steps" id="rental-steps">
+        <div class="rental-container">
+            <div class="rental-section-header">
+                <span class="rental-section-tag">이용 방법</span>
+                <h2 class="rental-section-title"><em class="rental-em">4단계</em>면 충분해요</h2>
+                <p class="rental-section-sub">신청부터 설치까지, COMDOG이 전부 책임집니다</p>
+            </div>
+
+            <div class="rental-steps__track">
+                <div class="rental-steps__line"></div>
+
+                <div class="rental-step">
+                    <span class="rental-step__num">01</span>
+                    <div class="rental-step__icon">🔍</div>
+                    <h4>상품 &amp; 기간 선택</h4>
+                    <p>원하는 디바이스와 약정 기간을 선택하세요</p>
+                </div>
+                <div class="rental-step">
+                    <span class="rental-step__num">02</span>
+                    <div class="rental-step__icon">📋</div>
+                    <h4>신청 정보 입력</h4>
+                    <p>간단한 신청 양식을 작성해 주세요</p>
+                </div>
+                <div class="rental-step">
+                    <span class="rental-step__num">03</span>
+                    <div class="rental-step__icon">📞</div>
+                    <h4>전문 상담</h4>
+                    <p>해피콜 상담원이 맞춤 상담을 진행합니다</p>
+                </div>
+                <div class="rental-step">
+                    <span class="rental-step__num">04</span>
+                    <div class="rental-step__icon">🚚</div>
+                    <h4>설치 완료</h4>
+                    <p>전문 기사님이 직접 방문 설치해 드립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CTA BANNER ══════════════════ -->
+    <section class="rental-cta">
+        <div class="rental-cta__glow"></div>
+        <div class="rental-container rental-cta__inner">
+            <div class="rental-cta__text">
+                <span class="rental-cta__eyebrow">지금 바로 시작하세요</span>
+                <h2>첫 달 구독료 <em class="rental-em">50% 할인</em><br>이벤트 진행 중</h2>
+                <p>신규 가입 고객 한정 · 24개월 이상 약정 시 적용</p>
+            </div>
+            <div class="rental-cta__actions">
+                <a th:href="@{/rental/apply}" class="rental-btn rental-btn--primary rental-btn--lg">무료 상담 신청</a>
+                <a th:href="@{/event}" class="rental-btn rental-btn--ghost-dark rental-btn--lg">이벤트 상세 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ FAQ ══════════════════ -->
+    <section class="rental-faq" id="rental-faq">
+        <div class="rental-container">
+            <div class="rental-section-header">
+                <span class="rental-section-tag">자주 묻는 질문</span>
+                <h2 class="rental-section-title">궁금한 점이 있으신가요?</h2>
+            </div>
+
+            <div class="rental-faq__list">
+
+                <div class="rental-faq__item">
+                    <button class="rental-faq__q" type="button">
+                        <span>렌탈과 할부 구매의 차이점은 무엇인가요?</span>
+                        <span class="rental-faq__arrow">+</span>
+                    </button>
+                    <div class="rental-faq__a">
+                        <p>렌탈은 제품 소유권 없이 사용권만 취득하므로 초기 비용이 없고, 약정 기간 중 AS 및 관리 서비스가 포함됩니다. 할부 구매는 소유권을 가지지만 AS 비용이 별도 발생하며 초기 비용 부담이 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="rental-faq__item">
+                    <button class="rental-faq__q" type="button">
+                        <span>중도 해지가 가능한가요?</span>
+                        <span class="rental-faq__arrow">+</span>
+                    </button>
+                    <div class="rental-faq__a">
+                        <p>네, 중도 해지가 가능합니다. 단, 잔여 약정 기간에 따라 위약금이 발생할 수 있습니다. 정확한 위약금은 계약서를 참고하시거나 고객센터로 문의해 주세요.</p>
+                    </div>
+                </div>
+
+                <div class="rental-faq__item">
+                    <button class="rental-faq__q" type="button">
+                        <span>제품이 고장나면 어떻게 되나요?</span>
+                        <span class="rental-faq__arrow">+</span>
+                    </button>
+                    <div class="rental-faq__a">
+                        <p>자연 고장의 경우 무상 수리 또는 교체를 제공합니다. 접수 후 영업일 기준 48시간 내 전문 기사가 방문합니다. 단, 사용자 과실로 인한 파손은 별도 비용이 발생할 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="rental-faq__item">
+                    <button class="rental-faq__q" type="button">
+                        <span>약정 만료 후 제품은 어떻게 되나요?</span>
+                        <span class="rental-faq__arrow">+</span>
+                    </button>
+                    <div class="rental-faq__a">
+                        <p>약정 만료 후 제품 반납, 소유권 이전 구매, 또는 새로운 약정으로 업그레이드 세 가지 옵션 중 선택 가능합니다. 소유권 이전 시 잔존 가치에 따른 금액을 지불하시면 됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="rental-faq__item">
+                    <button class="rental-faq__q" type="button">
+                        <span>법인 / 사업자도 신청할 수 있나요?</span>
+                        <span class="rental-faq__arrow">+</span>
+                    </button>
+                    <div class="rental-faq__a">
+                        <p>네, 법인 및 개인 사업자도 신청 가능합니다. B2B 전용 기업 맞춤 플랜을 제공하고 있으며, 대량 구매 시 추가 할인이 적용됩니다. 별도 문의를 통해 전담 담당자를 배정해 드립니다.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </main>
+
+
+</body>
+</html>

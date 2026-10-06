@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+    <select id="findAllOrders" parameterType="map" resultType="com.comdog.c2d.dto.OrderListDto">
+        SELECT 
+            o.order_id       AS orderId,
+            o.total_amount   AS totalAmount,
+            o.order_status   AS orderStatus,
+            o.payment_method AS paymentMethod,
+            o.created_at     AS createdAt,
+            m.name           AS memberName,
+            
+            GROUP_CONCAT(p.name SEPARATOR ', ') AS productName
+            
+        FROM orders o
+        LEFT JOIN member m ON o.member_id = m.member_id  
+        LEFT JOIN order_item oi ON o.order_id = oi.order_id 
+        LEFT JOIN product p ON oi.product_id = p.product_id <where>
+            <if test="keyword != null and keyword != ''">
+                <choose>
+                    <when test="search == 'orderId'">
+                        AND o.order_id = #{keyword}
+                    </when>
+                    <when test="search == 'memberName'">
+                        AND m.name LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+
+        GROUP BY o.order_id, m.name
+        ORDER BY o.created_at DESC
+    </select>
+    
+    <resultMap id="OrderDetailResultMap" type="com.comdog.c2d.dto.OrderDetailDto">
+        <id property="orderId" column="order_id" />
+        <result property="totalAmount" column="total_amount" />
+        <result property="orderStatus" column="order_status" />
+        <result property="paymentMethod" column="payment_method" />
+        <result property="billingKey" column="billing_key" />
+        <result property="createdAt" column="created_at" />
+        
+        <result property="trackingNumber" column="tracking_number" />
+        
+        <result property="memberId" column="member_id" />
+        <result property="memberName" column="member_name" />
+        <result property="memberPhone" column="member_phone" />
+        <result property="memberEmail" column="member_email" />
+        
+        <collection property="orderItems" ofType="com.comdog.c2d.dto.OrderItemDto">
+            <result property="productName" column="product_name" />
+            <result property="orderPrice" column="order_price" />
+            <result property="count" column="count" />
+        </collection>
+    </resultMap>
+	
+	<!-- DB에 있는 orders 테이블과 order_item 테이블을 JOIN(결합)해서 데이터를 가져옵니다. -->
+   <select id="findOrderDetail" parameterType="long" resultMap="OrderDetailResultMap">
+        SELECT 
+            o.order_id,
+            o.total_amount,
+            o.order_status,
+            o.payment_method,
+            o.billing_key,
+            o.created_at,
+            
+            o.tracking_number, m.member_id      AS member_id,
+            m.name           AS member_name, 
+            m.phone          AS member_phone,
+            m.email          AS member_email,
+            
+            p.name           AS product_name,
+            oi.order_price,
+            oi.count
+        FROM orders o
+        LEFT JOIN member m ON o.member_id = m.member_id 
+        LEFT JOIN order_item oi ON o.order_id = oi.order_id 
+        LEFT JOIN product p ON oi.product_id = p.product_id 
+        WHERE o.order_id = #{orderId} 
+    </select>
+    
+    <update id="updateOrderStatus" parameterType="map">
+        UPDATE orders
+        SET order_status = #{orderStatus}
+            <if test="trackingNumber != null and trackingNumber != ''">
+                , tracking_number = #{trackingNumber}
+            </if>
+        WHERE order_id = #{orderId}
+    </update>
+    
+    <update id="cancelOrder" parameterType="long">
+        UPDATE orders
+        SET order_status = '주문취소'
+        WHERE order_id = #{orderId}
+    </update>
+
+</mapper>

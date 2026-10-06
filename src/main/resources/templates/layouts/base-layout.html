@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head> 
+    <th:block th:replace="~{fragments/head :: headFragment}"></th:block>
+</head>
+<body>
+	<th:block layout:fragment="headerArea"> <!-- 조각 덮어쓰기 (Fragment Override) 방식 -->
+		<div th:replace="~{fragments/header :: headerFragment}"></div>
+	</th:block>
+    <!-- <div th:if="${showHeader != false}" th:replace="~{fragments/header :: headerFragment}"></div>
+    -->
+    <main>
+        <th:block layout:fragment="container"></th:block>
+    </main>
+    
+    <th:block layout:fragment="footerArea">
+    	<div th:replace="~{fragments/footer :: footerFragment}"></div>
+	</th:block>
+</body>
+</html>

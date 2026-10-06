@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<header th:fragment="headerFragment" class="site-header">
+
+
+    <!-- ── 1. 최상단 바 (혜택 / 로그인) ── -->
+    <div class="header-top">
+        <div class="header-container">
+            <div class="top-left">
+            	<div th:if="${session.loginMember != null}">
+            		<span th:text="|${session.loginMember.name}님 환영합니다!|"></span>
+            		<span class="top-divider">|</span>
+            	</div>
+                <i class="fa-solid fa-certificate"></i> 구독자 전용 혜택
+                <span class="top-divider">|</span>
+                <span>결제 혜택 <i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <div class="top-right">
+            	<div th:if="${session.loginMember == null}">
+	                <a href="/log-in">로그인</a>
+	                <span class="top-divider">|</span>
+	                <a href="/sign-up-first">회원가입</a>
+	                <span class="top-divider">|</span>
+                </div>
+                <div th:if="${session.loginMember != null}">
+                	<a th:href="@{/user/auth/log-out}">로그아웃</a>
+                	 <span class="top-divider">|</span>
+				</div>
+                <a href="/center"><i class="fa-solid fa-headset"></i> 고객센터</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 2. 중간 바 (로고 + 검색 + 우측 아이콘) ── -->
+    <div class="header-middle">
+        <div class="header-container">
+
+            <!-- 로고 -->
+            <div class="logo-area">
+                <a href="/">
+                    <h1 class="logo-text"> comdog</h1>
+                    <span class="logo-sub">컴퓨터 구매 &amp; 인수형 렌탈</span>
+                </a>
+            </div>
+
+            <!-- 검색창 -->
+            <div class="search-area">
+                <div class="search-box">
+                    <select class="search-select">
+                        <option>전체</option>
+                        <option>데스크탑</option>
+                        <option>노트북</option>
+                        <option>모니터</option>
+                        <option>조립 PC</option>
+                    </select>
+                    <span class="search-divider"></span>
+                    <input type="text" class="search-input" placeholder="상품명을 검색하세요">
+                    <button type="submit" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 우측 아이콘 영역 -->
+            <div class="middle-right">
+                <!-- 찜목록 -->
+                <a href="/wishlist" class="header-icon-btn">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="icon-badge">3</span>
+                    <span class="icon-label">찜목록</span>
+                </a>
+                <!-- 최근 본 상품 -->
+                <a href="/recent" class="header-icon-btn">
+                    <i class="fa-regular fa-clock"></i>
+                    <span class="icon-label">최근 본 상품</span>
+                </a>
+                <!-- 장바구니 -->
+				<a href="/cart" class="header-icon-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="icon-badge">9</span>
+                    <span class="icon-label">장바구니</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── 3. 하단 바 (카테고리 + 메뉴 + 사용자) ── -->
+    <div class="header-bottom">
+        <div class="header-container">
+
+            <div class="nav-left">
+                <button class="btn-all-category">
+                    <i class="fa-solid fa-bars"></i> 전체 카테고리
+                </button>
+
+                <ul class="main-menu">
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">PC</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=1)}" 
+				                	class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">데스크탑 구매</p>
+				                        <p class="ds-desc">내 PC로 소유하는 합리적인 선택</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				                <a th:href="@{/user/product/rental_list(categoryId=1)}"
+				                	 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">데스크탑 대여</p>
+				                        <p class="ds-desc">최신 사양 PC를 원하는 기간만큼</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>				           
+				        </div>
+				    </li>
+				
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">모니터</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=3)}"
+				                 class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">모니터 구매</p>
+				                        <p class="ds-desc">다양한 해상도와 크기로 선택</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				                <a th:href="@{/user/product/rental_list(categoryId=3)}"
+				                 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">모니터 대여</p>
+				                        <p class="ds-desc">행사·사무·작업용 모니터 단기 대여</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				        </div>
+				    </li>
+				
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">노트북</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=4)}"
+				                 class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">노트북 구매</p>
+				                        <p class="ds-desc">휴대성과 성능을 모두 갖춘 라인업</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				                <a th:href="@{/user/product/rental_list(categoryId=4)}"
+				                 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">노트북 대여</p>
+				                        <p class="ds-desc">출장·교육·행사용 노트북 렌탈</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>   
+				        </div>
+				    </li>
+				
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">스마트기기</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+								<a th:href="@{/user/product/purchase_list(categoryId=5)}"
+								   class="dropdown-section dropdown-section--bottom">
+									<div class="ds-label">구매</div>
+									<div class="ds-text">
+										<p class="ds-title">스마트기기 구매</p>
+										<p class="ds-desc">스마트기기 전체 라인업 둘러보기</p>
+									</div>
+									<i class="fa-solid fa-chevron-right ds-arrow"></i>
+								</a>
+				                <a th:href="@{/user/product/rental_list(categoryId=5)}"
+				                 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">스마트기기 대여</p>
+				                        <p class="ds-desc">태블릿,스마트 워치,VR/AR 기기 대여</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				           
+				        </div>
+				    </li>
+				    
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">사무/주변기기</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+								<a th:href="@{/user/product/purchase_list(categoryId=6)}"
+								   class="dropdown-section dropdown-section--bottom">
+									<div class="ds-label">구매</div>
+									<div class="ds-text">
+										<p class="ds-title">사무/주변기기 구매</p>
+										<p class="ds-desc">사무/주변기기 전체 라인업 둘러보기</p>
+									</div>
+									<i class="fa-solid fa-chevron-right ds-arrow"></i>
+								</a>
+				                <a th:href="@{/user/product/rental_list(categoryId=6)}"
+				                 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">사무/주변기기 대여</p>
+				                        <p class="ds-desc">사무/주변기기 대여</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				           
+				        </div>
+				    </li>
+				    
+				     <li class="menu-item menu-item--dropdown">
+				        <a href="#">서버/워크스테이션</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+								<a th:href="@{/user/product/purchase_list(categoryId=7)}"
+								   class="dropdown-section dropdown-section--bottom">
+									<div class="ds-label">구매</div>
+									<div class="ds-text">
+										<p class="ds-title">서버/워크스테이션 구매</p>
+										<p class="ds-desc">서버/워크스테이션 전체 라인업 둘러보기</p>
+									</div>
+									<i class="fa-solid fa-chevron-right ds-arrow"></i>
+								</a>
+				                <a th:href="@{/user/product/rental_list(categoryId=7)}"
+				                 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">서버/워크스테이션 대여</p>
+				                        <p class="ds-desc">서버/워크스테이션 대여</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				           
+				        </div>
+				    </li>
+				
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">조립 PC</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+								<a th:href="@{/user/product/assembly_pc_purchase_list}"
+					               class="dropdown-section dropdown-section--bottom">
+									<div class="ds-label">구매</div>
+									<div class="ds-text">
+										<p class="ds-title">조립 PC 구매</p>
+										<p class="ds-desc">부품부터 완제품까지 직접 설계</p>
+									</div>
+									<i class="fa-solid fa-chevron-right ds-arrow"></i>
+								</a>
+				                <a th:href="@{/user/product/assembly_pc_rental_list}" 
+				                class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">조립 PC 대여</p>
+				                        <p class="ds-desc">원하는 사양으로 맞춤 구성 후 대여</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				        </div>
+				    </li>
+				
+				    <li class="menu-divider">|</li>
+						<li class="menu-item menu-item--dropdown">
+						    <a href="#">comdog 전용관</a>
+						    <div class="dropdown-panel">
+						        <div class="dropdown-sections">
+						
+						            <a href="/refurb_list" class="dropdown-section dropdown-section--exclusive">
+						                <span class="ds-title">comdog 중고상품</span>
+						            </a>
+						
+						            <a href="/sub-rental" class="dropdown-section dropdown-section--exclusive">
+						                <span class="ds-title">comdog 구독·렌탈 </span>
+						            </a>
+						        </div>
+						    </div>
+						</li>
+				    <li class="menu-item menu-item--dropdown">
+						    <a href="#">게시판</a>
+						    <div class="dropdown-panel">
+						        <div class="dropdown-sections">
+						        
+						        <a href="/community_board" class="dropdown-section dropdown-section--exclusive">
+						                <span class="ds-title">자유게시판</span>
+						            </a>
+						
+						            <a href="/board" class="dropdown-section dropdown-section--exclusive">
+						                <span class="ds-title">정보게시판</span>
+						            </a>
+						          </div>
+						    </div>
+						</li>   
+
+				    <li><a href="/event">이벤트&기획전</a></li>
+				    <li class="menu-divider">|</li>
+				    <li><a href="/b2b">기업&amp;단체 전용 (B2B)</a></li>
+				</ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="/my-page" class="user-link" >
+                    <i class="fa-regular fa-user"></i>myPage
+                    
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+</html>

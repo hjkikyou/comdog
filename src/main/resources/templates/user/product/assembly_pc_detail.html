@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/pages/assembly_pc_detail.css">
+  </head>
+
+  <main layout:fragment="container" class="detail-container">
+
+    <!-- ── 상단 브레드크럼 ── -->
+    <div class="breadcrumb">
+      <span>2025/커머셜/프로데스크/Pro Tower/미들라인/미들타워/ 기본제품/~8GB RAM/512GB SSD 이하/HDD 미포함/내장그래픽/DisplayPort/HDMI/USBType-C/USB3.1/RJ45/PCI/시리얼포트/ODD미포함/무선랜/블루투스/포함/Windows11 Pro/인텔 코어 울트라7</span>
+    </div>
+
+    <!-- ── 상품 제목 ── -->
+    <h1 class="product-title" th:text="|[${product.brand}] ${product.modelName}|">
+      [HP] 프로 데스크 4 G1i C26Z0PT 울트라7-265 (8GB/512GB/Win11Pro) [기본제품]
+    </h1>
+
+    <!-- ── 메인 2컬럼 레이아웃 ── -->
+    <div class="detail-main">
+
+      <!-- 왼쪽: 이미지 영역 -->
+      <div class="detail-left">
+
+        <!-- 메인 이미지 -->
+        <div class="main-img-wrap">
+          <img src="/images/placeholder.png" alt="상품 이미지" class="main-img" id="mainImg">
+        </div>
+
+        <!-- 썸네일 이미지 3개 -->
+        <div class="thumb-list">
+          <div class="thumb-item active"><div class="thumb-placeholder"></div></div>
+          <div class="thumb-item"><div class="thumb-placeholder"></div></div>
+          <div class="thumb-item"><div class="thumb-placeholder"></div></div>
+        </div>
+
+        <!-- 대여 기간 선택 -->
+        <div class="rental-period">
+          <p class="rental-period-label">대여 기간 선택</p>
+          <select class="form-select" name="rentalPeriod">
+            <option value="12">12개월</option>
+            <option value="24">24개월</option>
+            <option value="36">36개월</option>
+            <option value="48">48개월</option>
+            <option value="60" selected>60개월</option>
+          </select>
+        </div>
+
+        <!-- 결제 혜택 카드 -->
+        <div class="benefit-card">
+          <div class="benefit-section">
+            <p class="benefit-title">결제 혜택</p>
+            <p class="benefit-desc">삼성카드 무이자 할부</p>
+            <p class="benefit-desc">토스페이 5% 할인, 네이버페이 포인트 적립</p>
+            <div class="benefit-actions">
+              <a href="#" class="benefit-link">자세히 보기</a>
+              <button class="btn-benefit-ok">Ok</button>
+            </div>
+          </div>
+          <div class="benefit-divider"></div>
+          <div class="benefit-section">
+            <p class="benefit-title">배송 서비스</p>
+            <p class="benefit-desc">프리미엄 배송, 바로 픽업</p>
+            <div class="benefit-actions">
+              <button class="btn-benefit-dismiss">Dismiss</button>
+              <button class="btn-benefit-ok">Ok</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 오른쪽: 상품 정보 영역 -->
+      <div class="detail-right">
+
+        <!-- 상품명 -->
+        <h2 class="product-name" th:text="${product.name}">
+          프리미엄 조립PC_P2034W (9850X3D/9070XT)
+        </h2>
+
+        <!-- 찜 버튼 -->
+        <button class="btn-wish" title="찜하기">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+
+        <!-- 별점 -->
+        <div class="rating-row">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="rating-count">상품평 5 (7건)</span>
+        </div>
+
+        <!-- 상품번호 -->
+        <p class="product-no">상품번호 : <span th:text="${product.id}">1381203</span></p>
+
+        <!-- 가격 -->
+        <div class="price-box">
+          <p class="price-original">기본가격 <span th:text="${#numbers.formatDecimal(product.basePrice, 0, 'COMMA', 0, 'POINT')}">45,000</span> 원</p>
+          <p class="price-current">
+            <strong th:text="${#numbers.formatDecimal(product.basePrice, 0, 'COMMA', 0, 'POINT')} + '원'">3,000,000원</strong>
+          </p>
+          <div class="badge-row">
+            <span class="badge badge-free">무료배송</span>
+            <span class="badge badge-pickup">출장가능</span>
+          </div>
+        </div>
+
+        <!-- 스펙 테이블 -->
+        <table class="spec-table">
+          <tbody>
+            <tr><th>브랜드</th><td th:text="${product.brand}">HP</td></tr>
+            <tr><th>모델명</th><td th:text="${product.modelName}">프로 데스크 4 G1i</td></tr>
+            <tr><th>재고</th><td th:text="${product.stockQuantity} + '개'">10개</td></tr>
+          </tbody>
+        </table>
+
+        <!-- 서비스 선택 -->
+        <div class="service-box">
+          <div class="service-header">
+            <span class="service-title">서비스 선택</span>
+            <button class="service-toggle" onclick="toggleService(this)">&#8963;</button>
+          </div>
+          <div class="service-options" id="serviceOptions">
+            <label class="service-item">
+              <input type="checkbox" checked>
+              <span class="service-name">조립PC 안정화서비스 무료</span>
+              <span class="service-badge">프리미엄PC 혜택</span>
+            </label>
+            <label class="service-item">
+              <input type="checkbox">
+              <span class="service-name">출장설치 서비스 + 30,000원</span>
+              <span class="service-info" title="설치 서비스 안내">&#9432;</span>
+            </label>
+            <label class="service-item">
+              <input type="checkbox">
+              <span class="service-name">출장A/S (프리미엄PC) + 0원</span>
+              <span class="service-badge">프리미엄PC 혜택</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 구매 버튼 -->
+        <div class="action-buttons">
+          <button class="btn-cart">장바구니</button>
+          <button class="btn-buy">구매</button>
+        </div>
+
+        <!-- 주문 요약 -->
+        <div class="order-summary">
+          <div class="order-item">
+            <span class="order-item-name" th:text="${product.name}">프리미엄 조립PC</span>
+            <div class="order-qty-price">
+              <div class="qty-control">
+                <button class="qty-btn" th:onclick="|changeQty(-1, 'productQty', 'productTotal', ${product.basePrice})|">−</button>
+                <span class="qty-val" id="productQty">1</span>
+                <button class="qty-btn" th:onclick="|changeQty(1, 'productQty', 'productTotal', ${product.basePrice})|">+</button>
+              </div>
+              <span class="order-price" id="productTotal" th:text="${#numbers.formatDecimal(product.basePrice, 0, 'COMMA', 0, 'POINT')} + ' 원'">0 원</span>
+            </div>
+          </div>
+          <div class="order-item">
+            <span class="order-item-name">대여서비스( 월/개월당)</span>
+            <div class="order-qty-price">
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(-1, 'rentalQty', 'rentalTotal', 30000)">−</button>
+                <span class="qty-val" id="rentalQty">1</span>
+                <button class="qty-btn" onclick="changeQty(1, 'rentalQty', 'rentalTotal', 30000)">+</button>
+              </div>
+              <span class="order-price" id="rentalTotal">30,000 원</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 하단 탭 섹션 ── -->
+    <div class="tab-section">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab(this, 'tab-detail')">상품사양</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-review')">구매후기(7)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-qna')">Q&amp;A(7)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-return')">배송/교환/반품</button>
+      </div>
+
+      <!-- 상품사양 탭 -->
+      <div class="tab-content active" id="tab-detail">
+
+        <!-- 바로픽업 배너 -->
+        <div class="pickup-banner">
+          <div class="pickup-text">
+            <p class="pickup-title">10분 만에 수령 가능! 🏠 바로픽업PC</p>
+            <ul class="pickup-list">
+              <li>가산점 방문수령으로 주문 시 10분 만에 픽업 가능한 제품입니다.</li>
+              <li>가산점 방문수령 시 다른 배송방법 이용시 수령 가능 시간이 길어질 수 있습니다.</li>
+              <li>다른 상품과 함께 구매 시에는 적용이 되지 않습니다.</li>
+              <li>옵션 추가, OS 설치, 조립PC 안정화 서비스 등 포함하여 주문 시, 10분 픽업 대상에서 제외됩니다.</li>
+            </ul>
+          </div>
+          <div class="pickup-img-wrap">
+            <div class="pickup-img-placeholder"></div>
+          </div>
+        </div>
+
+        <!-- 업그레이드 ZONE -->
+        <div class="upgrade-zone">
+          <div class="upgrade-zone-header">
+            <h3 class="upgrade-zone-title">업그레이드 ZONE</h3>
+            <button class="btn-windows">🪟 Windows 11 장치 알아보기</button>
+          </div>
+
+          <!-- 기본사양변경 -->
+          <div class="spec-change-header">
+            <span class="spec-change-title">기본사양변경</span>
+            <span class="spec-change-sub">요목정년 ℹ️</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="specToggle">
+              <span class="toggle-slider"></span>
+            </label>
+            <div class="spec-change-actions">
+              <button class="btn-spec-action">공유 / 접시주기</button>
+              <button class="btn-spec-action btn-spec-primary">온라인 견적 보내기</button>
+              <button class="btn-spec-refresh">↺</button>
+            </div>
+          </div>
+
+          <!-- 스펙 업그레이드 테이블 -->
+          <table class="upgrade-table">
+            <thead>
+              <tr>
+                <th>PC 주요부품</th>
+                <th>가량 가격</th>
+                <th>수량</th>
+                <th>변동사항</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">CPU</span>
+                    <span class="part-name">[AMD] 라이젠 7 그랩니스 갈치 X800X3D8K [하이퍼(지블로,5.2GHz/블랙세라믹 에이블)/박스]</span>
+                  </div>
+                </td>
+                <td>749,520원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">그래픽카드</span>
+                    <span class="part-name">[ASUS] 프라임 라데온 RX 9070XT OC DC 16GB 8채널세라믹스</span>
+                  </div>
+                </td>
+                <td>1,020,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">메인보드</span>
+                    <span class="part-name">[MS] MAG B650M 박격포 [AMD B650/M-ATX]</span>
+                  </div>
+                </td>
+                <td>248,400원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">메모리</span>
+                    <span class="part-name">[SK hynix] SK컨피아스 DDR5 PC5-44800 [32GB(16GB×2)] PC삼 ▼ 1개</span>
+                  </div>
+                </td>
+                <td>733,000원</td>
+                <td>1</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                    <option>업그레이드</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">SSD</span>
+                    <span class="part-name">[SK hynix] PC801 M.2 NVMe 2280 [1TB] 폴 3 PC</span>
+                  </div>
+                </td>
+                <td>389,000원</td>
+                <td>1</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                    <option>업그레이드</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">옵션추가(HDD)</span>
+                    <span class="part-name">옵션을 선택하세요</span>
+                  </div>
+                </td>
+                <td>—</td>
+                <td>—</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">케이스</span>
+                    <span class="part-name">[ABKO] G50 자물쇠우 MESH+ARGB BTF [제품선진] 블랙진</span>
+                  </div>
+                </td>
+                <td>101,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">파워</span>
+                    <span class="part-name">[SuperFlower] SF-850F14XE LEADEX III GOLD LP ATX3.1 [ATX/850W] 블랙</span>
+                  </div>
+                </td>
+                <td>164,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">쿨러</span>
+                    <span class="part-name">[아이기기(빌리)] CY400 CPU쿨러 [블랙]</span>
+                  </div>
+                </td>
+                <td>36,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">조립비</span>
+                    <span class="part-name">컴퓨존 프리미엄PC 조립비</span>
+                  </div>
+                </td>
+                <td>30,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">옵션추가(게이밍/<br>그래픽성능모니터)</span>
+                    <span class="part-name">옵션을 선택하세요</span>
+                  </div>
+                </td>
+                <td>—</td>
+                <td>—</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">조립비</span>
+                    <span class="part-name">[컴퓨존] 모니터 포함 조립 추가 조립비(조립PC 또는 상품번호판별이 필요할 0)</span>
+                  </div>
+                </td>
+                <td>10,000원</td>
+                <td>1</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap part-img-os"><span>OS</span></div>
+                    <span class="part-label">운영체제(OS)</span>
+                    <span class="part-name">운영체제(OS)를 선택하세요</span>
+                  </div>
+                </td>
+                <td>—</td>
+                <td>—</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">MD추천 소프트웨어</span>
+                    <span class="part-name">설계 구매하실 소프트웨어를 선택하세요</span>
+                  </div>
+                </td>
+                <td>—</td>
+                <td>—</td>
+                <td>
+                  <select class="upgrade-select">
+                    <option>기본</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="part-cell">
+                  <div class="part-info">
+                    <div class="part-img-wrap"><div class="part-img-placeholder"></div></div>
+                    <span class="part-label">서비스</span>
+                    <span class="part-name">
+                      ✅ 조립PC 안전서비스 무료 &nbsp;
+                      □ 출장 설치 서비스 +30,000원 &nbsp;
+                      ✅ 출장A/S (프리미엄PC) +0원 ℹ️
+                    </span>
+                  </div>
+                </td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="change-badge">기본</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 하단 업그레이드 select 2개 -->
+          <div class="bottom-upgrade-row">
+            <div class="bottom-upgrade-item">
+              <label class="bottom-upgrade-label">업그레이드</label>
+              <select class="upgrade-select-lg">
+                <option>Value</option>
+              </select>
+            </div>
+            <div class="bottom-upgrade-item">
+              <label class="bottom-upgrade-label">업그레이드</label>
+              <select class="upgrade-select-lg">
+                <option>Value</option>
+              </select>
+            </div>
+          </div>
+
+        </div><!-- /upgrade-zone -->
+      </div><!-- /tab-detail -->
+
+      <!-- 구매후기 탭 -->
+      <div class="tab-content" id="tab-review">
+        <p class="tab-empty">구매후기가 없습니다.</p>
+      </div>
+
+      <!-- Q&A 탭 -->
+      <div class="tab-content" id="tab-qna">
+        <p class="tab-empty">Q&amp;A가 없습니다.</p>
+      </div>
+
+      <!-- 배송/교환/반품 탭 -->
+      <div class="tab-content" id="tab-return">
+        <p class="tab-empty">배송/교환/반품 정보가 없습니다.</p>
+      </div>
+
+    </div><!-- /tab-section -->
+
+  </main>
+
+  <script>
+    /* 메인 이미지 교체 */
+    function switchImg(src) {
+      document.getElementById('mainImg').src = src;
+      document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    /* 서비스 선택 토글 */
+    function toggleService(btn) {
+      const options = document.getElementById('serviceOptions');
+      options.classList.toggle('collapsed');
+      btn.textContent = options.classList.contains('collapsed') ? '˅' : '˄';
+    }
+
+    /* 수량 변경 */
+    function changeQty(delta, qtyId, totalId, unitPrice) {
+      const qtyEl = document.getElementById(qtyId);
+      let qty = parseInt(qtyEl.textContent) + delta;
+      if (qty < 1) qty = 1;
+      qtyEl.textContent = qty;
+      document.getElementById(totalId).textContent =
+        (qty * unitPrice).toLocaleString() + ' 원';
+    }
+
+    /* 탭 전환 */
+    function switchTab(btn, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</html>

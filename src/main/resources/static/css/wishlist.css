@@ -1,0 +1,412 @@
+/* 전반적인 컬러 및 서체 설정 변수화 */
+:root {
+    --bg-main: #E2E6FF;          /* 사진 2번의 화사하고 부드러운 라벤더 퍼플 메인 배경 */
+    --card-bg: #FFFFFF;          /* 요소들이 돋보이는 깔끔한 화이트 시트 */
+    --primary-purple: #7176E3;    /* 일러스트 메인 테마 퍼플 */
+    --accent-pink: #FF5A79;       /* 핵심 버튼 및 세일 포인트 컬러 (코랄 핑크) */
+    --accent-pink-hover: #E04865;
+    --text-navy: #2E3364;         /* 세련되고 가독성 높은 딥네이비 컬러 */
+    --text-muted: #848AB0;        /* 서브 텍스트 보조 그레이퍼플 */
+    --border-soft: #E8EAFF;
+    --radius-large: 24px;         /* 3번 이미지 특유의 둥글고 귀여운 모서리 볼륨감 */
+    --radius-medium: 14px;
+    --shadow-soft: 0px 10px 30px rgba(113, 118, 227, 0.08);
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-navy);
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wishlist-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #FFFFFF;
+    border-radius: var(--radius-large);
+    padding: 35px;
+    box-shadow: 0px 15px 40px rgba(46, 51, 100, 0.06);
+}
+
+/* 1. 상단 타이틀 섹션 */
+.wishlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-navy);
+    margin: 0;
+}
+
+.btn-group-manage {
+    font-size: 14px;
+    color: var(--primary-purple);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* 2. 둥근 캡슐 탭 디자인 */
+.wishlist-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tab-item {
+    background: #F1F3FF;
+    color: var(--text-muted);
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-item.active {
+    background: var(--text-navy);
+    color: #FFFFFF;
+}
+
+.tab-count {
+    font-size: 13px;
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+/* 3. 상단 컨트롤 툴바 */
+.control-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border-soft);
+    margin-bottom: 20px;
+}
+
+.toolbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-tool {
+    background: #FFFFFF;
+    border: 1px solid #D9DEFF;
+    color: var(--text-navy);
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-medium);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-tool:hover {
+    background: #F6F7FF;
+    border-color: var(--primary-purple);
+}
+
+.btn-tool.btn-highlight {
+    background: var(--primary-purple);
+    color: #FFFFFF;
+    border-color: var(--primary-purple);
+}
+
+.btn-view-toggle {
+    background: #F1F3FF;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-purple);
+    font-size: 16px;
+}
+
+/* 4. 금액 요약 박스 (어닝 스트라이프/배너 포인트 무드) */
+.summary-banner-box {
+    background: var(--accent-pink); /* 2번 일러스트 시그니처 핑크 배경 */
+    border-radius: var(--radius-medium);
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    box-shadow: 0px 6px 20px rgba(255, 90, 121, 0.2);
+}
+
+.summary-label {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.summary-count .highlight-text {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.price-label {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-right: 10px;
+}
+
+.price-amount {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* 5. 3열 배치 상품 카드 그리드 */
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-large);
+    padding: 20px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 35px rgba(113, 118, 227, 0.15);
+}
+
+.card-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+/* 상품 이미지 컨테이너 부드러운 라운딩 스타일 */
+.product-image-wrapper {
+    background: #F7F8FF;
+    border-radius: var(--radius-medium);
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.img-box {
+    font-size: 54px; /* 임시 이모지 크기 */
+}
+
+.product-body {
+    flex-grow: 1;
+}
+
+.brand-tags {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    color: #FFFFFF;
+}
+.tag-amd { background: #FF7643; }
+.tag-radeon { background: #E1306C; }
+.tag-hp { background: #0096D6; }
+.tag-lg { background: #A61A4C; }
+
+.product-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 14px 0;
+    color: var(--text-navy);
+    height: 42px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* 가격 레이아웃 */
+.price-info {
+    margin-bottom: 15px;
+}
+
+.discount-rate {
+    color: var(--accent-pink);
+    font-weight: 800;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.original-price {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.current-price {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-navy);
+    margin-top: 2px;
+}
+
+/* 카드 하단 풋바 영역 조정 */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-soft);
+}
+
+.quantity-box {
+    display: flex;
+    border: 1px solid #D9DEFF;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #FDFDFF;
+}
+
+.input-qty {
+    width: 45px;
+    border: none;
+    padding: 6px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-navy);
+}
+
+.btn-qty-change {
+    background: #F1F3FF;
+    border: none;
+    border-left: 1px solid #D9DEFF;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-purple);
+    cursor: pointer;
+}
+
+/* 둥근 코랄 장바구니 아이콘 버튼 (2번 이미지 Get started 감성) */
+.btn-add-cart {
+    background: var(--accent-pink);
+    color: #FFFFFF;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0px 4px 12px rgba(255, 90, 121, 0.3);
+    transition: background 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: var(--accent-pink-hover);
+}
+
+/* 6. 페이지네이션 커스텀 */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.page-link {
+    background: var(--primary-purple);
+    color: #FFFFFF;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* 7. 아기자기한 커스텀 체크박스 인터페이스 */
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: #ECEFFF;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--primary-purple);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.label-text {
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}

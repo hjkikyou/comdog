@@ -1,0 +1,435 @@
+/* 기본 테마 컬러 변수 정의 */
+:root {
+  --bg-color: #F3F4F9;          /* 부드러운 라이트 그레이블루 배경 */
+  --primary-purple: #7F56D9;    /* 메인 퍼플 컬러 */
+  --light-purple: #F9F5FF;      /* 연한 퍼플 배경용 */
+  --point-green: #00D26A;       /* 핵심 버튼 네온 그린 */
+  --point-green-hover: #00B85C;
+  --text-dark: #1D2939;         /* 다크 그레이 텍스트 */
+  --text-muted: #667085;        /* 흐린 설명 텍스트 */
+  --card-shadow: 0px 8px 24px rgba(149, 157, 165, 0.08);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* 1. 상단 헤더 및 스텝 영역 */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cart-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.step-wizard {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+}
+
+.step {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.step.active {
+  color: var(--primary-purple);
+  font-weight: 700;
+}
+
+.step-num {
+  background: #E4E7EC;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+.step.active .step-num {
+  background: var(--primary-purple);
+  color: #FFF;
+}
+
+/* 2. 레이아웃 분할 (메인 리스트 + 사이드바) */
+.cart-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* 전체선택 상단 바 */
+.list-control-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFF;
+  padding: 16px 24px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.btn-delete-selected {
+  background: transparent;
+  border: 1px solid #EAECF0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.btn-delete-selected:hover {
+  background: #F9FAFB;
+  color: var(--text-dark);
+}
+
+/* 3. 상품 카드 스타일 디자인 */
+.product-card {
+  background: #FFF;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: auto 100px 1fr auto auto;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.img-placeholder {
+  width: 100px;
+  height: 100px;
+  background: #F4F5F7;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.product-tag {
+  font-size: 12px;
+  font-weight: 600;
+  align-self: flex-start;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.tag-purple { background: #F9F5FF; color: var(--primary-purple); }
+.tag-pink { background: #FFF1F3; color: #F43F5E; }
+
+.product-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.product-option-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* 수량조절기 */
+.quantity-controller {
+  display: flex;
+  align-items: center;
+  border: 1px solid #EAECF0;
+  border-radius: 12px;
+  overflow: hidden;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.qty-btn {
+  background: #F9FAFB;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.qty-input {
+  border: none;
+  width: 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.price-discount-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.original-price {
+  font-size: 13px;
+  color: #98A2B3;
+  text-decoration: line-through;
+}
+
+.discounted-price {
+  font-size: 14px;
+  color: #F43F5E;
+  font-weight: 700;
+}
+
+/* 개별 상품 액션 버튼 */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-item-direct {
+  background: var(--primary-purple);
+  color: #FFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-item-delete {
+  background: #FFF;
+  border: 1px solid #EAECF0;
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 추가 옵션 박스 */
+.service-options-card {
+  background: var(--light-purple);
+  border: 1px dashed #D6BBFB;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.service-title {
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  color: var(--primary-purple);
+}
+
+.service-row {
+  margin-bottom: 10px;
+}
+
+.service-row:last-child {
+  margin-bottom: 0;
+}
+
+/* 4. 우측 금액 요약 카드 섹션 (핵심 스타일 반영) */
+.summary-card {
+  background: #FFF;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 16px;
+}
+
+.summary-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.summary-row.accent-purple .value {
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+.summary-divider {
+  border: 0;
+  border-top: 1px solid #F2F4F7;
+  margin: 20px 0;
+}
+
+.total-row {
+  color: var(--text-dark);
+  font-weight: 700;
+  align-items: center;
+}
+
+.final-price {
+  font-size: 24px;
+  color: var(--primary-purple);
+}
+
+/* 3번째 사진의 시그니처 버튼 스타일 커스텀 */
+.summary-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-checkout-total {
+  background: var(--point-green); /* 3번 사진의 대형 'GET STARTED' 그린 컬러 채택 */
+  color: #FFF;
+  border: none;
+  padding: 16px;
+  border-radius: 30px; /* 고도의 라운딩 구현 */
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 210, 106, 0.2);
+  transition: background 0.2s;
+}
+
+.btn-checkout-total:hover {
+  background: var(--point-green-hover);
+}
+
+.btn-checkout-selected {
+  background: #FFF;
+  color: var(--primary-purple);
+  border: 2px solid var(--primary-purple);
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-checkout-selected:hover {
+  background: var(--light-purple);
+}
+
+/* 하단 안내 가이드 둥근 카드 */
+.info-guide-card {
+  background: #FFF;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.info-guide-card h5 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.info-guide-card ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 5. 커스텀 체크박스 (디자인 일체화) */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 22px;
+  width: 22px;
+  background-color: #F2F4F7;
+  border-radius: 6px;
+  margin-right: 8px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #EAECF0;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--primary-purple);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 8px;
+  top: 4px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-label {
+  font-weight: 500;
+  color: var(--text-dark);
+}

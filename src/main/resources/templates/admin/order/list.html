@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지 - 주문 목록</title>
+</head>
+<body>
+
+    <div>
+        <div>
+            <h3>주문 목록 관리</h3>
+        </div>
+    </div>
+    
+  
+
+    <div style="margin-top: 20px;">
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+            <thead>
+                <tr>
+                    <th>주문번호</th>
+                    <th>주문자명</th>
+                    <th>주문 상품</th>
+                    <th>총 결제 금액</th>
+                    <th>주문 상태</th>
+                    <th>결제 수단</th>
+                    <th>주문 일시</th>
+                    <th>상세보기</th>
+                    <th>주문 취소</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${viewOrderList == null or viewOrderList.isEmpty()}">
+                    <td colspan="9" style="text-align: center; padding: 20px;">등록된 주문 내역이 없습니다.</td>
+                </tr>
+            
+                <tr th:unless="${viewOrderList == null or viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
+                    
+                    <td th:text="${order.orderId}">1</td>
+                    
+                    <td th:text="${order.memberName}">홍길동</td>
+                    
+                    <td th:text="${order.productName}">사료 외 2건</td>
+                    
+                    <td th:text="${#numbers.formatInteger(order.totalAmount, 3, 'COMMA') + '원'}">150,000원</td>
+                    
+                    <td th:text="${order.orderStatus}">결제완료</td>
+                    
+                    <td th:text="${order.paymentMethod}">신용카드</td>
+                    
+                    <td th:text="${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}">2026-05-26 21:56:13</td>
+                    
+                    <td>
+                        <a th:href="@{|/admin/order/detail/${order.orderId}|}">🔍 상세보기</a>
+                    </td>
+                    
+                    <td>
+                        <span th:if="${order.orderStatus == '주문취소'}" style="color: gray; text-decoration: line-through;">취소완료</span>
+                        <a th:unless="${order.orderStatus == '주문취소'}" 
+                           th:href="@{|/admin/order/cancel/${order.orderId}|}" 
+                           onclick="return confirm('정말로 이 주문을 취소하시겠습니까?');" 
+                           style="color: red; font-weight: bold;">❌ 주문취소</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+            
+            <tfoot>
+            
+            
+            </tfoot>
+            
+        </table>
+    </div>
+    
+    	<div>
+		    <div><a th:href="@{/admin/order/detail}">주문 등록 </a></div>				    				    
+		    <div><a th:href="@{/admin/order/list}">초기화</a></div>				    
+		    <div><a th:href="@{/admin}">이전</a></div>
+		</div>
+	
+
+</body>
+</html>

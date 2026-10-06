@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/sign-up-form.css}">
+    <title>comdog 회원가입</title>
+</head>
+
+<main layout:fragment="container" class="signup-wrapper">
+    <div class="signup-container">
+
+        <div class="logo-area">
+            <h1>COMDOG</h1>
+            <p>컴퓨터 구매 & 인수형 렌탈</p>
+        </div>
+
+        <h2 class="page-title">회원가입</h2>
+
+        <!-- method=post / action 추가, 제출 직전 prepareSubmit()로 값 가공 -->
+        <form class="signup-form" th:action="@{/user/auth/sign-up}" method="post" onsubmit="return prepareSubmit()">
+
+            <div class="form-group">
+                <label>회원유형</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="userType" value="PERSONAL" checked> 개인회원
+                    </label>
+                    <label>
+                        <input type="radio" name="userType" value="BUSINESS"> 기업/사업자회원
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>이름</label>
+                <input type="text" name="name" placeholder="이름 입력" required>
+            </div>
+
+            <div class="form-group">
+                <label>생년월일/성별</label>
+                <div class="birth-group">
+                    <input type="text" name="birthDate" class="birth-input" placeholder="생년월일 6자리" maxlength="6" required>
+                    <span class="dash">-</span>
+                    <input type="text" name="genderDigit" class="gender-input" maxlength="1" required>
+                    <div class="mask-dots">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>연락처</label>
+                <input type="tel" name="phone" id="phone" placeholder="010-0000-0000"
+                       maxlength="13"
+                       pattern="010-\d{4}-\d{4}"
+                       title="010-0000-0000 형식으로 입력해 주세요."
+                       oninput="formatPhone(this)" required>
+            </div>
+
+            <div class="form-group">
+                <label>이메일 아이디 (인증)</label>
+                <div class="email-group" style="margin-bottom: 10px;">
+                    <input type="text" id="emailId" placeholder="이메일 아이디" required>
+                    <span class="at-symbol">@</span>
+                    <input type="text" id="emailDomain" class="email-domain-input" placeholder="직접 입력" required>
+                    <select class="email-domain" onchange="fillDomain(this)">
+                        <option value="">직접 입력</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="daum.net">daum.net</option>
+                    </select>
+                </div>
+                <!-- 아이디 + @ + 도메인을 합쳐 실제 전송되는 값 -->
+                <input type="hidden" name="email" id="emailFull">
+
+                <div class="verify-group">
+
+                    <button type="button" id="btn-initial-send" class="btn-send-code" onclick="sendInitialCode()">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        인증 메일 발송
+                    </button>
+
+                    <!-- 인증코드는 DTO에 바인딩하지 않으므로 name 없음 / required 제거 -->
+                    <input type="text" id="verifyCode" placeholder="인증 코드 입력" style="display: none;">
+
+                    <button type="button" id="btn-resend" class="btn-resend-style" onclick="resendCode()" style="display: none;">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        재전송
+                    </button>
+
+                    <button type="button" id="btn-confirm" class="btn-confirm-style" onclick="confirmCode()" style="display: none;">확인</button>
+
+                </div>
+                <p id="verify-feedback-msg" class="feedback-msg"></p>
+            </div>
+
+            <div class="form-group relative">
+                <label class="pw-label">
+                    비밀번호
+                    <button type="button" class="btn-info" onclick="toggleTooltip()">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </button>
+                    <div class="pw-tooltip" id="pwTooltip">
+                        <p class="tooltip-title">※유의사항※</p>
+                        <ul>
+                            <li>8자~15자 길이로 만들어주세요.</li>
+                            <li>영문 대/소문자, 숫자, 특수 문자 2가지를 조합해주세요.</li>
+                            <li>3자 이상 연속/동일한 문자, 숫자는 사용할 수 없습니다.</li>
+                        </ul>
+                    </div>
+                </label>
+                <div class="input-with-icon">
+                    <input type="password" name="password" id="password" placeholder="8~16자/ 문자,숫자,특수문자 모두 혼용" required>
+                    <button type="button" class="btn-eye"><svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호 확인</label>
+                <div class="input-with-icon">
+                    <input type="password" id="passwordConfirm" placeholder="비밀번호를 다시 입력해 주세요" required>
+                    <button type="button" class="btn-eye"><svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+                </div>
+            </div>
+
+            <div class="terms-container">
+                <label class="terms-all">
+                    <input type="checkbox" id="agreeAll" onclick="toggleAllTerms(this)"> <b>전체동의 합니다</b>
+                </label>
+                <hr>
+                <label class="terms-item">
+                    <input type="checkbox" class="term-chk required-term"> <span class="required">[필수]</span> comdog 이용약관에 동의합니다.
+                </label>
+                <label class="terms-item">
+                    <input type="checkbox" class="term-chk required-term"> <span class="required">[필수]</span> comdog 개인정보 수집 및 이용 동의
+                </label>
+                <label class="terms-item">
+                    <input type="checkbox" class="term-chk" id="promoAgree"> <span class="optional">[선택]</span> 프로모션 정보 수신 동의
+                </label>
+            </div>
+            <!-- 프로모션 동의(체크박스) → true/false로 변환되어 전송 -->
+            <input type="hidden" name="isSubscribed" id="isSubscribedField">
+
+            <button type="submit" class="btn-submit">확인</button>
+
+            <div class="login-link-area">
+                <a th:href="@{/user/auth/log-in}">이미 계정이 있으신가요?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleTooltip() {
+            const tooltip = document.getElementById('pwTooltip');
+            tooltip.style.display = (tooltip.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // 연락처: 숫자만 추출 후 자동으로 하이픈(-) 삽입 (010-0000-0000)
+        function formatPhone(input) {
+            let v = input.value.replace(/[^0-9]/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+
+            if (v.length < 4) {
+                input.value = v;
+            } else if (v.length < 8) {
+                input.value = v.slice(0, 3) + '-' + v.slice(3);
+            } else {
+                input.value = v.slice(0, 3) + '-' + v.slice(3, 7) + '-' + v.slice(7);
+            }
+        }
+
+        // 도메인 select 선택 시 도메인 입력칸 자동 채움 ('직접 입력'이면 비우고 포커스)
+        function fillDomain(select) {
+            const domainInput = document.getElementById('emailDomain');
+            if (select.value === '') {
+                domainInput.value = '';
+                domainInput.focus();
+            } else {
+                domainInput.value = select.value;
+            }
+        }
+
+        // 전체동의 체크 시 하위 약관 모두 토글
+        function toggleAllTerms(source) {
+            document.querySelectorAll('.term-chk').forEach(chk => chk.checked = source.checked);
+        }
+
+        // 제출 직전: 이메일 합치기 / 비밀번호 일치 / 필수약관 / 프로모션 동의 처리
+        function prepareSubmit() {
+            // 1) 이메일 합치기 → hidden email
+            const id = document.getElementById('emailId').value.trim();
+            const domain = document.getElementById('emailDomain').value.trim();
+            if (!id || !domain) {
+                alert('이메일을 정확히 입력해 주세요.');
+                return false;
+            }
+            document.getElementById('emailFull').value = id + '@' + domain;
+
+            // 2) 비밀번호 일치 확인
+            const pw = document.getElementById('password').value;
+            const pwConfirm = document.getElementById('passwordConfirm').value;
+            if (pw !== pwConfirm) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return false;
+            }
+
+            // 3) 필수 약관 동의 확인
+            const requiredTerms = document.querySelectorAll('.required-term');
+            for (const term of requiredTerms) {
+                if (!term.checked) {
+                    alert('필수 약관에 모두 동의해 주세요.');
+                    return false;
+                }
+            }
+
+            // 4) 프로모션 수신 동의 → true/false
+            document.getElementById('isSubscribedField').value =
+                document.getElementById('promoAgree').checked ? 'true' : 'false';
+
+            return true; // 통과 시 정상 제출
+        }
+
+        // 이메일 인증: 발송 후 코드 입력칸 → 재전송 → 확인 순서로 노출
+        function sendInitialCode() {
+            document.getElementById('btn-initial-send').style.display = 'none';
+            document.getElementById('verifyCode').style.display = 'block';
+            document.getElementById('btn-resend').style.display = 'inline-flex';
+            document.getElementById('btn-confirm').style.display = 'inline-flex';
+
+            const msg = document.getElementById('verify-feedback-msg');
+            msg.textContent = '인증 메일이 발송되었습니다. 코드를 입력해 주세요.';
+            msg.className = 'feedback-msg text-success';
+        }
+
+        function resendCode() {
+            const msg = document.getElementById('verify-feedback-msg');
+            msg.textContent = '“인증문자가 재발송 되었습니다”';
+            msg.className = 'feedback-msg text-info';
+        }
+
+        let failCount = 0;
+        function confirmCode() {
+            const msg = document.getElementById('verify-feedback-msg');
+            failCount++;
+            if (failCount > 3) failCount = 3;
+            msg.textContent = `인증 코드 입력이 잘못되었습니다. 다시 한 번 입력해주세요. (${failCount}/3)`;
+            msg.className = 'feedback-msg text-error';
+        }
+    </script>
+</main>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>정보게시판</title>
+  <link rel="stylesheet" th:href="@{/css/board.css}">
+</head>
+<body>
+
+<main layout:fragment="container" class="retro-bg">
+
+  <div class="window-container">
+    <div class="window-title-bar">
+      <span class="window-title">정보 게시판</span>
+      <div class="window-controls">
+      </div>
+    </div>
+
+    <div class="board-content">
+
+      <div class="board-header">
+        <div class="title-group">
+          <h1 class="main-title">정보게시판</h1>
+          <p class="sub-desc">조립PC와 관련된 팁, 강좌, 리뷰와 같은 다양하고 유용한 정보를 알려드립니다.</p>
+        </div>
+        <div class="action-group">
+          <button class="btn-retro-outline">내가 쓴 글 보기</button>
+          <button class="btn-retro-yellow">✏️ 글쓰기</button>
+        </div>
+      </div>
+
+      <div class="search-section">
+        <button class="btn-retro-outline reset-btn">↻ 선택 초기화</button>
+        <div class="search-box">
+          <select class="retro-select">
+            <option>제목+내용</option>
+            <option>제목만</option>
+            <option>작성자</option>
+          </select>
+          <input type="text" class="retro-input" placeholder="검색어를 입력해 주세요">
+          <button class="btn-retro-search">🔍</button>
+        </div>
+      </div>
+
+      <div class="notice-bar">
+        <div class="notice-badge">📌 알림판</div>
+        <div class="notice-title"><a href="#">PC26 커뮤니티 이용 규칙 및 권장 가이드라인</a></div>
+      </div>
+
+      <div class="board-list">
+        <div class="list-head">
+          <div class="board-title">제목</div>
+          <div class="col-author">작성자</div>
+          <div class="col-date">작성일</div>
+          <div class="col-views">조회</div>
+        </div>
+
+        <div class="list-row">
+          <div class="col-title-item">
+            <span class="badge-info">정보</span>
+            <a href="#">리안리, 컴퓨텍스2026에서 커브드 디스플레이 및 디지털 기능 강조한 신제품 발표</a>
+          </div>
+          <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
+          <div class="col-date">11:02:20</div>
+          <div class="col-views">9</div>
+        </div>
+
+        <div class="list-row">
+          <div class="col-title-item">
+            <span class="badge-info">정보</span>
+            <a href="#">다크플래쉬, COMPUTEX 2026 참가해 다양한 신제품 발표</a>
+          </div>
+          <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
+          <div class="col-date">2026.06.05.</div>
+          <div class="col-views">19</div>
+        </div>
+
+        <div class="list-row">
+          <div class="col-title-item">
+            <span class="badge-info">정보</span>
+            <a href="#">필립스, 최신 4세대 Tandem WOLED 패널 탑재 프리미엄 게이밍 모니터 Evnia 출시</a>
+          </div>
+          <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
+          <div class="col-date">2026.06.02.</div>
+          <div class="col-views">12</div>
+        </div>
+
+        <div class="list-row">
+          <div class="col-title-item">
+            <span class="badge-info">정보</span>
+            <a href="#">마이크로닉스, 컴퓨텍스 2026 참가....글로벌 전략 제품 공개</a>
+          </div>
+          <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
+          <div class="col-date">2026.06.01.</div>
+          <div class="col-views">15</div>
+        </div>
+
+        <div class="list-row">
+          <div class="col-title-item">
+            <span class="badge-info">정보</span>
+            <a href="#">픽셀아트, 컬러 모니터 'AURORA' 시리즈 4종 정식 출시</a>
+          </div>
+          <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
+          <div class="col-date">2026.05.29.</div>
+          <div class="col-views">23</div>
+        </div>
+      </div>
+
+      <div class="board-footer">
+        <div class="pagination-retro">
+          <a href="#" class="page-btn prev-all">◀◀</a>
+          <a href="#" class="page-btn prev">◀</a>
+          <a href="#" class="page-num active">1</a>
+          <a href="#" class="page-num">2</a>
+          <a href="#" class="page-num">3</a>
+          <a href="#" class="page-num">4</a>
+          <a href="#" class="page-num">5</a>
+          <a href="#" class="page-btn next">▶</a>
+          <a href="#" class="page-btn next-all">▶▶</a>
+        </div>
+
+        <div class="status-bar-group">
+          <span class="status-text">SYSTEM READY</span>
+          <div class="progress-bar-retro">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

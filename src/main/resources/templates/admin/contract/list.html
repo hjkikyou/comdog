@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 - 계약 목록</title>
+    <style>
+        /* 기본 레이아웃 및 폰트 설정 */
+        body { font-family: 'Malgun Gothic', sans-serif; padding: 20px; background-color: #f8f9fa; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h3 { margin-top: 0; color: #333; }
+
+        /* 검색 박스 스타일 */
+        .search-box { margin-bottom: 20px; text-align: right; }
+        .search-box select, .search-box input { padding: 5px; height: 30px; }
+        .search-box button { padding: 5px 15px; height: 30px; cursor: pointer; }
+
+        /* 테이블 스타일 */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; font-size: 14px; }
+        th, td { border: 1px solid #ddd; padding: 10px; }
+        th { background-color: #f1f3f5; color: #333; font-weight: bold; }
+        tr:hover { background-color: #f8f9fa; }
+
+        /* 상태 텍스트 색상 */
+        .status-using { color: #007bff; font-weight: bold; } /* 파란색 */
+        .status-returning { color: #fd7e14; font-weight: bold; } /* 주황색 */
+        .status-terminated { color: #dc3545; font-weight: bold; } /* 빨간색 */
+
+        /* 버튼 스타일 */
+        .btn { padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; color: #fff; }
+        .btn-return { background-color: #ffc107; color: #000; border: 1px solid #e0a800; }
+        .btn-return:hover { background-color: #e0a800; }
+        .btn-terminate { background-color: #dc3545; }
+        .btn-terminate:hover { background-color: #c82333; }
+        .btn-back { display: inline-block; padding: 10px 20px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 4px; }
+        .btn-back:hover { background-color: #5a6268; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h3>렌탈 계약 관리 목록</h3>
+        </div>
+
+        <div class="search-box">
+            <form action="/admin/contract/list" method="get">
+                <select name="search">
+                    <option value="contractId" th:selected="${param.search == 'contractId'}">계약번호</option>
+                    <option value="memberId" th:selected="${param.search == 'memberId'}">회원번호</option>
+                </select>
+                <input type="text" name="keyword" th:value="${param.keyword}" placeholder="검색어를 입력하세요">
+                <button type="submit">검색</button>
+                <a th:href="@{/admin/contract/list}"><button type="button">초기화</button></a>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>계약 번호</th>
+                    <th>회원 번호</th>
+                    <th>주문 번호</th>
+                    <th>상품 번호</th>
+                    <th>월 렌탈료</th>
+                    <th>기간</th>
+                    <th>유형</th>
+                    <th>상태</th>
+                    <th>시작일</th>
+                    <th>종료일</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${viewContractList == null or viewContractList.isEmpty()}">
+                    <td colspan="11" style="text-align: center; padding: 30px;">등록된 계약 내역이 없습니다.</td>
+                </tr>
+            
+                <tr th:unless="${viewContractList == null or viewContractList.isEmpty()}" th:each="item : ${viewContractList}">
+                    <td th:text="${item.contractId}">1</td>
+                    <td th:text="${item.memberId}">101</td>
+                    <td th:text="${item.orderId}">5001</td>
+                    <td th:text="${item.productId}">9001</td>
+                    <td th:text="${#numbers.formatInteger(item.monthlyFee, 0, 'COMMA')} + '원'">50,000원</td>
+                    <td th:text="${item.duration} + '개월'">24개월</td>
+                    <td th:text="${item.contractType}">RENTAL</td>
+                    
+                    <td>
+                        <span th:if="${item.contractStatus == 'USING'}" class="status-using">사용중</span>
+                        <span th:if="${item.contractStatus == 'RETURNING'}" class="status-returning">반납중</span>
+                        <span th:if="${item.contractStatus == 'TERMINATED'}" class="status-terminated">해지됨</span>
+                    </td>
+                    
+                    <td th:text="${item.startDate}">2024-01-01</td>
+                    <td th:text="${item.endDate != null ? item.endDate : '-'}">2026-01-01</td>
+                    
+                    <td>
+                        <form th:action="@{/admin/contract/updateStatus}" method="post" style="display:inline;" 
+                              th:if="${item.contractStatus == 'USING'}">
+                            <input type="hidden" name="contractId" th:value="${item.contractId}" />
+                            <input type="hidden" name="status" value="RETURNING" />
+                            <button type="submit" class="btn btn-return" onclick="return confirm('반납 접수 처리하시겠습니까?');">반납 접수</button>
+                        </form>
+
+                        <form th:action="@{/admin/contract/updateStatus}" method="post" style="display:inline;"
+                              th:if="${item.contractStatus == 'USING' or item.contractStatus == 'RETURNING'}">
+                            <input type="hidden" name="contractId" th:value="${item.contractId}" />
+                            <input type="hidden" name="status" value="TERMINATED" />
+                            <button type="submit" class="btn btn-terminate" onclick="return confirm('정말 해지 처리하시겠습니까? (복구 불가)');">해지 처리</button>
+                        </form>
+
+                        <span th:if="${item.contractStatus == 'TERMINATED'}" style="color: #999; font-size: 12px;">종료된 계약</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="text-align: right;">
+            <a th:href="@{/admin}" class="btn-back">메인으로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>

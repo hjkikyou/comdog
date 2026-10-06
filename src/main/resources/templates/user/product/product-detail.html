@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/product-detail.css}">
+    <title th:text="${product.name} + ' - COMDOG'">상품 상세</title>
+</head>
+
+<main layout:fragment="container" class="detail-wrapper">
+
+    <!-- ════════════════════════════════════
+         (선택) 상단 카테고리/상품명 헤더
+    ════════════════════════════════════ -->
+    <div class="detail-breadcrumb">
+        <span th:text="${product.brand}">브랜드</span>
+        <span class="bc-sep">›</span>
+        <span th:text="${product.modelName}">모델명</span>
+    </div>
+
+    <!-- ════════════════════════════════════
+         (1) 상품 메인 영역 : 좌(이미지) / 우(정보+구매)
+    ════════════════════════════════════ -->
+    <section class="product-main">
+
+        <!-- ── 좌측: 이미지 갤러리 ── -->
+        <div class="gallery">
+            <div class="gallery-main">
+                <img th:if="${product.imageUrl != null}"
+                     th:src="${product.imageUrl}" th:alt="${product.name}"
+                     class="gallery-main-img">
+                <div th:unless="${product.imageUrl != null}" class="img-placeholder--lg"></div>
+            </div>
+            <div class="gallery-thumbs">
+                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
+                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
+                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
+            </div>
+        </div>
+
+        <!-- ── 우측: 상품 정보 + 구매 박스 ── -->
+        <div class="product-info">
+
+            <div class="info-head">
+                <h1 class="product-name" th:text="${product.name}">상품명</h1>
+                <button type="button" class="btn-wish" aria-label="찜하기">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="rating-row">
+                <span class="stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-score" th:text="${product.avgRating}">5</span>
+                <span class="review-count" th:text="'(' + ${product.reviewCount} + '건)'">(0건)</span>
+                <span class="product-no" th:text="'상품번호 : ' + ${product.productId}">상품번호</span>
+            </div>
+
+            <!-- 가격 강조 영역 (렌탈 대표가) -->
+            <div class="price-box">
+                <div class="badges">
+                    <span class="badge badge--ship">무료배송</span>
+                    <span class="badge badge--visit">출장가능</span>
+                </div>
+                <div class="price-main">
+                    <span class="price-original" th:if="${product.rentalPrice != null}"
+                          th:text="'월 ' + ${#numbers.formatInteger(product.rentalPrice, 3, 'COMMA')} + ' 원'">월 45,000 원</span>
+                    <div class="price-now">
+                        <span class="price-unit">개월 당</span>
+                        <strong id="priceNow">월 <span id="priceNowFee">-</span>원</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 스펙 표 (product_spec → specs Map) -->
+            <table class="spec-table">
+                <tbody>
+                    <tr><th>A/S</th><td>comdog(컴독)</td></tr>
+                    <tr th:each="spec : ${product.specs}">
+                        <th th:text="${spec.key}">항목</th>
+                        <td th:text="${spec.value}">값</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 렌탈 기간 선택 드롭다운 -->
+            <div class="rental-box" th:if="${product.isRentable == 'Y'}">
+                <label class="rental-label" for="rentalSelect">대여 기간 선택</label>
+                <select id="rentalSelect" class="rental-select" onchange="updateRentalInfo()">
+                    <option value="" disabled selected>기간을 선택하세요</option>
+                    <option th:each="rp : ${product.rentalPrices}"
+                            th:value="${rp.rentalPriceId}"
+                            th:attr="data-fee=${rp.monthlyFee}, data-deposit=${rp.depositFee}, data-b2b=${rp.b2bOnly}, data-duration=${rp.duration}"
+                            th:text="${rp.duration} + '개월 / 월 ' + ${#numbers.formatInteger(rp.monthlyFee, 3, 'COMMA')} + '원'">
+                        36개월 / 월 130,000원
+                    </option>
+                </select>
+
+                <div class="rental-info" id="rentalInfo" style="display:none;">
+                    <div class="rental-info-row">
+                        <span>월 렌탈료</span>
+                        <strong id="infoFee">-</strong>
+                    </div>
+                    <div class="rental-info-row">
+                        <span>보증금</span>
+                        <strong id="infoDeposit">-</strong>
+                    </div>
+                    <p class="b2b-badge" id="b2bBadge" style="display:none;">B2B 전용 옵션입니다</p>
+                </div>
+            </div>
+
+            <!-- 서비스 선택 -->
+            <div class="service-box">
+                <p class="service-title">서비스 선택</p>
+                <label class="service-item">
+                    <input type="checkbox" checked> 조립PC 안정화서비스 무료
+                    <span class="svc-tag">프리미엄PC 혜택</span>
+                </label>
+                <label class="service-item">
+                    <input type="checkbox"> 출장설치 서비스 + 30,000원
+                </label>
+                <label class="service-item">
+                    <input type="checkbox"> 출장A/S (프리미엄PC) + 0원
+                    <span class="svc-tag">프리미엄PC 혜택</span>
+                </label>
+            </div>
+
+            <!-- 구매/장바구니 버튼 -->
+            <div class="action-buttons">
+                <button type="button" class="btn-cart">장바구니</button>
+                <button type="button" class="btn-buy">구매</button>
+            </div>
+
+            <!-- 구매가 / 렌탈가 요약 -->
+            <div class="order-summary">
+                <div class="summary-card">
+                    <p class="summary-name" th:text="${product.name}">상품명</p>
+                    <div class="summary-row">
+                        <div class="qty-control">
+                            <button type="button" class="qty-btn">−</button>
+                            <span class="qty-num">1</span>
+                            <button type="button" class="qty-btn">＋</button>
+                        </div>
+                        <span class="summary-price"
+                              th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + ' 원'">0 원</span>
+                    </div>
+                </div>
+                <div class="summary-card" th:if="${product.isRentable == 'Y'}">
+                    <p class="summary-name">대여서비스 (월/개월당)</p>
+                    <div class="summary-row">
+                        <div class="qty-control">
+                            <button type="button" class="qty-btn">−</button>
+                            <span class="qty-num">1</span>
+                            <button type="button" class="qty-btn">＋</button>
+                        </div>
+                        <span class="summary-price" id="summaryRentalFee">- 원</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         (2) 관련 이벤트 & 기획전 (가로 스크롤)
+    ════════════════════════════════════ -->
+    <section class="event-related">
+        <p class="section-eyebrow">관련 이벤트 &amp; 기획전</p>
+
+        <div class="event-banner">
+            <div class="event-banner-text">
+                <h2>적립금 최대 3천원!</h2>
+                <p class="event-banner-sub">COMDOG 이용후기 이벤트</p>
+                <p class="event-banner-date">2026.06.01 ~ 2026.06.30</p>
+                <span class="event-banner-tag">양식 1건당 적립금 증정</span>
+            </div>
+            <div class="event-banner-gift">🎁</div>
+        </div>
+
+        <div class="related-tabs">
+            <button class="related-tab related-tab--active">함께 보면 좋은 상품</button>
+            <button class="related-tab">브랜드 인기상품</button>
+        </div>
+
+        <div class="related-scroll">
+            <div class="related-card" th:each="i : ${#numbers.sequence(1, 6)}">
+                <div class="img-placeholder--rel"></div>
+                <p class="related-name">관련 상품명</p>
+                <p class="related-price">000,000원</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         (3) 하단 탭 : 상세정보 / 구매후기 / Q&A / 배송교환환불
+    ════════════════════════════════════ -->
+    <section class="detail-tabs">
+
+        <div class="tab-nav">
+            <button class="tab-btn tab-btn--active" data-tab="info" onclick="switchTab('info', this)">상세정보</button>
+            <button class="tab-btn" data-tab="review" onclick="switchTab('review', this)"
+                    th:text="'구매후기 (' + ${product.reviewCount} + ')'">구매후기 (0)</button>
+            <button class="tab-btn" data-tab="qna" onclick="switchTab('qna', this)">Q&amp;A</button>
+            <button class="tab-btn" data-tab="delivery" onclick="switchTab('delivery', this)">배송/교환/환불</button>
+        </div>
+
+        <!-- 탭 1: 상세정보 -->
+        <div class="tab-panel tab-panel--active" id="tab-info">
+            <h3 class="panel-title">상품 상세 정보</h3>
+            <p class="panel-desc" th:text="${product.description}">상품 설명이 들어갑니다.</p>
+
+            <h4 class="panel-subtitle">상세 사양</h4>
+            <table class="detail-spec-table">
+                <tbody>
+                    <tr th:each="spec : ${product.specs}">
+                        <th th:text="${spec.key}">항목</th>
+                        <td th:text="${spec.value}">값</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 탭 2: 구매후기 -->
+        <div class="tab-panel" id="tab-review">
+            <div class="review-summary">
+                <div class="review-score">
+                    <strong th:text="${product.avgRating}">5.0</strong>
+                    <span class="stars">★★★★★</span>
+                    <span class="review-total" th:text="'후기 ' + ${product.reviewCount} + '건'">후기 0건</span>
+                </div>
+            </div>
+            <!-- 후기 목록 (데이터 연결 전 placeholder) -->
+            <div class="empty-state">
+                <p>아직 등록된 구매후기가 없습니다.</p>
+                <span>첫 번째 후기를 남겨보세요.</span>
+            </div>
+        </div>
+
+        <!-- 탭 3: Q&A -->
+        <div class="tab-panel" id="tab-qna">
+            <div class="qna-head">
+                <p>상품에 대해 궁금한 점을 남겨주세요.</p>
+                <button type="button" class="btn-qna-write">문의하기</button>
+            </div>
+            <div class="empty-state">
+                <p>등록된 문의가 없습니다.</p>
+                <span>가장 먼저 문의를 남겨보세요.</span>
+            </div>
+        </div>
+
+        <!-- 탭 4: 배송/교환/환불 -->
+        <div class="tab-panel" id="tab-delivery">
+            <h3 class="panel-title">배송 안내</h3>
+            <table class="policy-table">
+                <tbody>
+                    <tr><th>배송 방법</th><td>택배 / 출장 설치</td></tr>
+                    <tr><th>배송 비용</th><td>무료배송</td></tr>
+                    <tr><th>배송 기간</th><td>결제 후 2~5일 이내 (조립 상품은 영업일 기준 3~7일)</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="panel-title">교환 / 반품 안내</h3>
+            <ul class="policy-list">
+                <li>상품 수령 후 7일 이내 교환 및 반품이 가능합니다.</li>
+                <li>단순 변심에 의한 반품 시 왕복 배송비는 고객 부담입니다.</li>
+                <li>개봉하여 사용하였거나 설치가 완료된 상품은 교환·반품이 제한될 수 있습니다.</li>
+            </ul>
+
+            <h3 class="panel-title">렌탈 유의사항</h3>
+            <ul class="policy-list">
+                <li>렌탈 계약 기간 내 중도 해지 시 위약금이 발생할 수 있습니다.</li>
+                <li>보증금은 계약 종료 후 기기 상태 확인을 거쳐 환급됩니다.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <script>
+        // 렌탈 기간 선택 → 월 렌탈료/보증금 갱신
+        function updateRentalInfo() {
+            const select = document.getElementById('rentalSelect');
+            const opt = select.options[select.selectedIndex];
+            if (!opt.value) return;
+
+            const fee = parseInt(opt.getAttribute('data-fee'));
+            const deposit = parseInt(opt.getAttribute('data-deposit'));
+            const isB2b = opt.getAttribute('data-b2b') === 'true';
+
+            // 상단 강조 가격
+            document.getElementById('priceNowFee').textContent = fee.toLocaleString();
+            // 렌탈 정보 영역
+            document.getElementById('infoFee').textContent = fee.toLocaleString() + '원';
+            document.getElementById('infoDeposit').textContent = deposit.toLocaleString() + '원';
+            document.getElementById('b2bBadge').style.display = isB2b ? 'block' : 'none';
+            document.getElementById('rentalInfo').style.display = 'block';
+
+            // 하단 주문 요약의 대여료
+            const summary = document.getElementById('summaryRentalFee');
+            if (summary) summary.textContent = fee.toLocaleString() + ' 원';
+        }
+
+        // 하단 탭 전환
+        function switchTab(tab, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-btn--active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('tab-panel--active'));
+            btn.classList.add('tab-btn--active');
+            document.getElementById('tab-' + tab).classList.add('tab-panel--active');
+        }
+    </script>
+
+</main>
+</html>

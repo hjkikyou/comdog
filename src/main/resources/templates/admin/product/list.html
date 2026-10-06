@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>상품 관리자 페이지</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>상품 목록</h3>
+		</div>
+	</div>
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>상품명</th>
+					<th>브랜드</th>
+					<th>모델명</th>
+					<th>출고가</th>
+					<th>재고 수량</th>
+					<th>상품 설명</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${viewProductList.isEmpty()}">
+					<td colspan="8" style="text-align: center;">등록된 상품이 없습니다.</td>
+				</tr>
+
+				<tr th:unless="${viewProductList.isEmpty()}" th:each="item : ${viewProductList}">
+					<td th:text="${item.name}">상품명</td>
+					<td th:text="${item.brand}">브랜드</td>
+					<td th:text="${item.modelName}">모델명</td>
+					<td th:text="${#numbers.formatInteger(item.basePrice, 3, 'COMMA') + '원'}">출고가</td>
+					<td th:text="${#numbers.formatInteger(item.stockQuantity, 3, 'COMMA') + '개'}">재고 수량</td>
+					<td th:text="${item.description}">상품 설명</td> 
+					<td>
+						<a th:href="@{|/admin/product/update/${item.productId}|}">변경</a>
+					</td>
+					<td>
+						<a th:href="@{|/admin/product/delete/${item.productId}|}">삭제</a>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+	</div>
+	<div>
+		<div><a th:href="@{/admin/product/add}">상품 추가</a></div>
+		<div><a th:href="@{/admin/product/list}">초기화</a></div>
+		<div><a th:href="@{/admin}">이전</a></div>
+	</div>
+	
+</body>
+</html>

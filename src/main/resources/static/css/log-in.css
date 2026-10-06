@@ -1,0 +1,213 @@
+/* 기본 초기화 */
+* {
+    box-sizing: border-box;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+
+/* 전체 래퍼: 컨테이너를 화면 중앙에 배치 */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FAFAFA; /* 배경은 살짝 밝은 톤으로 처리 */
+    padding: 40px 20px;
+}
+
+/* 메인 컨테이너 (요청하신 테두리와 흐림/그림자 효과 적용) */
+.login-container {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 600px;
+    padding: 60px 40px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05); /* 부드러운 흐림 그림자 */
+}
+
+/* 로고 영역 */
+.logo-area {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.logo-area h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #6C7A89;
+    letter-spacing: 2px;
+    margin: 0 0 5px 0;
+}
+.logo-area p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* 입력 폼 영역 */
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+.input-group input {
+    width: 100%;
+    height: 52px;
+    background-color: #F4F5F7;
+    border: none;
+    padding: 0 16px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+.input-group input:focus {
+    border-bottom: 2px solid #8B7AFF;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.btn-toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+/* 아이디 저장 & 찾기 옵션 */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 30px;
+}
+.save-id {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.save-id input {
+    margin-right: 6px;
+    cursor: pointer;
+}
+.find-links a {
+    color: #555;
+    text-decoration: none;
+}
+.find-links a:hover {
+    text-decoration: underline;
+}
+
+/* 보라색 그라데이션 로그인 버튼 */
+.btn-login {
+    width: 100%;
+    height: 56px;
+    background: linear-gradient(135deg, #9181FF 0%, #7664FF 100%);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px; /* 둥근 테두리 */
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(118, 100, 255, 0.4); /* 버튼의 빛나는 그림자 효과 */
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+.btn-login:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 8px rgba(118, 100, 255, 0.4);
+}
+
+/* 구분선 (회원가입하면 더 많은 혜택을...) */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 40px 0 30px 0;
+    color: #333;
+    font-size: 14px;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #333; /* 검은색 얇은 선 */
+}
+.divider span {
+    padding: 0 15px;
+}
+
+/* 회원가입 버튼 (흰색) */
+.btn-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #CCCCCC;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-signup:hover {
+    background-color: #F9F9F9;
+}
+
+/* 하단 배너 (시안의 회색 추상적 배경 묘사) */
+.banner-area {
+    width: 100%;
+    height: 120px;
+    background-color: #EAECEF;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.banner-area .circle-1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #F3F4F6;
+    border-radius: 50%;
+    top: -50px;
+    left: 40%;
+}
+.banner-area .circle-2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #F8F9FA;
+    border-radius: 50%;
+    top: 20px;
+    right: 15%;
+}
+
+/* 하단 푸터 영역 */
+.login-footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+}
+.footer-links a {
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 5px;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.corp {
+    color: #A0A0A0;
+    margin-top: 15px;
+}
+.contact {
+    color: #333;
+}

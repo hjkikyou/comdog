@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>최근 본 상품</title>
+    <link rel="stylesheet" href="/css/recent.css">
+</head>
+<body>
+
+<main layout:fragment="container" class="recent-container">
+
+    <div class="recent-header">
+        <div class="title-group">
+            <h2 class="page-title">최근 본 상품</h2>
+            <p class="page-subtitle">최근 7일 동안 고객님이 확인하신 스마트 테크 및 컴퓨터 상품 리스트입니다.</p>
+        </div>
+        <button type="button" class="btn-clear-all">전체 기록 삭제</button>
+    </div>
+
+    <div class="recent-table-wrapper">
+        <div class="table-thead">
+            <div class="th-col col-img">이미지</div>
+            <div class="th-col col-info">상품정보</div>
+            <div class="th-col col-price">판매가</div>
+            <div class="th-col col-action">선택</div>
+        </div>
+
+        <div class="table-tbody">
+
+            <div class="table-row">
+                <div class="td-col col-img">
+                    <div class="product-img-box">
+                        <span class="tech-emoji">🖥️</span>
+                    </div>
+                </div>
+                <div class="td-col col-info">
+                    <div class="product-details">
+                        <span class="brand-text">[컴퓨존 추천조립]</span>
+                        <h4 class="product-name">익스트림 게이밍 하이엔드 조립PC 레벨 04 (Ryzen 5 7500F / RTX 4070 SUPER)</h4>
+                        <div class="tech-spec-tags">
+                            <span class="spec-badge">Ryzen 5 7500F</span>
+                            <span class="spec-badge">RTX 4070 SUPER</span>
+                            <span class="spec-badge">DDR5 32GB</span>
+                            <span class="spec-badge">NVMe 1TB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-col col-price">
+                    <div class="price-block">
+                        <div class="discount-wrapper">
+                            <span class="discount-pct">10%↓</span>
+                            <span class="original-val">2,200,000원</span>
+                        </div>
+                        <div class="final-val">1,980,000원</div>
+                    </div>
+                </div>
+                <div class="td-col col-action">
+                    <div class="action-btn-group">
+                        <button type="button" class="btn-tech-order">주문하기</button>
+                        <button type="button" class="btn-tech-cart">장바구니 담기</button>
+                        <button type="button" class="btn-tech-delete">✕ 삭제</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="td-col col-img">
+                    <div class="product-img-box">
+                        <span class="tech-emoji">💻</span>
+                    </div>
+                </div>
+                <div class="td-col col-info">
+                    <div class="product-details">
+                        <span class="brand-text">[LG전자]</span>
+                        <h4 class="product-name">LG 그램 프로 AI 16인치 초경량 에디션 (Intel Core Ultra 7 / OS 인스톨팩)</h4>
+                        <div class="tech-spec-tags">
+                            <span class="spec-badge">Core Ultra 7</span>
+                            <span class="spec-badge">Intel Arc</span>
+                            <span class="spec-badge">LPDDR5X 16GB</span>
+                            <span class="spec-badge">WQXGA 초고화질</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-col col-price">
+                    <div class="price-block">
+                        <div class="discount-wrapper">
+                            <span class="discount-pct">3%↓</span>
+                            <span class="original-val">2,050,000원</span>
+                        </div>
+                        <div class="final-val">1,988,500원</div>
+                    </div>
+                </div>
+                <div class="td-col col-action">
+                    <div class="action-btn-group">
+                        <button type="button" class="btn-tech-order">주문하기</button>
+                        <button type="button" class="btn-tech-cart">장바구니 담기</button>
+                        <button type="button" class="btn-tech-delete">✕ 삭제</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="td-col col-img">
+                    <div class="product-img-box">
+                        <span class="tech-emoji">📺</span>
+                    </div>
+                </div>
+                <div class="td-col col-info">
+                    <div class="product-details">
+                        <span class="brand-text">[삼성전자]</span>
+                        <h4 class="product-name">오디세이 G5 게이밍 모니터 32인치 QHD 165Hz 커브드 대화면</h4>
+                        <div class="tech-spec-tags">
+                            <span class="spec-badge">32인치 곡면</span>
+                            <span class="spec-badge">QHD (2560x1440)</span>
+                            <span class="spec-badge">165Hz 주사율</span>
+                            <span class="spec-badge">1ms 응답속도</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-col col-price">
+                    <div class="price-block">
+                        <div class="discount-wrapper">
+                            <span class="discount-pct">15%↓</span>
+                            <span class="original-val">450,000원</span>
+                        </div>
+                        <div class="final-val">382,500원</div>
+                    </div>
+                </div>
+                <div class="td-col col-action">
+                    <div class="action-btn-group">
+                        <button type="button" class="btn-tech-order">주문하기</button>
+                        <button type="button" class="btn-tech-cart">장바구니 담기</button>
+                        <button type="button" class="btn-tech-delete">✕ 삭제</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="recent-pagination">
+        <button type="button" class="p-arrow btn-prev">‹</button>
+        <button type="button" class="p-num active">1</button>
+        <button type="button" class="p-num">2</button>
+        <button type="button" class="p-num">3</button>
+        <button type="button" class="p-arrow btn-next">›</button>
+    </div>
+
+</main>
+
+</body>
+</html>

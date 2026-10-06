@@ -1,0 +1,248 @@
+<!doctype html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/layouts/base-layout}"
+>
+  <head>
+    <link rel="stylesheet" th:href="@{/css/find-account.css}" />
+    <title>comdog 아이디/비밀번호 찾기</title>
+  </head>
+
+  <main layout:fragment="container" class="find-wrapper">
+    <div class="find-container">
+      <div class="logo-area">
+        <h1>COMDOG</h1>
+        <p>컴퓨터 구매 & 인수형 렌탈</p>
+      </div>
+
+      <div class="tab-menu">
+        <button
+          type="button"
+          id="btn-tab-id"
+          class="tab-btn active"
+          onclick="switchTab('id')"
+        >
+          아이디 찾기
+        </button>
+        <button
+          type="button"
+          id="btn-tab-pw"
+          class="tab-btn"
+          onclick="switchTab('pw')"
+        >
+          비밀번호 찾기
+        </button>
+      </div>
+
+      <form class="find-form">
+        <div class="form-group">
+          <label class="input-label">회원유형</label>
+          <select class="input-full select-type" required>
+            <option value="PERSONAL">개인회원</option>
+            <option value="BUSINESS">기업/사업자회원</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="input-label">이름</label>
+          <input
+            type="text"
+            class="input-full"
+            placeholder="가입하신 이름을 입력해 주세요"
+            required
+          />
+        </div>
+
+        <div id="id-input-area" class="form-group" style="display: none">
+          <label class="input-label">아이디</label>
+          <div class="input-with-icon">
+            <input
+              type="text"
+              id="userId"
+              class="input-full"
+              placeholder="아이디를 입력해 주세요"
+              onblur="checkId()"
+            />
+
+            <svg
+              id="id-success-icon"
+              class="check-icon"
+              style="display: none"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#28a745"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 10 0 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <p id="id-feedback-msg" class="feedback-msg"></p>
+        </div>
+
+        <div class="email-find-box">
+          <div class="box-header">
+            이메일로 찾기
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#888"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="16"
+              height="16"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+
+          <div class="box-content">
+            <div class="email-group">
+              <input type="text" placeholder="이메일 아이디" required />
+              <span class="at-symbol">@</span>
+              <select class="email-domain">
+                <option value="naver.com">.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="daum.net">daum.net</option>
+              </select>
+            </div>
+
+            <div class="verify-group">
+              <input
+                type="text"
+                id="verifyCode"
+                placeholder="인증 코드 입력"
+                required
+                disabled
+              />
+
+              <button
+                type="button"
+                id="btn-initial-send"
+                class="btn-send-code"
+                onclick="sendInitialCode()"
+              >
+                인증 메일 발송
+              </button>
+
+              <button
+                type="button"
+                id="btn-resend"
+                class="btn-verify"
+                onclick="resendCode()"
+                style="display: none"
+              >
+                재전송
+              </button>
+              <button
+                type="button"
+                id="btn-confirm"
+                class="btn-verify"
+                onclick="confirmCode()"
+                style="display: none"
+              >
+                확인
+              </button>
+            </div>
+            <p id="verify-feedback-msg" class="feedback-msg"></p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">확인</button>
+      </form>
+
+      <div class="bottom-links">
+        <a th:href="@{/log-in}">로그인</a> /
+        <a th:href="@{/sign-up-first}">회원가입</a>
+      </div>
+    </div>
+
+    <script>
+      // 탭 전환 함수
+      function switchTab(tabType) {
+        const btnId = document.getElementById('btn-tab-id');
+        const btnPw = document.getElementById('btn-tab-pw');
+        const idInputArea = document.getElementById('id-input-area');
+
+        if (tabType === 'id') {
+          btnId.classList.add('active');
+          btnPw.classList.remove('active');
+          idInputArea.style.display = 'none';
+          idInputArea.querySelector('input').removeAttribute('required');
+        } else if (tabType === 'pw') {
+          btnPw.classList.add('active');
+          btnId.classList.remove('active');
+          idInputArea.style.display = 'block';
+          idInputArea.querySelector('input').setAttribute('required', 'true');
+        }
+      }
+
+      // 아이디 DB 존재 여부 확인 (시뮬레이션)
+      function checkId() {
+        const userIdInput = document.getElementById('userId').value;
+        const feedbackMsg = document.getElementById('id-feedback-msg');
+        const successIcon = document.getElementById('id-success-icon');
+
+        if (userIdInput.trim() === '') {
+          feedbackMsg.textContent = '';
+          successIcon.style.display = 'none';
+          return;
+        }
+
+        // 임시로 'comdog'이라고 입력했을 때만 성공으로 처리
+        if (userIdInput === 'comdog') {
+          feedbackMsg.textContent = '가입한 아이디입니다';
+          feedbackMsg.className = 'feedback-msg text-success';
+          successIcon.style.display = 'block'; // 초록 체크 켜기
+        } else {
+          feedbackMsg.textContent = '존재하지 않는 아이디입니다';
+          feedbackMsg.className = 'feedback-msg text-error';
+          successIcon.style.display = 'none'; // 초록 체크 끄기
+        }
+      }
+
+      // 인증코드 재전송 버튼 클릭 시
+      function resendCode() {
+        const msg = document.getElementById('verify-feedback-msg');
+        msg.textContent = '“인증문자가 재발송 되었습니다”';
+        msg.className = 'feedback-msg text-info';
+      }
+
+      // 인증코드 확인 버튼 클릭 시 (실패 시뮬레이션)
+      let failCount = 0;
+      function confirmCode() {
+        const msg = document.getElementById('verify-feedback-msg');
+
+        // 나중에는 여기서 서버와 인증번호 일치 여부를 검사해야 해!
+        // 지금은 무조건 실패하는 에러 화면을 보여줄게.
+        failCount++;
+        if (failCount > 3) failCount = 3; // 최대 3회로 고정
+
+        msg.textContent = `인증 코드 입력이 잘못되었습니다. 다시 한 번 입력해주세요. (${failCount}/3)`;
+        msg.className = 'feedback-msg text-error';
+      }
+
+      // [새로 추가] 처음 인증 메일 발송 버튼 클릭 시
+      function sendInitialCode() {
+        // 1. 기존 '인증 메일 발송' 버튼 숨기기
+        document.getElementById('btn-initial-send').style.display = 'none';
+
+        // 2. 숨겨져 있던 '재전송', '확인' 버튼 나타내기 (flex 레이아웃 유지)
+        document.getElementById('btn-resend').style.display = 'block';
+        document.getElementById('btn-confirm').style.display = 'block';
+
+        // 3. 잠겨있던 인증 코드 입력칸 활성화
+        document.getElementById('verifyCode').removeAttribute('disabled');
+
+        // 4. 안내 메시지 출력
+        const msg = document.getElementById('verify-feedback-msg');
+        msg.textContent = '인증 메일이 발송되었습니다. 코드를 입력해 주세요.';
+        msg.className = 'feedback-msg text-success'; // 초록색 텍스트
+      }
+    </script>
+  </main>
+</html>

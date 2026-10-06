@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/community_board.css">
+  </head>
+
+  <main layout:fragment="container" class="board-container">
+
+    <!-- ── 상단 시스템 상태 바 ── -->
+    <div class="sys-bar">
+      <span class="sys-dot active"></span>
+      <span class="sys-label">CLUSTER_ONLINE</span>
+      <span class="sys-divider">::</span>
+      <span class="sys-label">PC26 커뮤니티</span>
+      <span class="sys-divider">::</span>
+      <span class="sys-label">STATUS <span class="accent">ACTIVE</span></span>
+      <span class="sys-divider">::</span>
+      <span class="sys-label">TOTAL_POSTS <span class="accent" th:text="${totalCount}">247</span></span>
+      <div class="sys-bar-right">
+        <span class="sys-label">v4.7.2</span>
+        <span class="sys-divider">//</span>
+        <span class="sys-label accent">BOARD_ENGINE</span>
+      </div>
+    </div>
+
+    <!-- ── 타이틀 헤더 ── -->
+    <div class="board-header">
+      <div class="board-title-block">
+        <span class="board-eyebrow">// RENDER_PASS_01 :: COMMUNITY_BOARD</span>
+        <h1 class="board-title">자유게시판</h1>
+        <p class="board-subtitle">PC26 커뮤니티 이용 규칙</p>
+      </div>
+      <div class="board-controls">
+        <div class="search-wrap">
+          <select class="ctrl-select">
+            <option>제목+내용</option>
+            <option>제목</option>
+            <option>작성자</option>
+          </select>
+          <div class="search-input-wrap">
+            <input type="text" class="ctrl-input" placeholder="검색어를 입력해 주세요">
+            <button class="ctrl-btn search-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="ctrl-btn reset-btn">선택 초기화</button>
+      </div>
+    </div>
+
+    <!-- ── 게시판 테이블 ── -->
+    <div class="board-table-wrap">
+
+      <!-- 스캔라인 오버레이 -->
+      <div class="scanline-overlay"></div>
+
+      <table class="board-table">
+        <colgroup>
+          <col style="width: 54px">   <!-- 번호 -->
+          <col>                        <!-- 제목 -->
+          <col style="width: 140px">  <!-- 작성자 -->
+          <col style="width: 110px">  <!-- 작성일 -->
+          <col style="width: 68px">   <!-- 조회 -->
+        </colgroup>
+        <thead>
+          <tr class="thead-row">
+            <th class="th th-no">NO</th>
+            <th class="th th-title">TITLE</th>
+            <th class="th th-author">AUTHOR</th>
+            <th class="th th-date">DATE</th>
+            <th class="th th-view">VIEWS</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- 공지 행 (고정) -->
+          <tr class="board-row row-notice" th:each="notice : ${noticeList}">
+            <td class="td td-no">
+              <span class="badge-notice">공지</span>
+            </td>
+            <td class="td td-title">
+              <a th:href="@{/community/view/{id}(id=${notice.id})}" class="post-link" th:text="${notice.title}">공지사항 제목입니다</a>
+            </td>
+            <td class="td td-author" th:text="${notice.author}">관리자</td>
+            <td class="td td-date" th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd.')}">2026.06.08.</td>
+            <td class="td td-view" th:text="${notice.views}">0</td>
+          </tr>
+
+          <!-- 일반 게시글 -->
+          <tr class="board-row" th:each="post : ${postList}">
+            <td class="td td-no" th:text="${post.no}">1</td>
+            <td class="td td-title">
+              <a th:href="@{/community/view/{id}(id=${post.id})}" class="post-link">
+                <span th:text="${post.title}">새로 컴퓨터 사려고 하는데 기존에 쓰던 hdd 가져와서 써도 될까요?</span>
+                <span class="reply-count" th:if="${post.replyCount > 0}">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  <span th:text="${post.replyCount}">1</span>
+                </span>
+              </a>
+            </td>
+            <td class="td td-author" th:text="${post.author}">킨다킹쿠8143</td>
+            <td class="td td-date" th:text="${#temporals.format(post.createdAt, 'yyyy.MM.dd.')}">2026.06.08.</td>
+            <td class="td td-view" th:text="${post.views}">16</td>
+          </tr>
+
+          <!-- 데이터 없을 때 -->
+          <tr class="board-row row-empty" th:if="${#lists.isEmpty(postList)}">
+            <td colspan="5" class="td-empty">
+              <span class="empty-code">// NO_RECORDS_FOUND</span>
+              <p>등록된 게시글이 없습니다.</p>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── 하단 바: 페이지네이션 + 글쓰기 ── -->
+    <div class="board-footer">
+      <nav class="pagination" th:if="${totalPages > 0}">
+        <a th:href="@{/community(page=1)}" class="page-btn page-arrow" th:classappend="${currentPage == 1} ? 'disabled'">&laquo;</a>
+        <a th:each="p : ${#numbers.sequence(startPage, endPage)}"
+           th:href="@{/community(page=${p})}"
+           class="page-btn"
+           th:classappend="${p == currentPage} ? 'active'"
+           th:text="${p}">1</a>
+        <a th:href="@{/community(page=${totalPages})}" class="page-btn page-arrow" th:classappend="${currentPage == totalPages} ? 'disabled'">&raquo;</a>
+      </nav>
+      <div class="footer-right">
+        <a th:href="@{/community/write}" class="write-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          글쓰기
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 하단 터미널 상태 바 ── -->
+    <div class="sys-bar sys-bar-bottom">
+      <span class="sys-label">SPECTRAL_PATH_TRACER</span>
+      <span class="sys-divider">::</span>
+      <span class="sys-label">BUILD_4720 :: CERTIFIED_PRODUCTION</span>
+      <div class="sys-bar-right">
+        <span class="sys-label">ACTIVE_TASKS — <span class="accent" th:text="${activeCount}">14</span> RUNNING</span>
+      </div>
+    </div>
+
+  </main>
+</html>

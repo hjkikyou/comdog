@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>장바구니</title>
+  <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+
+<main layout:fragment="container" class="cart-container">
+
+  <div class="cart-header">
+    <h2 class="cart-title">장바구니</h2>
+    <ul class="step-wizard">
+      <li class="step active"><span class="step-num">01</span> 장바구니</li>
+      <li class="step"><span class="step-num">02</span> 주문결제</li>
+      <li class="step"><span class="step-num">03</span> 주문완료</li>
+    </ul>
+  </div>
+
+  <div class="cart-content-wrapper">
+
+    <div class="cart-main-section">
+      <div class="list-control-top">
+        <label class="custom-checkbox">
+          <input type="checkbox" checked>
+          <span class="checkmark"></span>
+          <span class="checkbox-label">전체선택</span>
+        </label>
+        <button type="button" class="btn-delete-selected">선택삭제</button>
+      </div>
+
+      <div class="product-card">
+        <div class="card-select">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="product-img">
+          <div class="img-placeholder">💻</div>
+        </div>
+        <div class="product-info">
+          <span class="product-tag tag-purple">[올인원PC]</span>
+          <h4 class="product-name">삼성전자 올인원 Pro DM970AGA-L51A (Ultra5-125H/16GB/256GB/WIN11)</h4>
+          <p class="product-option-text">기본옵션</p>
+        </div>
+        <div class="product-meta">
+          <div class="quantity-controller">
+            <button type="button" class="qty-btn">-</button>
+            <input type="text" class="qty-input" value="1" readonly>
+            <button type="button" class="qty-btn">+</button>
+          </div>
+          <div class="product-price">
+            <span class="price-amount">1,999,000원</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <button type="button" class="btn-item-direct">바로주문</button>
+          <button type="button" class="btn-item-delete">삭제</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-select">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="product-img">
+          <div class="img-placeholder">🖥️</div>
+        </div>
+        <div class="product-info">
+          <span class="product-tag tag-pink">[추천조립PC]</span>
+          <h4 class="product-name">[컴퓨존] 게이밍 추천 조립PC_R51940 (7645/9060)</h4>
+          <div class="price-discount-wrapper">
+            <span class="original-price">1,421,000원</span>
+            <span class="discounted-price">1,179,000원</span>
+          </div>
+        </div>
+        <div class="product-meta">
+          <div class="quantity-controller">
+            <button type="button" class="qty-btn">-</button>
+            <input type="text" class="qty-input" value="1" readonly>
+            <button type="button" class="qty-btn">+</button>
+          </div>
+          <div class="product-price">
+            <span class="price-amount">1,179,000원</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <button type="button" class="btn-item-direct">바로주문</button>
+          <button type="button" class="btn-item-delete">삭제</button>
+        </div>
+      </div>
+
+      <div class="service-options-card">
+        <h5 class="service-title">🔧 조립 및 안심 서비스 추가 옵션</h5>
+        <div class="service-row">
+          <label class="custom-checkbox">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <span class="checkbox-label">[조립PC 안정화 서비스] 조립PC에 OS 설치비 포함 시 구매 가능 (+25,000원)</span>
+          </label>
+        </div>
+        <div class="service-row">
+          <label class="custom-checkbox">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <span class="checkbox-label">[출장 설치] 하드웨어 설치 / OS 미설치 (+30,000원)</span>
+          </label>
+        </div>
+        <div class="service-row">
+          <label class="custom-checkbox">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <span class="checkbox-label">[출장 A/S] 구입 후 1년간 가능 (+33,000원)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-side-section">
+      <div class="summary-card">
+        <h3 class="summary-title">결제 예정 금액</h3>
+
+        <div class="summary-row">
+          <span class="label">총 상품금액</span>
+          <span class="value">3,178,000원</span>
+        </div>
+        <div class="summary-row accent-purple">
+          <span class="label">총 적립 혜택</span>
+          <span class="value">+2,360원</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">배송비</span>
+          <span class="value">0원 (무료배송)</span>
+        </div>
+
+        <hr class="summary-divider">
+
+        <div class="summary-row total-row">
+          <span class="label">최종 결제금액</span>
+          <span class="value final-price">3,178,000원</span>
+        </div>
+
+        <div class="summary-buttons">
+          <button type="button" class="btn-checkout-total">전체 상품 주문하기</button>
+          <button type="button" class="btn-checkout-selected">선택 상품 주문</button>
+        </div>
+      </div>
+
+      <div class="info-guide-card">
+        <h5>💡 장바구니 이용안내</h5>
+        <ul>
+          <li>로그인하지 않은 상태에서 담은 상품은 2일간 보관됩니다.</li>
+          <li>회원 등급과 결제 금액에 따라 무료배송 혜택이 적용됩니다.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

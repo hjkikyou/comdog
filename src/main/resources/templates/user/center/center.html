@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/center.css">
+  </head>
+
+  <main layout:fragment="container" class="center-page">
+    <!-- 상단 헤더 -->
+    <section class="center-hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">상담센터</h1>
+
+            <form class="search-box" action="#" method="get">
+                <input type="text" placeholder="궁금하신 내용을 검색해보세요" />
+                <button type="submit">검색</button>
+            </form>
+
+            <div class="keyword-links">
+                <a href="#">배송조회</a>
+                <a href="#">주문수정</a>
+                <a href="#">환불요청</a>
+                <a href="#">교환</a>
+                <a href="#">제품문의</a>
+                <a href="#">포인트</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 아이콘 메뉴 -->
+    <section class="quick-menu inner">
+        <a href="#" class="quick-card">
+            <div class="quick-icon">👤</div>
+            <span>고객상담</span>
+        </a>
+        <a href="#" class="quick-card">
+            <div class="quick-icon">📦</div>
+            <span>주문/배송 조회</span>
+        </a>
+        <a href="#" class="quick-card">
+            <div class="quick-icon">💻</div>
+            <span>A/S 및 기술지원</span>
+        </a>
+        <a href="#" class="quick-card">
+            <div class="quick-icon">🎧</div>
+            <span>상담예약</span>
+        </a>
+    </section>
+
+    <!-- 자주 묻는 질문 -->
+    <section class="faq-section inner">
+        <div class="section-head">
+            <h2>자주 묻는 질문 TOP 5</h2>
+            <a href="#" class="more-link">전체보기 +</a>
+        </div>
+
+        <div class="faq-list">
+            <details>
+                <summary>주문한 데스크탑은 언제 배송되나요?</summary>
+                <div class="faq-content">
+                    결제 완료 후 보통 1~3영업일 내 출고되며, 조립 PC는 사양에 따라 2~5일 정도 소요될 수 있습니다.
+                </div>
+            </details>
+
+            <details>
+                <summary>주문 후 부품 변경이나 배송지 변경이 가능한가요?</summary>
+                <div class="faq-content">
+                    상품 준비 전 단계라면 변경 가능할 수 있습니다. 마이페이지 또는 고객센터를 통해 빠르게 요청해 주세요.
+                </div>
+            </details>
+
+            <details>
+                <summary>배송조회는 어떻게 하나요?</summary>
+                <div class="faq-content">
+                    로그인 후 주문/배송 조회 메뉴에서 송장번호와 배송 상태를 확인하실 수 있습니다.
+                </div>
+            </details>
+
+            <details>
+                <summary>모니터나 주변기기에도 A/S가 가능한가요?</summary>
+                <div class="faq-content">
+                    네, 브랜드 정책 및 보증기간에 따라 A/S 접수가 가능합니다. 제품별 보증 조건을 함께 확인해 주세요.
+                </div>
+            </details>
+
+            <details>
+                <summary>부품 초기 불량은 어느 기간까지 교환 가능한가요?</summary>
+                <div class="faq-content">
+                    일반적으로 수령 후 7일 이내 초기 불량 확인 시 교환 접수가 가능하며, 브랜드별 정책에 따라 달라질 수 있습니다.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- 하단 바로가기 카드 -->
+    <section class="service-links inner">
+        <div class="service-grid large-grid">
+            <a href="#" class="service-card highlight">
+                <div class="service-icon">📋</div>
+                <div>
+                    <h3>택배/방문 견적 문의</h3>
+                    <p>게이밍PC, 사무용PC, 부품교체 상담안내</p>
+                </div>
+            </a>
+
+            <a href="#" class="service-card highlight">
+                <div class="service-icon">🖥️</div>
+                <div>
+                    <h3>PC 문제해결</h3>
+                    <p>드라이버, 부팅오류, 화면문제, 네트워크 문제를 안내합니다</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="service-grid small-grid">
+            <a href="#" class="mini-card">원격지원 신청</a>
+            <a href="#" class="mini-card">조립PC 구매 가이드</a>
+            <a href="#" class="mini-card">제조사 서비스 센터</a>
+        </div>
+    </section>
+
+    <!-- 공지사항 -->
+    <section class="notice-section inner">
+        <div class="section-head">
+            <h2>공지사항</h2>
+            <a href="#" class="more-link">전체보기 +</a>
+        </div>
+
+        <div class="notice-box">
+            <a href="#" class="notice-item">
+                <span class="notice-title">신용카드 무이자 할부 안내</span>
+                <span class="notice-date">2026-06-01</span>
+            </a>
+            <a href="#" class="notice-item">
+                <span class="notice-title">택배사 배송 지연 안내</span>
+                <span class="notice-date">2026-05-27</span>
+            </a>
+            <a href="#" class="notice-item">
+                <span class="notice-title">5월 조립PC 부품 입고 일정 공지</span>
+                <span class="notice-date">2026-05-14</span>
+            </a>
+            <a href="#" class="notice-item">
+                <span class="notice-title">일부 브랜드 A/S 정책 변경 안내</span>
+                <span class="notice-date">2026-04-22</span>
+            </a>
+            <a href="#" class="notice-item">
+                <span class="notice-title">고객센터 운영시간 및 공휴일 휴무 안내</span>
+                <span class="notice-date">2026-04-07</span>
+            </a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+
+    <!-- ════════════════════════════════
+         상품 공통 resultMap
+    ════════════════════════════════ -->
+    <resultMap id="ProductResultMap" type="com.comdog.c2d.dto.ProductDto">
+        <id     property="productId"      column="product_id" />
+        <result property="categoryId"     column="category_id" />
+        <result property="name"           column="name" />
+        <result property="brand"          column="brand" />
+        <result property="modelName"      column="model_name" />
+        <result property="isPurchasable"  column="is_purchasable" />
+        <result property="basePrice"      column="base_price" />
+        <result property="isRentable"     column="is_rentable" />
+        <result property="rentalPrice"    column="rental_price" />
+        <result property="stockQuantity"  column="stock_quantity" />
+        <result property="description"    column="description" />
+        <result property="imageUrl"       column="image_url" />
+        <result property="isDeleted"      column="is_deleted" />
+    </resultMap>
+
+
+    <!-- ════════════════════════════════
+         조회
+    ════════════════════════════════ -->
+
+    <!-- 전체 상품 목록 -->
+    <select id="findAllProducts" resultMap="ProductResultMap">
+        SELECT * FROM product
+        WHERE is_deleted = 'N'
+        ORDER BY product_id DESC
+    </select>
+
+    <!-- 단건 조회 (상세페이지용) -->
+    <select id="findProductById" resultMap="ProductResultMap">
+        SELECT * FROM product
+        WHERE product_id = #{productId}
+          AND is_deleted = 'N'
+    </select>
+
+    <!-- 카테고리(하위 포함) 상품 목록 -->
+    <select id="findProductsWithSubCategories" resultMap="ProductResultMap">
+        SELECT *
+        FROM product
+        WHERE is_deleted = 'N'
+          AND (
+              category_id = #{categoryId}
+              OR category_id IN (
+                  SELECT category_id
+                  FROM category
+                  WHERE parent_id = #{categoryId}
+              )
+          )
+        ORDER BY product_id DESC
+    </select>
+
+    <!-- 카테고리명 조회 -->
+    <select id="findCategoryNameById" resultType="string">
+        SELECT name
+        FROM category
+        WHERE category_id = #{categoryId}
+    </select>
+
+
+    <!-- ════════════════════════════════
+         상세페이지 : specs / rentalPrices
+    ════════════════════════════════ -->
+
+    <!-- 상품 스펙 (key-value) -->
+    <select id="selectProductSpecs" resultType="map">
+        SELECT spec_key AS specKey, spec_value AS specValue
+        FROM product_spec
+        WHERE product_id = #{productId}
+    </select>
+
+    <!-- 기간별 렌탈가 (활성화된 것만) -->
+    <select id="selectRentalPrices"
+            resultType="com.comdog.c2d.dto.ProductDto$RentalPriceDto">
+        SELECT
+            rental_price_id AS rentalPriceId,
+            duration,
+            monthly_fee     AS monthlyFee,
+            deposit_fee     AS depositFee,
+            is_b2b_only     AS b2bOnly
+        FROM rental_prices
+        WHERE product_id = #{productId}
+          AND is_active = 'Y'
+        ORDER BY duration
+    </select>
+
+
+    <!-- ════════════════════════════════
+         추가 / 변경 / 삭제
+    ════════════════════════════════ -->
+
+    <!-- 추가 -->
+    <insert id="add">
+        INSERT INTO product
+        (category_id, name, brand, model_name, is_purchasable, base_price,
+         is_rentable, rental_price, stock_quantity, description, image_url)
+        VALUES
+        (#{categoryId}, #{name}, #{brand}, #{modelName}, #{isPurchasable}, #{basePrice},
+         #{isRentable}, #{rentalPrice}, #{stockQuantity}, #{description}, #{imageUrl})
+    </insert>
+
+    <!-- 변경 -->
+    <update id="update">
+        UPDATE product
+        SET
+            category_id    = #{categoryId},
+            name           = #{name},
+            brand          = #{brand},
+            model_name     = #{modelName},
+            is_purchasable = #{isPurchasable},
+            base_price     = #{basePrice},
+            is_rentable    = #{isRentable},
+            rental_price   = #{rentalPrice},
+            stock_quantity = #{stockQuantity},
+            description    = #{description},
+            image_url      = #{imageUrl}
+        WHERE product_id = #{productId}
+    </update>
+
+    <!-- 삭제 (Soft Delete) -->
+    <update id="delete">
+        UPDATE product
+        SET is_deleted = 'Y'
+        WHERE product_id = #{productId}
+    </update>
+    
+    <delete id="deleteOrderItemByProductId" parameterType="Long">
+        DELETE FROM order_item
+        WHERE product_id = #{productId}
+    </delete>
+
+</mapper>

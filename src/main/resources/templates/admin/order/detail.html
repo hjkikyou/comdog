@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>주문 상세 정보</title>
+</head>
+<body>
+    <div>
+        <h3>주문 상세 정보</h3>
+        <p>주문번호: <span th:text="${viewOrderDetail.orderId}"></span></p>
+        <p>주문자명: <span th:text="${viewOrderDetail.memberName}"></span></p>
+        <p>연락처: <span th:text="${viewOrderDetail.memberPhone}"></span></p>
+        <p>빌링키: <span th:text="${viewOrderDetail.billingKey}"></span></p>
+    </div>
+    
+    <form th:action="@{/admin/order/updateStatus}" method="post">
+        <input type="hidden" name="orderId" th:value="${viewOrderDetail.orderId}">
+        
+        <div>
+            <label>주문 상태:</label>
+            <select name="orderStatus">
+                <option value="결제완료" th:selected="${viewOrderDetail.orderStatus == '결제완료'}">결제완료</option>
+                <option value="상품준비중" th:selected="${viewOrderDetail.orderStatus == '상품준비중'}">상품준비중</option>
+                <option value="배송중" th:selected="${viewOrderDetail.orderStatus == '배송중'}">배송중</option>
+                <option value="배송완료" th:selected="${viewOrderDetail.orderStatus == '배송완료'}">배송완료</option>
+            </select>
+        </div>
+        
+        <div>
+            <label>송장 번호:</label>
+            <input type="text" name="trackingNumber" th:value="${viewOrderDetail.trackingNumber}" placeholder="배송중일 경우 입력">
+        </div>
+        
+        <button type="submit">상태 저장</button>
+    </form>
+</body>
+</html>

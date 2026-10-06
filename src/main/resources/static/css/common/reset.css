@@ -1,0 +1,22 @@
+/* =============================================
+   RESET.CSS — 브라우저 기본 스타일 초기화
+   ============================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

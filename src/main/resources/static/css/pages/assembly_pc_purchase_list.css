@@ -1,0 +1,164 @@
+/* ============================================================
+   purchase_pc_list.css
+   조립 PC 구매 상품 목록 페이지 스타일 (모던/플랫 컨셉)
+   ============================================================ */
+
+/* ── CSS 변수 ── */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f7;
+  --color-border: #eeeeee;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #a0a0a0;
+  --color-accent: #222222;
+  --color-link: #1a73e8;
+  --color-placeholder: #e6e6e6;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-pill: 30px;
+  --font-main: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  --transition: 0.2s ease;
+}
+
+/* ── 기본 리셋 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-main); background-color: var(--color-bg); color: var(--color-text-primary); font-size: 14px; line-height: 1.5; }
+.purchase-container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+/* ── 페이지 헤더 ── */
+.page-header { margin-bottom: 30px; }
+.page-title { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+
+/* ── 이벤트 섹션 ── */
+.event-section { margin-bottom: 48px; }
+.event-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  transition: transform var(--transition);
+  cursor: pointer;
+}
+.event-card:hover { transform: translateY(-4px); border-color: #ddd; }
+
+.event-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-placeholder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-info { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.event-card-title { font-size: 15px; font-weight: 700; }
+.event-card-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+.event-more-link {
+  font-size: 14px; font-weight: 600; color: var(--color-link); 
+  text-decoration: none; margin-top: 8px; display: inline-flex; align-items: center;
+}
+.event-more-link:hover { text-decoration: underline; }
+
+/* ── 필터 바 (검색 + 정렬) ── */
+.filter-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);
+}
+
+.search-box {
+  display: flex; align-items: center;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  padding: 4px 16px;
+  height: 40px;
+}
+.search-input { border: none; outline: none; font-size: 14px; width: 180px; }
+.search-input::placeholder { color: var(--color-text-muted); }
+.search-btn {
+  border: none; background: transparent; cursor: pointer;
+  color: var(--color-text-primary); display: flex; align-items: center; margin-left: 8px;
+}
+
+.sort-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.sort-btn {
+  padding: 8px 16px; font-size: 13px; font-weight: 500;
+  border-radius: var(--radius-pill); border: none;
+  background-color: var(--color-surface); color: var(--color-text-secondary);
+  cursor: pointer; transition: all var(--transition);
+}
+.sort-btn:hover { background-color: #eee; }
+.sort-btn.active { background-color: var(--color-accent); color: #fff; font-weight: 600; }
+
+/* ── 조립PC + 부품 묶음 리스트 ── */
+.bundle-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px; }
+.pc-bundle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* 상품 카드 공통 (그림자 빼고 깔끔하게) */
+.product-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  transition: transform var(--transition), border-color var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); border-color: #d0d0d0; }
+
+.product-info { padding: 20px; display: flex; flex-direction: column; gap: 6px; }
+.product-name { font-size: 15px; font-weight: 700; }
+.product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+.product-price { font-size: 15px; font-weight: 700; margin-top: 4px; }
+
+/* 메인 PC 카드 썸네일 (꽉 차게) */
+.card-main .product-img-wrap {
+  width: 100%; aspect-ratio: 1 / 1;
+  background-color: var(--color-placeholder);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* 🌟 부품 카드 썸네일 (작게 중앙 정렬 - 시안 핵심 포인트) */
+.card-part .product-img-wrap {
+  width: 50%; /* 카드의 절반 크기만 차지하도록 */
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-placeholder);
+  border-radius: var(--radius-sm);
+  margin: 24px auto 0; /* 위쪽 여백 주고 중앙 정렬 */
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── 페이지네이션 ── */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0; }
+.page-arrow, .page-num, .page-ellipsis {
+  font-size: 14px; color: var(--color-text-secondary); text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+  min-width: 32px; height: 32px; border-radius: 4px;
+  transition: all var(--transition);
+}
+.page-num:hover, .page-arrow:hover { color: var(--color-text-primary); font-weight: 600; }
+.page-num.active { background-color: var(--color-accent); color: #fff; border-radius: var(--radius-pill); font-weight: 700; }
+.page-ellipsis { cursor: default; }
+
+/* ── 반응형 ── */
+@media (max-width: 1024px) {
+  .event-grid, .pc-bundle { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .filter-bar { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .search-box { width: 100%; justify-content: space-between; }
+  .search-input { width: 100%; }
+}
+@media (max-width: 480px) {
+  .event-grid, .pc-bundle { grid-template-columns: 1fr; }
+}

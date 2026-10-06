@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/b2b_landing.css">
+  </head>
+
+  <main layout:fragment="container" class="b2b-wrap">
+
+    <!-- ══════════════════════════════
+         섹션 1: 히어로
+    ══════════════════════════════ -->
+    <section class="hero-section">
+      <div class="hero-text">
+        <p class="hero-eyebrow">COMDOG Enterprise</p>
+        <h1 class="hero-title">
+          Drive Business Growth &amp;<br>
+          On Demand Experiences
+        </h1>
+        <p class="hero-desc">
+          Pellentesque convallis accumsan suscipit aliquet eu diam quis nulla turpis.
+          In mus massa lectus laoreet sit bibendum id. Iaculis purus malesuada porttitor aliquam pulvinar.
+          Mi congue convallis tincidunt lobortis amet ultrices phasellus porttitor.
+        </p>
+        <div class="hero-buttons">
+          <a href="#solution" class="btn-hero-primary">상세 보기</a>
+          <a href="#contact" class="btn-hero-outline">견적신청서 작성</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-placeholder">
+          <div class="hero-img-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         섹션 2: 솔루션 소개
+    ══════════════════════════════ -->
+    <section class="solution-section" id="solution">
+      <h2 class="section-title">비즈니스 특성을 고려한 솔루션을 제안합니다</h2>
+
+      <div class="solution-grid">
+
+        <!-- 왼쪽: 브라우저 목업 카드 -->
+        <div class="solution-mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <div class="mockup-nav">
+              <span>&#8249;</span><span>&#8250;</span>
+            </div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-img-placeholder"></div>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 특징 4개 -->
+        <div class="solution-features">
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <!-- 문서 아이콘 -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">기업 렌탈</p>
+              <p class="feature-desc">소상공인부터 대기업 관공서 등</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <!-- 가방 아이콘 -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">맞춤 공급</p>
+              <p class="feature-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <!-- 그래프 아이콘 -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">유지보수</p>
+              <p class="feature-desc">Tristique elementum, ac maecenas enim fringilla placerat scelerisque semper.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <!-- 차량 아이콘 -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                <path d="M16 8h4l3 5v3h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">출장 서비스</p>
+              <p class="feature-desc">Curabitur magna cras euismod pharetra, mauris malesuada sit enim, elementum.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 두 번째 행: 특징 2개 + 브라우저 목업 -->
+      <div class="solution-grid solution-grid-reverse">
+
+        <div class="solution-features solution-features-col">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">성능 최적화</p>
+              <p class="feature-desc">Tristique elementum, ac maecenas enim fringilla placerat scelerisque semper.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                <path d="M16 8h4l3 5v3h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <p class="feature-title">빠른 배송</p>
+              <p class="feature-desc">Curabitur magna cras euismod pharetra, mauris malesuada sit enim, elementum.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <div class="mockup-nav">
+              <span>&#8249;</span><span>&#8250;</span>
+            </div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-img-placeholder mockup-img-circle"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         섹션 3: 서비스
+    ══════════════════════════════ -->
+    <section class="service-section">
+      <h2 class="section-title">고객이 원하는 환경 구축을 위한 다양한 서비스를 제공합니다</h2>
+
+      <div class="service-card">
+        <p class="service-card-title">Bibendum amet at molestie mattis.</p>
+        <p class="service-card-desc">
+          Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed.
+          Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar.
+        </p>
+        <!-- 비디오 플레이어 목업 -->
+        <div class="video-mockup">
+          <div class="video-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <div class="mockup-nav">
+              <span>&#8249;</span><span>&#8250;</span>
+            </div>
+          </div>
+          <div class="video-body">
+            <div class="video-placeholder">
+              <button class="play-btn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"
+                     stroke="white" stroke-width="1.5">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         섹션 4: 숫자로 보는 실적
+    ══════════════════════════════ -->
+    <section class="stats-section">
+      <h2 class="stats-title">Numbers That Matter</h2>
+      <p class="stats-desc">
+        Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed.
+        Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar.
+        Fermentum scelerisque sit consectetur hac mi. Mollis leo eleifend ultrices purus iaculis.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <p class="stat-number">250+</p>
+          <p class="stat-label">Happy Customer</p>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <p class="stat-number">600+</p>
+          <p class="stat-label">Completed Projects</p>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <p class="stat-number">1.8K+</p>
+          <p class="stat-label">Available Resources</p>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <p class="stat-number">11K+</p>
+          <p class="stat-label">Subscribers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         섹션 5: 고객 후기
+    ══════════════════════════════ -->
+    <section class="testimonial-section" id="contact">
+      <h2 class="section-title">Client Testimonials</h2>
+
+      <div class="testimonial-buttons">
+        <a href="/product" class="btn-hero-primary">상세보기</a>
+        <a href="/b2b/inquiry" class="btn-hero-outline">견적신청서 작성</a>
+      </div>
+
+      <!-- 파트너 로고 -->
+      <div class="partner-logos">
+        <div class="partner-logo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          SHELLS
+        </div>
+        <div class="partner-logo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          SmartFinder
+        </div>
+        <div class="partner-logo partner-logo-bold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>
+          Zoomerr
+        </div>
+        <div class="partner-logo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          ArtVenue
+        </div>
+      </div>
+    </section>
+
+  </main>
+</html>

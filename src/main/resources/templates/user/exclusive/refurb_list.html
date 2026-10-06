@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/refurb_list.css">
+  </head>
+
+  <main layout:fragment="container" class="refurb-wrap">
+
+    <!-- ══════════════════════════════════
+         HERO BANNER
+    ══════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="hero-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            컴퓨존 인증
+          </span>
+          <h1 class="hero-title">리퍼비시 · 중고상품<br><em>특가전</em></h1>
+          <p class="hero-sub">한정수량 / 재고 소진까지</p>
+          <p class="hero-desc">품질은 그대로, 가격은 합리적으로 삼속있게 구매하는 리퍼 찬스</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">최대 35%</span>
+              <span class="stat-label">할인율</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">전 제품</span>
+              <span class="stat-label">컴퓨존 인증 검수</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">A/S</span>
+              <span class="stat-label">전문인력 지원</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-orb">
+            <div class="orb-ring orb-ring-1"></div>
+            <div class="orb-ring orb-ring-2"></div>
+            <div class="orb-center">
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>
+              </svg>
+            </div>
+            <div class="orb-dot dot-1"></div>
+            <div class="orb-dot dot-2"></div>
+            <div class="orb-dot dot-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         리퍼비시란? 설명 섹션
+    ══════════════════════════════════ -->
+    <section class="info-section">
+      <div class="info-inner">
+        <h2 class="info-title">
+          리퍼비시
+          <span class="cert-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </span>
+          상품이란?
+        </h2>
+        <p class="info-body">
+          개봉, 반품, 전시 상품 혹은 초기 물량 사유로 재입고한 제품을 세조시나 전문 업체가 수리 및 점검하여 새롭게 재정비한 상품입니다.<br>
+          한 번의 사용 이력이 있는 제품을 엄선하여 새 상품 대비 저렴하고 합리적인 가격에 제공하며, 제품에 따라 외관에 미세한 사용 흔적이나 포장 상태의 차이가 있을 수 있습니다.
+        </p>
+
+        <!-- 인증 프로세스 스텝 -->
+        <div class="cert-section">
+          <h3 class="cert-title">
+            컴퓨존 인증
+            <span class="cert-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </span>
+            안심하고 구매하세요
+          </h3>
+          <p class="cert-sub">컴퓨존 인증 리퍼비시·중고 상품은 컴퓨존 A/S 전문 인력의 철저한 성능 테스트와 정밀 검수를 거쳐 작동에 문제가 없음이 확인된 정식 상품이오니 안심하고 구매하세요.</p>
+
+          <div class="step-bar">
+            <div class="step-item step-active">
+              <div class="step-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              </div>
+              <span class="step-label">상품 선별</span>
+              <span class="step-num">STEP 1</span>
+            </div>
+            <div class="step-arrow">›</div>
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <span class="step-label">리퍼 작업</span>
+              <span class="step-num">STEP 2</span>
+            </div>
+            <div class="step-arrow">›</div>
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <span class="step-label">최종 검수</span>
+              <span class="step-num">STEP 3</span>
+            </div>
+            <div class="step-arrow">›</div>
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <span class="step-label">제품 포장</span>
+              <span class="step-num">STEP 4</span>
+            </div>
+            <div class="step-arrow">›</div>
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <span class="step-label">고객 배송</span>
+              <span class="step-num">STEP 5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         카테고리 필터 탭
+    ══════════════════════════════════ -->
+    <section class="catalog-section">
+      <div class="catalog-inner">
+
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-cat="all">전체</button>
+          <button class="filter-tab" data-cat="desktop">데스크탑 / 서버</button>
+          <button class="filter-tab" data-cat="laptop">노트북</button>
+          <button class="filter-tab" data-cat="tablet">태블릿 / 스마트폰</button>
+          <button class="filter-tab" data-cat="monitor">모니터 / 주변기기</button>
+        </div>
+
+        <!-- ── 섹션: 데스크탑 ── -->
+        <div class="product-section" id="section-desktop">
+          <div class="section-header">
+            <span class="section-icon">🖥️</span>
+            <h2 class="section-title">컴퓨존 인증 · 데스크탑 / 서버 / 베어본</h2>
+          </div>
+          <div class="product-grid">
+
+            <!-- 상품 카드 (th:each로 반복) -->
+            <div class="product-card" th:each="product : ${desktopList}">
+              <div class="card-img-wrap">
+                <img th:src="${product.imageUrl}" th:alt="${product.name}" class="card-img" loading="lazy">
+                <span class="discount-badge" th:if="${product.discountRate > 0}" th:text="${product.discountRate} + '%'">20%</span>
+                <span class="refurb-tag" th:if="${product.isRefurb}">리퍼</span>
+                <span class="used-tag" th:unless="${product.isRefurb}">중고</span>
+                <div class="card-hover-actions">
+                  <a th:href="@{/refurb/detail/{id}(id=${product.id})}" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name" th:text="${product.name}">Dell Pro DCM3250 i5/8GB/512GB</h3>
+                <div class="card-pricing">
+                  <span class="card-original" th:if="${product.discountRate > 0}" th:text="${#numbers.formatInteger(product.originalPrice,1,'COMMA')} + '원'">1,549,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate" th:if="${product.discountRate > 0}" th:text="${product.discountRate} + '%'">20%</span>
+                    <span class="card-price" th:text="${#numbers.formatInteger(product.salePrice,1,'COMMA')} + '원'">1,239,200원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 하드코딩 샘플 카드 (Thymeleaf 연동 전 확인용) -->
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                </div>
+                <span class="discount-badge">20%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[Dell] Pro DCM3250 i5/8GB/512GB/Ubuntu/8GB RAM</h3>
+                <div class="card-pricing">
+                  <span class="card-original">1,549,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">20%</span>
+                    <span class="card-price">1,239,200원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                </div>
+                <span class="discount-badge">15%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[HP] 엔비데스크3.8 G1/C2G8BT1 올인원 S 22S i3/16GB/1TB/Win11Pro</h3>
+                <div class="card-pricing">
+                  <span class="card-original">2,454,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">15%</span>
+                    <span class="card-price">2,085,900원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                </div>
+                <span class="discount-badge">35%</span>
+                <span class="used-tag">중고</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[HP] 프로데스크 280 G8 i3/8GB/256GB/FD/Win11Pro</h3>
+                <div class="card-pricing">
+                  <span class="card-original">1,356,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">35%</span>
+                    <span class="card-price">882,700원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── 섹션: 노트북 ── -->
+        <div class="product-section" id="section-laptop">
+          <div class="section-header">
+            <span class="section-icon">💻</span>
+            <h2 class="section-title">컴퓨존 인증 · 노트북 / 태블릿 / 스마트폰</h2>
+          </div>
+          <div class="product-grid product-grid-5">
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="2 20 22 20"/></svg>
+                </div>
+                <span class="discount-badge">25%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[HP] 아밀 24 C3303INR i3 13U/8GB/512GB/QHD 기변...</h3>
+                <div class="card-pricing">
+                  <span class="card-original">899,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">25%</span>
+                    <span class="card-price">674,250원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="2 20 22 20"/></svg>
+                </div>
+                <span class="discount-badge">20%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[LG전자] 그램북 17Z90TR ED70K Ultra7/32GB/512GB/RTX5070</h3>
+                <div class="card-pricing">
+                  <span class="card-original">3,170,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">20%</span>
+                    <span class="card-price">2,536,000원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="2 20 22 20"/></svg>
+                </div>
+                <span class="discount-badge">20%</span>
+                <span class="new-tag">NEW</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[LG전자] LG 그램북 15U5U GR90K Ultra5/16GB/256GB/Win11</h3>
+                <div class="card-pricing">
+                  <span class="card-original">1,049,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">20%</span>
+                    <span class="card-price">839,200원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="2 20 22 20"/></svg>
+                </div>
+                <span class="discount-badge">35%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[MSI] 스텔스 14Ai Studio A1VFG i9/16GB/1TB/RTX4060</h3>
+                <div class="card-pricing">
+                  <span class="card-original">3,449,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">35%</span>
+                    <span class="card-price">2,222,350원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">장바구니추가</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card sample">
+              <div class="card-img-wrap">
+                <div class="card-img-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8742FF" stroke-width="1.2"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="2 20 22 20"/></svg>
+                </div>
+                <span class="discount-badge">20%</span>
+                <span class="refurb-tag">리퍼</span>
+                <div class="card-hover-actions">
+                  <a href="#" class="hover-btn btn-detail">상세보기</a>
+                  <button class="hover-btn btn-cart">장바구니</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-cert">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  컴퓨존 인증
+                </span>
+                <h3 class="card-name">[레노버] Legions 15AKP3/83GB/103BK/R9/RTX5070</h3>
+                <div class="card-pricing">
+                  <span class="card-original">2,599,000원</span>
+                  <div class="card-price-row">
+                    <span class="card-rate">20%</span>
+                    <span class="card-price">2,079,200원</span>
+                  </div>
+                </div>
+                <div class="card-tags">
+                  <a href="#" class="tag">중고상품</a>
+                  <a href="#" class="tag">기초견적</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 더보기 버튼 -->
+        <div class="load-more-wrap">
+          <button class="load-more-btn">
+            상품 더 보기
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         신뢰 보증 배너
+    ══════════════════════════════════ -->
+    <section class="trust-section">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h4 class="trust-title">컴퓨존 인증 검수</h4>
+          <p class="trust-desc">전문 인력의 철저한 성능 테스트 및 정밀 검수 완료</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4 class="trust-title">빠른 배송</h4>
+          <p class="trust-desc">검수 완료 즉시 신속 포장 발송, 빠른 수령 가능</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4 class="trust-title">A/S 전문 지원</h4>
+          <p class="trust-desc">구매 후 문제 발생 시 컴퓨존 A/S 전문 인력 즉각 대응</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4 class="trust-title">합리적인 가격</h4>
+          <p class="trust-desc">새 상품 대비 최대 35% 할인된 가격으로 제공</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</html>

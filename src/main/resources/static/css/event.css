@@ -1,0 +1,482 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+
+body {
+    background-color: #f2f4f8;
+    color: #333;
+}
+
+.event-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+/* ───── 페이지 헤더 ───── */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #222;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.login-area {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-area a {
+    color: #0078ff;
+    text-decoration: underline;
+}
+
+.btn-login {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* ───── 카드 그리드 공통 ───── */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ───── 강력추천 섹션 ───── */
+.section-recommend {
+    margin-bottom: 50px;
+    background-color: #fcfcfc;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.section-title span {
+    color: #00bcd4;
+    position: relative;
+}
+
+.section-title span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #00bcd4;
+    opacity: 0.3;
+}
+
+/* ───── 카드 공통 ───── */
+/* main.css의 .card { height: 220px } 강제 해제 */
+.event-container .card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: auto !important;
+    height: auto !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 이미지 영역 – 항상 위에 */
+.card .img-box {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #888;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* 추천 카드 텍스트 */
+.recommend-card .text-box {
+    padding: 16px 14px 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 100px;
+}
+
+.recommend-card .category {
+    font-size: 12px;
+    color: #666;
+}
+
+.recommend-card .title {
+    font-size: 14px;
+    font-weight: bold;
+    word-break: keep-all;
+    line-height: 1.5;
+}
+
+.recommend-card .date {
+    font-size: 11px;
+    color: #999;
+    margin-top: auto;
+}
+
+/* ───── 배너 섹션 ───── */
+.section-banner {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.banner {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-top {
+    background: linear-gradient(90deg, #d4fc79 0%, #96e6a1 100%);
+    color: #111;
+}
+
+.banner-bottom {
+    background: linear-gradient(90deg, #0a1128 0%, #1c2e4a 100%);
+    color: #fff;
+}
+
+/* ═══════════════════════════════════════
+   필터 바 – 2행 구조
+   1행: 셀렉트 2개
+   2행: 정렬+기타 버튼 6개
+═══════════════════════════════════════ */
+.filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 30px;
+    background: #fff;
+    border: 1.5px solid #e0e3ea;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* 1행: 셀렉트 그룹 */
+.filter-row-select {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1.5px solid #e0e3ea;
+}
+
+.filter-row-select select {
+    appearance: none;
+    border: 1.5px solid #d0d5e0;
+    border-radius: 8px;
+    padding: 9px 36px 9px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #444;
+    background: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23888" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.filter-row-select select:hover,
+.filter-row-select select:focus {
+    border-color: #6a4cff;
+}
+
+/* 2행: 정렬·기타 버튼 그룹 */
+.filter-row-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #f8f9fb;
+}
+
+/* ── 정렬 라디오 버튼 (최근등록순 / 마감임박순 – 택1) ── */
+.sort-radio {
+    display: none;
+}
+
+.sort-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid #6a4cff;
+    background: #fff;
+    color: #6a4cff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.sort-radio:checked + .sort-btn {
+    background: #6a4cff;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(106, 76, 255, 0.28);
+}
+
+.sort-btn:hover {
+    background: #ece8ff;
+}
+
+.sort-radio:checked + .sort-btn:hover {
+    background: #5538e6;
+    border-color: #5538e6;
+    color: #fff;
+}
+
+/* 정렬 버튼과 기타 버튼 사이 구분선 */
+.filter-divider {
+    width: 1.5px;
+    height: 22px;
+    background: #d0d5e0;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+/* ── 기타 버튼 ── */
+.etc-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid #e0e3ea;
+    background: #fff;
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.etc-btn:hover {
+    background: #ebeef5;
+    border-color: #b0b8d0;
+}
+
+.etc-btn.active {
+    background: #f0ecff;
+    color: #6a4cff;
+    border-color: #b9a8ff;
+}
+
+/* ───── 이벤트 리스트 카드 ───── */
+.event-container .list-card {
+    position: relative;
+}
+
+/* 리스트 카드 이미지 영역 크게 */
+.event-container .list-card .img-box {
+    height: 200px;
+}
+
+/* 하트: 이미지 우측 하단 */
+.list-card .heart-icon {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1;
+    line-height: 1;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.35));
+    transition: transform 0.15s ease;
+}
+
+.list-card .heart-icon:hover {
+    transform: scale(1.2);
+}
+
+.list-card .text-box {
+    padding: 16px 16px 24px;   /* 하단 여백 넉넉하게 */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 130px;          /* 텍스트 영역 최소 높이 보장 */
+}
+
+.badges {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.left-badges {
+    display: flex;
+    gap: 6px;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.blue-text   { color: #00a2ff; background: #e8f4ff; }
+.green-text  { color: #00b347; background: #e6f7ee; }
+.purple-text { color: #9c27b0; background: #f5e9f9; }
+
+.red-bg {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.d-day {
+    color: #ff5500;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.list-card .title {
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 700;
+    word-break: keep-all;
+    /* 다른 CSS의 line-clamp 강제 해제 */
+    overflow: visible !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    text-overflow: clip !important;
+    max-height: none !important;
+    height: auto !important;
+}
+
+.list-card .text-box {
+    padding: 16px 16px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 130px;
+    overflow: visible !important;
+    height: auto !important;
+}
+
+.list-card .prize {
+    font-size: 12.5px;
+    color: #777;
+    font-weight: 600;
+    padding-top: 4px;
+    border-top: 1px dashed #eee;
+}
+
+/* ───── 페이지네이션 ───── */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 44px;
+    padding-bottom: 20px;
+}
+
+.page-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1.5px solid #e0e3ea;
+    background: #fff;
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.18s ease;
+}
+
+.page-btn:hover {
+    background: #ece8ff;
+    border-color: #9b7cff;
+    color: #6a4cff;
+}
+
+.page-btn.active {
+    background: #6a4cff;
+    border-color: #6a4cff;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(106,76,255,0.3);
+}
+
+.page-btn.arrow {
+    font-size: 16px;
+    color: #888;
+}
+
+.page-btn.arrow:hover {
+    color: #6a4cff;
+}
+
+/* ───── 반응형 ───── */
+@media (max-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .filter-row-select,
+    .filter-row-buttons { padding: 12px 14px; }
+    .page-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+    .card-grid { grid-template-columns: repeat(1, 1fr); }
+}

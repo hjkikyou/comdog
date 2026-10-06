@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/rental_list_more.css">
+  </head>
+
+  <main layout:fragment="container" class="rental-container1">
+
+    <!-- 페이지 제목 -->
+    <div class="page-header">
+      <h2 class="page-title">PC (대여)</h2>
+    </div>
+
+    <!-- 이벤트 배너 섹션 -->
+    <section class="event-section">
+      <h3 class="event-title">이 달의 이벤트 할인 상품</h3>
+      <div class="event-banner">
+        <img th:src="@{/images/event_banner.jpg}" alt="이벤트 배너" class="banner-img">
+      </div>
+    </section>
+
+    <!-- 브레드크럼 + 페이지 이동 -->
+    <div class="breadcrumb-bar">
+      <span class="breadcrumb-current">PC 구매</span>
+      <a href="#" class="breadcrumb-link">페이지 이동 &gt;</a>
+    </div>
+
+    <!-- 필터 / 검색 / 정렬 영역 -->
+    <div class="filter-bar">
+
+      <!-- 카테고리 탭 -->
+      <div class="category-tabs">
+        <button class="tab-btn active">PC</button>
+        <button class="tab-btn">게이밍 PC</button>
+        <button class="tab-btn">사무용 PC</button>
+      </div>
+
+      <!-- 검색창 -->
+      <div class="search-box">
+        <input type="text" placeholder="Search" class="search-input">
+        <button class="search-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 정렬 버튼 -->
+      <div class="sort-buttons">
+        <button class="sort-btn active">✓ 최신순</button>
+        <button class="sort-btn">추천순</button>
+        <button class="sort-btn">판매량순</button>
+        <button class="sort-btn">평점순</button>
+        <button class="sort-btn">높은 가격순</button>
+        <button class="sort-btn">낮은 가격순</button>
+      </div>
+    </div>
+
+    <!-- 가격 범위 슬라이더 -->
+    <div class="price-range-bar">
+      <div class="price-range-info">
+        <span class="price-label">Label</span>
+        <span class="price-value">$0-100</span>
+      </div>
+      <div class="range-slider-wrap">
+        <input type="range" class="range-slider" min="0" max="100" value="0">
+      </div>
+      <p class="price-description">Description</p>
+    </div>
+
+    <!-- 상품 목록 그리드 -->
+    <div class="product-grid">
+
+      <!-- 상품 카드 반복 (Thymeleaf th:each 사용 시 아래 구조 활용) -->
+      <!-- th:each="product : ${productList}" 로 교체 가능 -->
+      <div class="product-card" th:each="product : ${productList}">
+        <div class="product-img-wrap">
+          <img th:src="${product.imageUrl}" th:alt="${product.name}" class="product-img">
+        </div>
+        <div class="product-info">
+          <p class="product-name" th:text="${product.name}">Text</p>
+          <p class="product-price" th:text="'$' + ${product.price}">$0</p>
+        </div>
+      </div>
+
+      <!-- 정적 더미 카드 (데이터 없을 때 미리보기용, 필요 시 제거) -->
+      <th:block th:if="${productList == null or #lists.isEmpty(productList)}">
+        <div class="product-card" th:each="i : ${#numbers.sequence(1, 16)}">
+          <div class="product-img-wrap placeholder"></div>
+          <div class="product-info">
+            <p class="product-name">Text</p>
+            <p class="product-price">$0</p>
+          </div>
+        </div>
+      </th:block>
+
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+      <a href="#" class="page-arrow">&larr; Previous</a>
+
+      <a href="#" class="page-num active">1</a>
+      <a href="#" class="page-num">2</a>
+      <a href="#" class="page-num">3</a>
+      <span class="page-ellipsis">...</span>
+      <a href="#" class="page-num">67</a>
+      <a href="#" class="page-num">68</a>
+
+      <a href="#" class="page-arrow">Next &rarr;</a>
+    </div>
+
+ 
+  </main>
+</html>

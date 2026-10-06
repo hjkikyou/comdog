@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post">
+		<input type="hidden" name="categoryId" value="1">
+		<div>
+			<div><label>상품명:</label></div>
+			<div><input type="text" name="name"></div>
+		</div>
+		<div>
+			<div><label>브랜드:</label></div>
+			<div><input type="text" name="brand"></div>
+		</div>
+		<div>
+			<div><label>모델명:</label></div>
+			<div><input type="text" name="modelName"></div>
+		</div>
+		<div>
+			<div><label>출고가(원 단위):</label></div>
+			<div><input type="number" name="basePrice"></div>
+		</div>
+		<div>
+			<div><label>재고 수량</label></div>
+			<div><input type="number" name="stockQuantity"></div>
+		</div>
+		<div>
+			<div><label>상품 상세 설명</label></div>
+			<div><input type="text" name="description"></div>
+		</div>
+		<div>
+			<div><button>등록</button></div>
+			<div><a href="list">취소</a></div>
+		</div>
+	
+	
+	</form>
+
+
+</body>
+</html>

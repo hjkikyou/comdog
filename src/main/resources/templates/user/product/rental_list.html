@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/rental_list.css">
+  </head>
+
+  <main layout:fragment="container" class="rental-container">
+
+    <!-- ════════════════════════════════════
+         히어로 배너 섹션
+    ════════════════════════════════════ -->
+    <section class="hero-section" style="--hero-bg: url('/images/배경이미지.jpg')">
+	  <div class="hero-card">
+	    <div class="hero-img-area"></div>
+	    <div class="hero-label">
+	      <p class="hero-label__title" th:text="|최신${categoryName} 대여|"> 최신OO 대여</p>
+	      <p class="hero-label__sub">보러가기</p>
+	    </div> 
+	  </div>
+	
+	  <div class="hero-card" style="--hero-bg: url('/images/hero2.jpg')">
+	    <div class="hero-img-area"></div>
+	    <div class="hero-label">
+	      <p class="hero-label__title" th:text="|추천 ${categoryName} 대여|"> 추천OO 대여</p>
+	      <p class="hero-label__sub">바로가기</p>
+	    </div>
+	  </div>
+	
+	  <div class="hero-card" style="--hero-bg: url('/images/hero3.jpg')">
+	    <div class="hero-img-area"></div>
+	    <div class="hero-label">
+	      <p class="hero-label__title">실시간 상담</p>
+	      <p class="hero-label__sub">&nbsp;</p>
+	    </div>
+	  </div>
+	</section>
+	
+	<!-- ════════════════════════════════════
+         추천PC 대여 섹션 (네이비 배경)
+    ════════════════════════════════════ -->
+    <section class="product-section product-section--navy">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title" th:text="|추천 ${categoryName} 대여|">추천 XXX 대여</h2>
+          <a href="/rental_list_more" class="btn-more btn-more--light">더보기 ›</a>
+        </div>
+
+        <div class="product-grid">
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|추천${categoryName}1|">추천 XXX 1</p>
+              <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|추천${categoryName}2|">추천 XXX 2</p>
+              <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|추천${categoryName}3|">추천 XXX 3</p>
+              <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|추천${categoryName}4|">추천 XXX 4</p>
+              <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ════════════════════════════════════
+         최신 PC 대여 섹션 (청록 배경)
+    ════════════════════════════════════ -->
+    <section class="product-section product-section--teal">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title" th:text="|최신 ${categoryName} 대여|">최신 XXX 대여</h2>
+          <a href="//rental_list_more" class="btn-more">더보기 ›</a>
+        </div>
+
+        <div class="product-grid">
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|최신${categoryName}1|">최신 XXX 1</p>
+              <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|최신${categoryName}2|">최신 XXX 2</p>
+              <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|최신${categoryName}3|" >최신 XXX 3</p>
+              <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img-box"><div class="img-placeholder"></div></div>
+            <div class="prod-body">
+              <p class="prod-name" th:text="|최신${categoryName}4|">최신 XXX 4</p>
+              <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+              <a href="#" class="prod-link">More Info →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- ════════════════════════════════════
+         BEST PC 대여 섹션
+    ════════════════════════════════════ -->
+    <section class="product-section">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|BEST ${categoryName} 대여|">BEST XXX 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name">인기상품1</p>
+            <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name">인기상품2</p>
+            <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name">인기상품3</p>
+            <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name">인기상품4</p>
+            <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ════════════════════════════════════
+         BEST 일반/사무용 XXX 대여 섹션
+    ════════════════════════════════════ -->
+    <section class="product-section">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|BEST 일반/사무용 ${categoryName} 대여|">BEST 일반/사무용 XXX 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|일반/사무용 ${categoryName} 1|">일반/사무용 XXX 1</p>
+            <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|일반/사무용 ${categoryName} 3|" >일반/사무용 XXX 2</p>
+            <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|일반/사무용 ${categoryName} 3|" >일반/사무용 XXX 3</p>
+            <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|일반/사무용 ${categoryName} 4|" >일반/사무용 XXX 4</p>
+            <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ════════════════════════════════════
+         BEST 전문가용 XXX 대여 섹션
+    ════════════════════════════════════ -->
+    <section class="product-section">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|BEST 전문가용 ${categoryName} 대여|"> BEST 전문가용 XXX 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|전문가용 ${categoryName} 1|"> 전문가용 XXX 1</p>
+            <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|전문가용 ${categoryName} 2|"> 전문가용 XXX 2</p>
+            <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|전문가용 ${categoryName} 3|"> 전문가용 XXX 3</p>
+            <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|전문가용 ${categoryName} 4|"> 전문가용 XXX 4</p>
+            <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- ════════════════════════════════════
+         BEST 게이밍 PC 대여 섹션
+    ════════════════════════════════════ -->
+    <section class="product-section">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|BEST 게이밍 ${categoryName} 대여|"> BEST 게이밍 XXX 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|게이밍 ${categoryName} 1|"> 게이밍 XXX 1</p>
+            <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|게이밍 ${categoryName} 2|"> 게이밍 XXX 2</p>
+            <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|게이밍 ${categoryName} 3|"> 게이밍 XXX 3</p>
+            <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|게이밍 ${categoryName} 4|"> 게이밍 XXX 4</p>
+            <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ════════════════════════════════════
+         BEST 특별 섹션 리스트 대여 섹션
+	         	1,PC -> 14, 미니 PC
+	         3,모니터 -> 34, 휴대용 모니터
+	         4,노트북 -> 44, 경량 특화 노트북
+    ════════════════════════════════════ -->
+    <section class="product-section" th:if="${specialList != null}">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|BEST ${specialName} 대여|"> BEST XXXXX 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-img-box">
+          	<div class="img-placeholder"></div>
+          </div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|${specialName} 1|"> XXXXX 1</p>
+               <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|${specialName} 2|"> XXXXX 2</p>
+            <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|${specialName} 3|"> XXXXX 3</p>
+            <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-box"><div class="img-placeholder"></div></div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="|${specialName} 4|"> XXXXX 4</p>
+            <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="prod-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</html>

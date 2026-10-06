@@ -1,0 +1,432 @@
+/* =============================================
+   HEADER.CSS — 헤더 전용 레이아웃
+   ============================================= */
+
+/* 1. 변수 이름 업데이트 (common.css에 맞춤) */
+.site-header {
+    width: 100%;
+    /* 화면을 아무리 줄여도 1200px 이하로는 줄어들지 않도록 강제 (가로 스크롤 생성) */
+    min-width: 1200px;
+    border-bottom: 1px solid var(--color-border, #e5e7eb); /* fallback 컬러 추가 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--bg-white, #ffffff);
+}
+
+/* 2. 하위 요소들에 .site-header를 붙여서 스타일 충돌 완벽 방지 */
+.site-header .header-container {
+    width: 1200px; /* 반응형(min) 속성 제거하고 1200px로 완전 고정 */
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ════════════════════════════════════
+   1. 최상단 바
+════════════════════════════════════ */
+.site-header .header-top {
+    background-color: var(--bg-light, #fafafa);
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    color: #555;
+    padding: 7px 0;
+}
+
+.site-header .top-left,
+.site-header .top-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.site-header .top-left i { color: var(--color-accent, #6D3AFF); margin-right: 2px; }
+
+.site-header .top-right a {
+    color: #555;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: color 0.15s;
+}
+
+.site-header .top-right a:hover { color: var(--color-accent, #6D3AFF); }
+
+.site-header .top-divider { color: #ddd; margin: 0 6px; }
+
+/* ════════════════════════════════════
+   2. 중간 바 (로고 + 검색 + 아이콘)
+════════════════════════════════════ */
+.site-header .header-middle {
+    padding: 14px 0;
+    background-color: var(--bg-white, #ffffff);
+}
+
+.site-header .logo-area { flex-shrink: 0; }
+
+.site-header .logo-area a {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header .logo-text {
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 700;
+    font-size: 24.2px;
+    line-height: 1;
+    margin-bottom: 0.5px;
+    background: #3A00E5;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.site-header .logo-area a:hover .logo-text { color: var(--color-accent, #6D3AFF); }
+
+.site-header .logo-sub {
+    font-size: 8px;
+    color: var(--color-muted, #888);
+    margin-top: 0;
+}
+
+.site-header .search-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.site-header .search-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--color-border, #e5e7eb);
+    box-shadow: 4px 4px 0px #8b5cf6;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 520px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.site-header .search-box:focus-within {
+    border-color: var(--color-accent, #6D3AFF);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+
+.site-header .search-select {
+    border: none;
+    border-right: 1px solid var(--color-border, #e5e7eb);
+    padding: 7px 12px;
+    background-color: #f9f9f9;
+    color: #555;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: inherit;
+}
+
+.site-header .search-input {
+    flex: 1;
+    border: none;
+    padding: 7px 14px;
+    font-size: 14px;
+    outline: none;
+    color: var(--color-text, #333);
+    background: transparent;
+    min-width: 0;
+}
+
+.site-header .search-input::placeholder { color: #b0b7c3; }
+
+.site-header .btn-search {
+    background-color: var(--color-accent, #6D3AFF);
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    height: 36px;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.15s;
+}
+
+.site-header .btn-search:hover { background-color: #1447c0; }
+
+
+/* ─── 아이콘 영역 ─── */
+.site-header .middle-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.site-header .header-icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: var(--color-text, #333);
+    position: relative;
+    transition: background-color 0.15s, color 0.15s;
+    cursor: pointer;
+}
+
+.site-header .header-icon-btn:hover {
+    background-color: #f0f4ff;
+    color: var(--color-accent, #6D3AFF);
+}
+
+.site-header .header-icon-btn i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.site-header .icon-label {
+    font-size: 10px;
+    color: var(--color-muted, #888);
+    white-space: nowrap;
+}
+
+.site-header .header-icon-btn:hover .icon-label { color: var(--color-accent, #6D3AFF); }
+
+.site-header .icon-badge {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    background-color: #e02424;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 10px;
+    line-height: 1.4;
+}
+
+/* ════════════════════════════════════
+   3. 하단 네비게이션 바
+════════════════════════════════════ */
+.site-header .header-bottom {
+    background-color: var(--bg-gray, #f3f4f6);
+    border-top: 1px solid var(--color-border, #e5e7eb);
+}
+
+.site-header .btn-all-category {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #d1d5db;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 16px;
+    color: var(--color-text, #333);
+    flex-shrink: 0;
+    transition: background-color 0.15s, border-color 0.15s;
+    font-family: inherit;
+    margin-left: 0;
+}
+
+.site-header .btn-all-category:hover {
+    background-color: #f0f4ff;
+    border-color: var(--color-accent, #6D3AFF);
+    color: var(--color-accent, #6D3AFF);
+}
+
+.site-header .nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.site-header .main-menu {
+    display: flex;
+    align-items: center;
+}
+
+.site-header .main-menu li a {
+    display: block;
+    padding: 10px 11px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text, #333);
+    white-space: nowrap;
+    transition: color 0.15s;
+    position: relative;
+}
+
+.site-header .main-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    background-color: var(--color-accent, #6D3AFF);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.site-header .main-menu li a:hover { color: var(--color-accent, #6D3AFF); }
+.site-header .main-menu li a:hover::after { transform: scaleX(1); }
+
+.site-header .menu-divider {
+    color: #d1d5db;
+    padding: 0 4px;
+    font-size: 12px;
+    user-select: none;
+}
+
+.site-header .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.site-header .user-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-accent, #6D3AFF);
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.15s;
+}
+
+.site-header .user-link:hover { background-color: #f0f4ff; }
+
+/* ════════════════════════════════════
+   드롭다운 패널
+════════════════════════════════════ */
+.site-header .menu-item {
+    position: relative;
+}
+
+.site-header .dropdown-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 260px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 999;
+}
+
+.site-header .menu-item--dropdown:hover .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.site-header .dropdown-sections {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header .dropdown-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.15s;
+}
+
+.site-header .dropdown-section--top {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.site-header .dropdown-section--top:hover {
+    background: linear-gradient(135deg, rgba(245, 217, 140, 0.08) 0%, rgba(109, 58, 255, 0.08) 100%);
+}
+
+.site-header .dropdown-section--bottom:hover {
+    background: linear-gradient(135deg, rgba(55,200,195,0.08) 0%, rgba(109,58,255,0.08) 100%);
+}
+
+.site-header .ds-label {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background-color: #3A00E5;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header .dropdown-section--top .ds-label {
+    background: linear-gradient(135deg, rgba(245, 217, 140, 0.15) 0%, rgba(109, 58, 255, 0.15) 100%);
+    color: #6D3AFF;
+}
+
+.site-header .dropdown-section--bottom .ds-label {
+    background: linear-gradient(135deg, rgba(55,200,195,0.15) 0%, rgba(109,58,255,0.15) 100%);
+    color: #6D3AFF;
+}
+
+.site-header .ds-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.site-header .ds-desc {
+    font-size: 11px;
+    color: #9ca3af;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.site-header .ds-arrow {
+    font-size: 11px;
+    color: #d1d5db;
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+}
+
+.site-header .dropdown-section:hover .ds-arrow {
+    color: #6D3AFF;
+    transform: translateX(2px);
+}
+
+.site-header .menu-item--dropdown:has(.dropdown-section--exclusive) .dropdown-panel {
+    width: 280px;
+}
+
+.site-header .dropdown-section--exclusive:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.site-header .dropdown-section--exclusive:hover {
+    background: linear-gradient(135deg, rgba(55, 200, 195, 0.08) 0%, rgba(109, 58, 255, 0.08) 100%);
+}
+
+/* ════════════════════════════════════
+   반응형 X
+════════════════════════════════════ */
+

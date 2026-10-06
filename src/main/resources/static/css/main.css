@@ -1,0 +1,90 @@
+
+            /* 레이아웃 여백 띄우기 */
+            /* 레이아웃 여백 띄우기 및 가로 정렬 방지 */
+			.main-container { 
+			    width: 1200px; 
+			    margin: 0 auto; 
+			    display: block; /* ✨ 핵심! 가로 정렬을 끄고 세로로 쌓이게 만듭니다 */
+			    padding-top: 20px; 
+			    padding-bottom: 60px; 
+			    font-family: 'Pretendard', -apple-system, sans-serif; 
+			}
+            ul { list-style: none; padding: 0; margin: 0; }
+            a { text-decoration: none; color: inherit; }
+
+            /* 히어로 섹션 */
+            .hero-section { display: flex; gap: 24px; margin-top: 20px; }
+            .hero-placeholder { width: 384px; height: 384px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+            .placeholder-box { width: 140px; height: 140px; border: 4px solid #cbd5e1; position: relative; }
+            .placeholder-box::before, .placeholder-box::after { content: ''; position: absolute; background: #cbd5e1; top: 0; left: 0; right: 0; bottom: 0; margin: auto; }
+            .placeholder-box::before { width: 100%; height: 4px; transform: rotate(45deg); }
+            .placeholder-box::after { width: 100%; height: 4px; transform: rotate(-45deg); }
+
+            /* 컨트롤 버튼 */
+            .controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 30px 0 50px; }
+            .arrow { font-size: 20px; color: #999; cursor: pointer; user-select: none; }
+            .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #ccc; cursor: pointer; }
+            .dot.active { background-color: #3b82f6; border-color: #3b82f6; }
+
+            /* 퀵 링크 */
+            .quick-links { display: flex; justify-content: space-between; margin-bottom: 60px; }
+            .quick-item { width: 90px; height: 90px; background-color: #d1d5db; border-radius: 16px; flex-shrink: 0; }
+
+            /* 추천/피처드 섹션 */
+            .featured-section { border: 1px solid #e5e7eb; border-radius: 12px; display: flex; overflow: hidden; margin-bottom: 60px; height: 280px; }
+            .video-placeholder { width: 600px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+            .play-btn { width: 60px; height: 60px; border: 4px solid #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+            .play-btn::after { content: ''; display: block; border-left: 20px solid #fff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 8px; }
+            
+            .featured-text { width: 600px; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+            .featured-text h2 { font-size: 28px; margin-bottom: 16px; font-weight: 700; line-height: 1.3; }
+            .featured-text p { color: #6b7280; font-size: 14px; line-height: 1.6; }
+
+            /* 섀도우 카드 섹션 */
+            .card-section { display: flex; gap: 20px; margin-bottom: 60px; }
+            .card { width: 224px; height: 220px; border: 1px solid #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); font-weight: bold; font-size: 14px; color: #111827; flex-shrink: 0; }
+
+            /* 탭 메뉴 */
+            .filter-tab-bar { display: flex; gap: 10px; margin-bottom: 40px; }
+            .tab-btn { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; background-color: #f3f4f6; color: #666; border: none; cursor: pointer; }
+            .tab-btn.purple-active { background-color: #5c24fc; color: #fff; }
+            .tab-btn.dropdown { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #ddd; background: #fff; }
+
+            /* 섹션 헤더 */
+            .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+            .section-title-group { display: flex; align-items: center; gap: 15px; }
+            .section-header h3 { font-size: 24px; font-weight: bold; color: #000; }
+            .btn-more { font-size: 13px; color: #666; font-weight: 500; }
+
+            /* 상품 그리드 & 카드 공통 */
+            .product-grid { display: flex; gap: 24px; margin-bottom: 60px; }
+            .prod-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background-color: #fff; display: flex; flex-direction: column; }
+            .prod-img-box { background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; }
+            .prod-info-box { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+            
+            .prod-category { font-size: 11px; color: #9ca3af; margin-bottom: 4px; font-weight: 600; }
+            .prod-title { font-size: 15px; font-weight: bold; color: #111827; margin-bottom: 10px; line-height: 1.4; }
+            .prod-desc { font-size: 13px; color: #6b7280; line-height: 1.5; margin-bottom: 16px; }
+            .prod-more-link { font-size: 13px; color: #2563eb; font-weight: bold; margin-top: auto; display: inline-flex; align-items: center; gap: 4px; }
+
+            /* 타입 A (대형) / 타입 B (일반) */
+            .prod-card.type-large { width: 282px; height: 500px; flex-shrink: 0; }
+            .prod-card.type-large .prod-img-box { height: 180px; }
+            .prod-card.type-standard { width: 282px; height: 500px; flex-shrink: 0; }
+            .prod-card.type-standard .prod-img-box { height: 260px; }
+
+            /* 프로필 & 버튼 */
+            .profile-area { display: flex; align-items: center; gap: 10px; padding-top: 15px; border-top: 1px solid #f3f4f6; margin-bottom: 15px; }
+            .profile-circle { width: 32px; height: 32px; background-color: #e5e7eb; border-radius: 50%; }
+            .profile-info { font-size: 12px; }
+            .profile-name { font-weight: bold; color: #333; }
+            .profile-role { color: #9ca3af; font-size: 11px; }
+
+            .card-btn-group { display: flex; gap: 8px; margin-top: auto; }
+            .c-btn { flex: 1; padding: 10px 0; border-radius: 4px; font-size: 12px; font-weight: bold; text-align: center; cursor: pointer; border: none; }
+            .c-btn.btn-primary { background-color: #0d6efd; color: #fff; }
+            .c-btn.btn-outline { background-color: #fff; color: #0d6efd; border: 1px solid #0d6efd; }
+
+            /* 푸터 위 빈 블록들 */
+            .footer-blocks { display: flex; gap: 24px; margin: 8px 0 60px 0; }
+            .footer-block-item { flex: 1; height: 100px; background-color: #d1d5db; }

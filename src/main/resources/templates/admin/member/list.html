@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>사용자 목록</h3>
+		</div>
+	</div>
+	
+
+	<div>
+		<table border="1">
+			<thead>
+			    <tr>
+			        <th>이메일</th>
+			        <th>비밀번호</th>
+			        <th>성명</th>
+			        <th>전화번호</th>
+			        <th>회원구분</th>
+			        <th>구독여부</th>
+			        <th>가입일</th>
+			        <th>수정</th>
+			    </tr>
+			</thead>
+						
+			<tbody>		
+			<tr th:if="${viewMemberList.isEmpty()}">
+   				 <td colspan="9" style="text-align: center;">등록된 회원이 없습니다.</td>
+			</tr>
+				<tr th:unless="${viewMemberList.isEmpty()}" th:each="item : ${viewMemberList}">
+				    <td th:text="${item.email}">이메일</td>    				    
+				    <td th:text="${item.password}">비밀번호</td>   				    
+				    <td th:text="${item.name}">성명</td>   				    
+				    <td th:text="${item.phone}">전화번호</td>				    				    
+				    <td th:text="${item.userType}">회원구분</td>				    				    
+				    <td th:text="${item.isSubscribed ? '구독중' : '미구독'}">구독여부</td>				    				    
+				    <td th:text="${#temporals.format(item.createdAt, 'yyyy-MM-dd HH:mm')}">가입일</td>				    
+				    <td>
+				        <a th:href="@{|/admin/member/update/${item.id}|}">변경</a>
+				        <a th:href="@{|/admin/member/delete/${item.id}|}">삭제</a>
+				    </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+				<div>
+				    <div><a th:href="@{/admin/member/add}">사용자 등록</a></div>				    				    
+				    <div><a th:href="@{/admin/member/list}">초기화</a></div>				    
+				    <div><a th:href="@{/admin}">이전</a></div>
+				</div>
+	
+	
+</body>
+</html>

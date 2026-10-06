@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+<!--  회원 등록  -->
+<insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto" useGeneratedKeys="true" keyProperty="id"> 
+INSERT INTO member ( email, password, name, phone, birth_date, gender_digit, user_type, 
+is_subscribed, created_at ) 
+VALUES ( #{email}, #{password}, #{name}, #{phone}, #{birthDate}, #{genderDigit},
+ #{userType}, #{isSubscribed}, #{createdAt} ) </insert>
+<!--  이메일 중복 확인  -->
+<select id="countByEmail" parameterType="String" resultType="int"> 
+SELECT COUNT(*) FROM member WHERE email = #{email} </select>
+</mapper>

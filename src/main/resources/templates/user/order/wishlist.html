@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>관심상품</title>
+    <link rel="stylesheet" href="/css/wishlist.css">
+</head>
+<body>
+
+<main layout:fragment="container" class="wishlist-container">
+
+    <div class="wishlist-header">
+        <h2 class="page-title">관심상품</h2>
+        <a href="#" class="btn-group-manage">그룹관리 &gt;</a>
+    </div>
+
+    <div class="wishlist-tabs">
+        <button type="button" class="tab-item active">전체<span class="tab-count">(3)</span></button>
+        <button type="button" class="tab-item">찜꿍<span class="tab-count">(3)</span></button>
+    </div>
+
+    <div class="control-toolbar">
+        <div class="toolbar-left">
+            <label class="custom-checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="label-text">리스트 전체 선택 (3)</span>
+            </label>
+            <label class="custom-checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="label-text">재고없음 제외</span>
+            </label>
+        </div>
+        <div class="toolbar-right">
+            <button type="button" class="btn-tool">삭제</button>
+            <button type="button" class="btn-tool btn-highlight">장바구니</button>
+            <button type="button" class="btn-tool">그룹이동</button>
+            <button type="button" class="btn-tool">선택상품복사</button>
+            <button type="button" class="btn-tool">사양검토요청</button>
+            <button type="button" class="btn-view-toggle">
+                <span>⣿</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="summary-banner-box">
+        <div class="summary-info">
+            <span class="summary-label">선택상품 총 금액</span>
+            <span class="summary-count">(총 <strong class="highlight-text">0</strong>개)</span>
+        </div>
+        <div class="summary-price">
+            <span class="price-label">판매가</span>
+            <span class="price-amount">0원</span>
+        </div>
+    </div>
+
+    <div class="wishlist-grid">
+
+        <div class="product-card">
+            <div class="card-header">
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="product-image-wrapper">
+                <div class="img-box">🖥️</div>
+            </div>
+            <div class="product-body">
+                <div class="brand-tags">
+                    <span class="tag tag-amd">RYZEN 9850X3D</span>
+                    <span class="tag tag-radeon">RADEON 9070XT</span>
+                </div>
+                <h4 class="product-title">[컴퓨존] 프리미엄 조립PC_P2304W (9850X3D/9070XT)</h4>
+                <div class="price-info">
+                    <span class="discount-rate">1%</span>
+                    <span class="original-price">3,485,000원</span>
+                    <div class="current-price">3,432,000원</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="quantity-box">
+                    <input type="number" value="1" min="1" class="input-qty">
+                    <button type="button" class="btn-qty-change">변경</button>
+                </div>
+                <button type="button" class="btn-add-cart" title="장바구니 담기">🛒</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="card-header">
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="product-image-wrapper">
+                <div class="img-box">🖥️</div>
+            </div>
+            <div class="product-body">
+                <div class="brand-tags">
+                    <span class="tag tag-hp">HP 일체형</span>
+                </div>
+                <h4 class="product-title">[HP] 24-CR0021KR Intel N100 (8GB/256GB/Win11Home)</h4>
+                <div class="price-info">
+                    <span class="discount-rate">2%</span>
+                    <span class="original-price">849,000원</span>
+                    <div class="current-price">829,000원</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="quantity-box">
+                    <input type="number" value="1" min="1" class="input-qty">
+                    <button type="button" class="btn-qty-change">변경</button>
+                </div>
+                <button type="button" class="btn-add-cart" title="장바구니 담기">🛒</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="card-header">
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="product-image-wrapper">
+                <div class="img-box">💻</div>
+            </div>
+            <div class="product-body">
+                <div class="brand-tags">
+                    <span class="tag tag-lg">LG그램 프로</span>
+                </div>
+                <h4 class="product-title">[LG전자] LG 그램 프로 AI AMD 16ZD95U-GX79K (Ryzen AI)</h4>
+                <div class="price-info">
+                    <span class="discount-rate">3%</span>
+                    <span class="original-price">2,960,000원</span>
+                    <div class="current-price">2,860,000원</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="quantity-box">
+                    <input type="number" value="1" min="1" class="input-qty">
+                    <button type="button" class="btn-qty-change">변경</button>
+                </div>
+                <button type="button" class="btn-add-cart" title="장바구니 담기">🛒</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="pagination-wrapper">
+        <div class="pagination">
+            <button type="button" class="page-link active">1</button>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

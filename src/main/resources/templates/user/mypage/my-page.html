@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <title>마이페이지 - COMDOG</title>
+    <link rel="stylesheet" th:href="@{/css/my-page.css}">
+</head>
+
+<body>
+
+<main layout:fragment="container" class="mp-container">
+
+<div class="mp-wrap">
+
+    <!-- ══════════════════ MY COMDOG 상단 배너 ══════════════════ -->
+    <section class="mp-summary">
+        <div class="mp-container">
+
+            <p class="mp-summary__page-title">MY COMDOG</p>
+
+            <div class="mp-summary__inner">
+
+                <!-- 유저 정보 -->
+                <div class="mp-summary__user">
+                    <div class="mp-avatar">🐕</div>
+                    <div class="mp-summary__userinfo">
+                        <p class="mp-summary__name"><strong>홍길동</strong> 님</p>
+                        <span class="mp-summary__email">user@comdog.co.kr</span>
+                    </div>
+                </div>
+
+                <!-- 중앙 통계 3개 -->
+                <div class="mp-summary__stats">
+                    <a th:href="@{/mypage/coupon}" class="mp-summary__stat">
+                        <span class="mp-summary__stat-label">쿠폰</span>
+                        <span class="mp-summary__stat-value">
+                            <em class="mp-em">3</em>개
+                            <span class="mp-summary__stat-sub">(미발급 1개)</span>
+                        </span>
+                    </a>
+                    <div class="mp-summary__vline"></div>
+                    <a th:href="@{/mypage/point}" class="mp-summary__stat">
+                        <span class="mp-summary__stat-label">적립금</span>
+                        <span class="mp-summary__stat-value"><em class="mp-em">12,500</em>원</span>
+                    </a>
+                    <div class="mp-summary__vline"></div>
+                    <a th:href="@{/mypage/inquiry}" class="mp-summary__stat">
+                        <span class="mp-summary__stat-label">상담내역</span>
+                        <span class="mp-summary__stat-value"><em class="mp-em">2</em>건</span>
+                    </a>
+                </div>
+
+                <!-- 우측 멤버십 등급 위젯 -->
+                <div class="mp-grade-widget">
+                    <div class="mp-grade-widget__info">
+                        <span class="mp-grade-widget__label">나의 등급</span>
+                        <div class="mp-grade-widget__row">
+                            <span class="mp-grade-widget__badge mp-grade--rookie">ROOKIE</span>
+                            <span class="mp-grade-widget__mp">2,880 MP</span>
+                            <span class="mp-grade-widget__arrow">▾</span>
+                        </div>
+                    </div>
+
+                    <!-- 호버 팝업 -->
+                    <div class="mp-grade-popup">
+                        <div class="mp-grade-popup__header">
+                            <span class="mp-grade-popup__title">멤버십 등급 안내</span>
+                            <span class="mp-grade-popup__period">2026.04.01 ~ 2026.06.30</span>
+                        </div>
+                        <div class="mp-grade-popup__current">
+                            <span class="mp-grade-popup__cur-label">현재 등급</span>
+                            <span class="mp-grade-popup__cur-name mp-grade--rookie">ROOKIE</span>
+                            <span class="mp-grade-popup__next">다음달 예정: 루키</span>
+                        </div>
+                        <div class="mp-grade-bar">
+                            <div class="mp-grade-bar__track">
+                                <div class="mp-grade-bar__fill" style="width: 58%"></div>
+                            </div>
+                            <div class="mp-grade-bar__labels">
+                                <span>0 MP</span>
+                                <span>4,999 MP</span>
+                            </div>
+                            <p class="mp-grade-bar__hint">BRONZE까지 <strong>2,120 MP</strong> 남음</p>
+                        </div>
+                        <div class="mp-grade-tiers">
+                            <div class="mp-grade-tier mp-grade-tier--active" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--rookie">ROOKIE</span>
+                                <span class="mp-grade-tier__range">~4,999</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>ROOKIE 혜택</strong>
+                                    <ul>
+                                        <li>🎁 가입 웰컴 쿠폰 제공</li>
+                                        <li>💰 구매 시 1% 적립</li>
+                                        <li>📦 5만원 이상 무료배송</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mp-grade-tier" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--bronze">BRONZE</span>
+                                <span class="mp-grade-tier__range">5,000~</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>BRONZE 혜택</strong>
+                                    <ul>
+                                        <li>🎁 브론즈 전용 쿠폰팩</li>
+                                        <li>💰 구매 시 1.5% 적립</li>
+                                        <li>📦 3만원 이상 무료배송</li>
+                                        <li>⚡ 빠른 배송 우선 처리</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mp-grade-tier" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--silver">SILVER</span>
+                                <span class="mp-grade-tier__range">15,000~</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>SILVER 혜택</strong>
+                                    <ul>
+                                        <li>🎁 월간 실버 박스</li>
+                                        <li>💰 구매 시 2% 적립</li>
+                                        <li>📦 2만원 이상 무료배송</li>
+                                        <li>🔧 A/S 우선 접수</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mp-grade-tier" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--gold">GOLD</span>
+                                <span class="mp-grade-tier__range">30,000~</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>GOLD 혜택</strong>
+                                    <ul>
+                                        <li>🎁 골드 멤버십 박스</li>
+                                        <li>💰 구매 시 3% 적립</li>
+                                        <li>📦 전 상품 무료배송</li>
+                                        <li>🖥️ PC 견적 무료 컨설팅</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mp-grade-tier" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--platinum">PLAT</span>
+                                <span class="mp-grade-tier__range">60,000~</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>PLATINUM 혜택</strong>
+                                    <ul>
+                                        <li>🎁 플래티넘 전용 박스</li>
+                                        <li>💰 구매 시 4% 적립</li>
+                                        <li>📦 전 상품 무료배송</li>
+                                        <li>🎫 전용 쿠폰 월 2매</li>
+                                        <li>🔑 멤버십 키 제공</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mp-grade-tier" tabindex="0">
+                                <span class="mp-grade-tier__name mp-grade--vip">VIP</span>
+                                <span class="mp-grade-tier__range">120,000~</span>
+                                <div class="mp-grade-tier__reward-popup">
+                                    <strong>VIP 혜택</strong>
+                                    <ul>
+                                        <li>🎁 VIP 서프라이즈 박스</li>
+                                        <li>💰 구매 시 5% 적립</li>
+                                        <li>📦 전 상품 무료배송</li>
+                                        <li>📞 VIP 전용 상담 라인</li>
+                                        <li>🔑 멤버십 키 + 추가혜택</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:href="@{/mypage/grade}" class="mp-grade-popup__link">등급 상세 안내 →</a>
+                    </div>
+                </div>
+
+            </div><!-- /mp-summary__inner -->
+        </div>
+    </section>
+
+    <!-- ══════════════════ 본문 ══════════════════ -->
+    <div class="mp-container mp-body">
+
+        <!-- ── 사이드바 ── -->
+        <aside class="mp-sidebar">
+
+            <!-- details/summary 드롭다운 -->
+            <details class="mp-nav-group" open>
+                <summary class="mp-nav-group__title">MY 주문</summary>
+                <ul class="mp-nav-group__list">
+                    <li><a th:href="@{/mypage/orders}">주문내역</a></li>
+                    <li><a th:href="@{/mypage/software}">소프트웨어 라이선스 관리</a></li>
+                    <li><a th:href="@{/mypage/as/request}">A/S · 교환 · 반품 신청</a></li>
+                    <li><a th:href="@{/mypage/as/history}">A/S · 교환 · 반품 내역</a></li>
+                    <li><a th:href="@{/mypage/rental}">구독 · 렌탈 관리</a></li>
+                </ul>
+            </details>
+
+            <details class="mp-nav-group">
+                <summary class="mp-nav-group__title">MY 혜택</summary>
+                <ul class="mp-nav-group__list">
+                    <li><a th:href="@{/mypage/coupon}">쿠폰</a></li>
+                    <li><a th:href="@{/mypage/point}">적립금</a></li>
+                    <li><a th:href="@{/mypage/grade}">멤버십 등급</a></li>
+                </ul>
+            </details>
+
+            <details class="mp-nav-group">
+                <summary class="mp-nav-group__title">MY 관심목록</summary>
+                <ul class="mp-nav-group__list">
+                    <li><a th:href="@{/mypage/recent}">최근 본 쇼핑정보</a></li>
+                    <li><a th:href="@{/mypage/wishlist}">관심상품</a></li>
+                    <li><a th:href="@{/mypage/restock}">재입고알림</a></li>
+                    <li><a th:href="@{/mypage/cart}">장바구니</a></li>
+                </ul>
+            </details>
+
+            <details class="mp-nav-group">
+                <summary class="mp-nav-group__title">MY 활동</summary>
+                <ul class="mp-nav-group__list">
+                    <li><a th:href="@{/mypage/review}">구매후기</a></li>
+                    <li><a th:href="@{/mypage/event-win}">이벤트 당첨내역</a></li>
+                </ul>
+            </details>
+
+            <details class="mp-nav-group">
+                <summary class="mp-nav-group__title">MY 정보</summary>
+                <ul class="mp-nav-group__list">
+                    <li><a th:href="@{/mypage/profile}">내 정보 관리</a></li>
+                    <li><a th:href="@{/mypage/address}">배송지 관리</a></li>
+                    <li><a th:href="@{/mypage/alert}">알림 설정</a></li>
+                    <li><a th:href="@{/mypage/social}">소셜계정 연동 설정</a></li>
+                </ul>
+            </details>
+
+            <!-- PC 견적 위젯 -->
+            <div class="mp-estimate-widget">
+                <div class="mp-estimate-widget__header">
+                    <span class="mp-estimate-widget__title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 7h8M8 12h8M8 17h5"/></svg>
+                        저장된 PC 견적
+                    </span>
+                    <a th:href="@{/estimate}" class="mp-estimate-widget__new" title="새 견적 작성">+</a>
+                </div>
+
+                <div class="mp-estimate-widget__select-wrap">
+                    <select class="mp-estimate-widget__select">
+                        <option value="">견적 선택</option>
+                        <option value="1">게이밍 PC 견적 A</option>
+                        <option value="2">사무용 PC 구성안</option>
+                        <option value="3">크리에이터 워크스테이션</option>
+                    </select>
+                </div>
+
+                <ul class="mp-estimate-widget__list">
+                    <li class="mp-estimate-widget__item">
+                        <div class="mp-estimate-widget__item-info">
+                            <span class="mp-estimate-widget__item-name">게이밍 PC 견적 A</span>
+                            <span class="mp-estimate-widget__item-price">1,850,000원</span>
+                        </div>
+                        <div class="mp-estimate-widget__item-actions">
+                            <a th:href="@{/estimate/view(id=1)}" class="mp-estimate-widget__btn mp-estimate-widget__btn--view">보기</a>
+                            <button class="mp-estimate-widget__btn mp-estimate-widget__btn--del" type="button">×</button>
+                        </div>
+                    </li>
+                    <li class="mp-estimate-widget__item">
+                        <div class="mp-estimate-widget__item-info">
+                            <span class="mp-estimate-widget__item-name">사무용 PC 구성안</span>
+                            <span class="mp-estimate-widget__item-price">720,000원</span>
+                        </div>
+                        <div class="mp-estimate-widget__item-actions">
+                            <a th:href="@{/estimate/view(id=2)}" class="mp-estimate-widget__btn mp-estimate-widget__btn--view">보기</a>
+                            <button class="mp-estimate-widget__btn mp-estimate-widget__btn--del" type="button">×</button>
+                        </div>
+                    </li>
+                    <li class="mp-estimate-widget__item">
+                        <div class="mp-estimate-widget__item-info">
+                            <span class="mp-estimate-widget__item-name">크리에이터 워크스테이션</span>
+                            <span class="mp-estimate-widget__item-price">3,240,000원</span>
+                        </div>
+                        <div class="mp-estimate-widget__item-actions">
+                            <a th:href="@{/estimate/view(id=3)}" class="mp-estimate-widget__btn mp-estimate-widget__btn--view">보기</a>
+                            <button class="mp-estimate-widget__btn mp-estimate-widget__btn--del" type="button">×</button>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- 견적 없을 때: th:if="${#lists.isEmpty(estimates)}" -->
+                <!--
+                <div class="mp-estimate-widget__empty">
+                    <p>저장된 견적이 없습니다</p>
+                    <a th:href="@{/estimate}" class="mp-estimate-widget__add-btn">+ 견적 만들기</a>
+                </div>
+                -->
+
+                <a th:href="@{/mypage/estimates}" class="mp-estimate-widget__all">전체 견적 보기 →</a>
+            </div>
+
+            <!-- 상담센터 -->
+            <div class="mp-contact-box">
+                <p class="mp-contact-box__title">COMDOG 상담센터</p>
+                <p class="mp-contact-box__tel">1588-0000</p>
+                <p class="mp-contact-box__hours">평일 09:00 ~ 18:00</p>
+                <p class="mp-contact-box__hours">토·일·공휴일 휴무</p>
+                <a th:href="@{/mypage/inquiry}" class="mp-contact-box__btn">1:1 문의하기</a>
+            </div>
+
+        </aside>
+
+        <!-- ── 메인 콘텐츠 ── -->
+        <main class="mp-main">
+
+            <!-- 주문 현황 -->
+            <section class="mp-section">
+                <div class="mp-section__head">
+                    <h2 class="mp-section__title">최근 1개월 주문현황</h2>
+                </div>
+                <div class="mp-order-track">
+                    <div class="mp-order-track__item">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">결제대기</span>
+                    </div>
+                    <div class="mp-order-track__arrow">→</div>
+                    <div class="mp-order-track__item">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M7 15h3"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">주문/결제완료</span>
+                    </div>
+                    <div class="mp-order-track__arrow">→</div>
+                    <div class="mp-order-track__item">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 7h6M9 12h6M9 17h3"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">상품준비중</span>
+                    </div>
+                    <div class="mp-order-track__arrow">→</div>
+                    <div class="mp-order-track__item">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="8" width="22" height="13" rx="2"/><path d="M16 8V5a2 2 0 00-4 0v3"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">배송중/수령대기</span>
+                    </div>
+                    <div class="mp-order-track__arrow">→</div>
+                    <div class="mp-order-track__item mp-order-track__item--muted">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">주문취소</span>
+                    </div>
+                    <div class="mp-order-track__arrow">→</div>
+                    <div class="mp-order-track__item mp-order-track__item--muted">
+                        <div class="mp-order-track__icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span class="mp-order-track__badge">0</span>
+                        </div>
+                        <span class="mp-order-track__label">A/S·교환·반품</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 자주 찾는 메뉴 -->
+            <section class="mp-section">
+                <div class="mp-section__head">
+                    <h2 class="mp-section__title">자주 찾는 메뉴</h2>
+                </div>
+                <div class="mp-quick-menu">
+                    <a th:href="@{/mypage/review}" class="mp-quick-menu__item">
+                        <span class="mp-quick-menu__name">구매후기</span>
+                        <span class="mp-quick-menu__count"><em class="mp-em">0</em>건</span>
+                        <span class="mp-quick-menu__arrow">›</span>
+                    </a>
+                    <a th:href="@{/mypage/address}" class="mp-quick-menu__item">
+                        <span class="mp-quick-menu__name">나의 배송지 관리</span>
+                        <span class="mp-quick-menu__arrow">›</span>
+                    </a>
+                    <a th:href="@{/mypage/profile}" class="mp-quick-menu__item">
+                        <span class="mp-quick-menu__name">회원 정보 수정</span>
+                        <span class="mp-quick-menu__arrow">›</span>
+                    </a>
+                    <a th:href="@{/mypage/rental}" class="mp-quick-menu__item">
+                        <span class="mp-quick-menu__name">구독 · 렌탈 관리</span>
+                        <span class="mp-quick-menu__arrow">›</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 최근 주문내역 -->
+            <section class="mp-section">
+                <div class="mp-section__head">
+                    <h2 class="mp-section__title">최근 주문 내역</h2>
+                    <a th:href="@{/mypage/orders}" class="mp-section__more">전체보기 ›</a>
+                </div>
+                <div class="mp-order-table-wrap">
+                    <table class="mp-order-table">
+                        <thead>
+                            <tr>
+                                <th>주문일자 (주문번호)</th>
+                                <th>상품</th>
+                                <th>주문금액</th>
+                                <th>주문상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="mp-order-table__empty">
+                                <td colspan="4">
+                                    <div class="mp-empty">
+                                        <span class="mp-empty__icon">!</span>
+                                        <p>최근 3개월 동안의 주문/배송 내역이 없습니다.</p>
+                                        <a th:href="@{/product/list}" class="mp-empty__btn">쇼핑 시작하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 최근 본 상품 -->
+            <section class="mp-section">
+                <div class="mp-section__head">
+                    <h2 class="mp-section__title">최근 본 상품</h2>
+                    <a th:href="@{/mypage/recent}" class="mp-section__more">전체보기 ›</a>
+                </div>
+                <div class="mp-recent-grid">
+                    <div class="mp-recent-card">
+                        <button class="mp-recent-card__del" type="button" title="삭제">×</button>
+                        <div class="mp-recent-card__img">🖥️</div>
+                        <p class="mp-recent-card__name">게이밍 조립PC R51940<br>(7645/9060)</p>
+                        <p class="mp-recent-card__price"><span class="mp-recent-card__discount">17%</span><span>1,179,000원</span></p>
+                    </div>
+                    <div class="mp-recent-card">
+                        <button class="mp-recent-card__del" type="button" title="삭제">×</button>
+                        <div class="mp-recent-card__img">🖥️</div>
+                        <p class="mp-recent-card__name">PRIME AP202 ARGB<br>[미들타워]</p>
+                        <p class="mp-recent-card__price"><span>119,840원</span></p>
+                    </div>
+                    <div class="mp-recent-card">
+                        <button class="mp-recent-card__del" type="button" title="삭제">×</button>
+                        <div class="mp-recent-card__img">🖥️</div>
+                        <p class="mp-recent-card__name">R640 Quiet<br>[미들타워]</p>
+                        <p class="mp-recent-card__price"><span>93,670원</span></p>
+                    </div>
+                    <div class="mp-recent-card">
+                        <button class="mp-recent-card__del" type="button" title="삭제">×</button>
+                        <div class="mp-recent-card__img">💻</div>
+                        <p class="mp-recent-card__name">DPF70 ARGB<br>[미들타워]</p>
+                        <p class="mp-recent-card__price"><span class="mp-recent-card__discount">14%</span><span>59,790원</span></p>
+                    </div>
+                    <div class="mp-recent-card">
+                        <button class="mp-recent-card__del" type="button" title="삭제">×</button>
+                        <div class="mp-recent-card__img">🖱️</div>
+                        <p class="mp-recent-card__name">무선 게이밍 마우스<br>PRO X</p>
+                        <p class="mp-recent-card__price"><span class="mp-recent-card__discount">10%</span><span>89,100원</span></p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div><!-- /mp-body -->
+</div><!-- /mp-wrap -->
+</main>
+</body>
+</html>

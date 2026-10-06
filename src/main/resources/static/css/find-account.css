@@ -1,0 +1,266 @@
+/* 기본 초기화 */
+* {
+  box-sizing: border-box;
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.find-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fafafa;
+  padding: 40px 20px;
+}
+
+.find-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 50px 40px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* 로고 영역 */
+.logo-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.logo-area h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #6c7a89;
+  letter-spacing: 1.5px;
+  margin: 0 0 5px 0;
+}
+.logo-area p {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   [요청 사항 반영] 탭 메뉴 디자인 (직각 모서리 적용)
+------------------------------------------------------------- */
+.tab-menu {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+/* 기본 상태 (비활성화) */
+.tab-btn {
+  flex: 1;
+  height: 52px;
+  background-color: #f8f9fa; /* 연한 회색 배경 */
+  border: none;
+  border-radius: 0; /* ★ 브라우저 기본 둥근 모서리 강제 제거 (직각) ★ */
+  border-bottom: 2px solid #dcdcdc; /* 회색 밑줄 */
+  color: #666666; /* 회색 텍스트 */
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 활성화 상태 (선택됨) */
+.tab-btn.active {
+  background-color: #f8f5ff; /* 아주 연한 보라색 배경으로 채우기 */
+  color: #5c3cfa; /* 진한 보라색 텍스트 */
+  border-bottom: 2px solid #5c3cfa; /* 진한 보라색 밑줄 */
+}
+/* ------------------------------------------------------------- */
+
+/* 입력 폼 공통 */
+.form-group {
+  margin-bottom: 18px;
+}
+.input-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+.input-full {
+  width: 100%;
+  height: 48px;
+  background-color: #f4f5f7;
+  border: none;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  border-radius: 4px;
+}
+.input-full:focus {
+  background-color: #fff;
+  border: 1px solid #8b7aff;
+}
+
+/* 셀렉트박스 커스텀 */
+.select-type {
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+}
+
+/* 이메일로 찾기 박스 */
+.email-find-box {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+.email-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.email-group input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+}
+.email-group input:focus,
+.verify-group input:focus {
+  border-color: #8b7aff;
+}
+.at-symbol {
+  margin: 0 8px;
+  color: #666;
+  font-size: 16px;
+}
+.email-domain {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.verify-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.verify-group input {
+  flex: 1.5;
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+}
+.btn-send-code {
+  flex: 1;
+  height: 40px;
+  background-color: #fff;
+  color: #7664ff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-send-code:hover {
+  background-color: #f8f7ff;
+}
+
+/* 확인 버튼 (COMDOG 스타일) */
+.btn-submit {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #9181ff 0%, #7664ff 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(118, 100, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+/* 하단 링크 */
+.bottom-links {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+}
+.bottom-links a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.bottom-links a {
+  color: #555555;
+  text-decoration: none;
+}
+
+.bottom-links a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------
+   상태 메시지 및 아이콘 관련 CSS 추가, js기능
+------------------------------------------------------------- */
+/* 피드백 메시지 공통 */
+.feedback-msg {
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* 텍스트 색상 유틸리티 */
+.text-success {
+  color: #28a745;
+} /* 초록색 */
+.text-error {
+  color: #dc3545;
+} /* 빨간색 */
+.text-info {
+  color: #0056ff;
+} /* 파란색 */
+
+/* 아이콘 포함 인풋 */
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+.check-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+/* 인증 버튼 (연한 보라색 배경 + 보라색 글씨) */
+.btn-verify {
+  flex: 1;
+  height: 40px;
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contract">
+
+
+    <select id="searchContracts" parameterType="map" resultType="com.comdog.c2d.dto.ContractListDto">
+        SELECT
+            contract_id AS contractId,
+            member_id AS memberId,
+            order_id AS orderId,
+            product_id AS productId,
+            monthly_fee AS monthlyFee,
+            duration,
+            contract_type AS contractType,
+            contract_status AS contractStatus,
+            start_date AS startDate,
+            end_date AS endDate
+        FROM contract
+        <where>
+            <if test="keyword != null and keyword != ''">
+                <if test="search == 'contractId'">
+                    AND contract_id = #{keyword}
+                </if>
+                <if test="search == 'memberId'">
+                    AND member_id = #{keyword}
+                </if>
+            </if>
+        </where>
+        ORDER BY start_date DESC
+    </select>
+
+    <update id="updateContractStatus" parameterType="map">
+        UPDATE contract
+        SET contract_status = #{status}
+        WHERE contract_id = #{contractId}
+    </update>
+
+    <insert id="insertContract" parameterType="com.comdog.c2d.dto.ContractInsertDto">
+        INSERT INTO contract (
+            member_id, order_id, product_id, monthly_fee, duration, 
+            contract_type, contract_status, start_date, end_date
+        ) VALUES (
+            #{memberId}, #{orderId}, #{productId}, #{monthlyFee}, #{duration}, 
+            #{contractType}, #{contractStatus}, #{startDate}, #{endDate}
+        )
+    </insert>
+
+
+	 <!-- 사용자 조회 페이지 삭제 조건 -->
+    <delete id="deletePaymentByMemberId" parameterType="long">
+        DELETE FROM payment_history 
+        WHERE contract_id IN (SELECT contract_id FROM contract WHERE member_id = #{id})
+    </delete>
+
+    <delete id="deleteReviewByMemberId" parameterType="long">
+        DELETE FROM review 
+        WHERE contract_id IN (SELECT contract_id FROM contract WHERE member_id = #{id})
+    </delete>
+
+    <delete id="deleteByMemberId" parameterType="long">
+        DELETE FROM contract 
+        WHERE member_id = #{id}
+    </delete>
+
+</mapper>

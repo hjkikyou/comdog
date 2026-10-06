@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/purchase_list.css">
+  </head>
+
+  <main layout:fragment="container" class="pc-list-container">
+
+    <!-- ════════════════════════════════════
+         페이지 타이틀
+    ════════════════════════════════════ -->
+    <h1 class="page-title" th:text="|${categoryName}|"> XXX </h1>
+
+    <!-- ════════════════════════════════════
+         이 달의 이벤트 할인 상품
+    ════════════════════════════════════ -->
+    <section class="event-section">
+      <h2 class="event-title">이 달의 이벤트 할인 상품</h2>
+
+      <div class="event-grid">
+        <div class="event-card">
+          <div class="event-img-box"><div class="img-placeholder"></div></div>
+          <div class="event-body">
+            <p class="event-name">Title</p>
+            <p class="event-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
+            <a href="#" class="event-link">More Info →</a>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-img-box"><div class="img-placeholder"></div></div>
+          <div class="event-body">
+            <p class="event-name">Title</p>
+            <p class="event-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
+            <a href="#" class="event-link">More Info →</a>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-img-box"><div class="img-placeholder"></div></div>
+          <div class="event-body">
+            <p class="event-name">Title</p>
+            <p class="event-desc">Nunc, pellentesque velit malesuada non massa arcu.</p>
+            <a href="#" class="event-link">More Info →</a>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-img-box"><div class="img-placeholder"></div></div>
+          <div class="event-body">
+            <p class="event-name">Title</p>
+            <p class="event-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
+            <a href="#" class="event-link">More Info →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         검색 + 정렬 필터바
+    ════════════════════════════════════ -->
+    <div class="filter-bar">
+      <div class="list-search-box">
+        <input type="text" class="list-search-input" placeholder="Search">
+        <span class="list-search-icon">🔍</span>
+      </div>
+
+      <div class="sort-tabs">
+        <button class="sort-btn sort-btn--active">✓ 최신순</button>
+        <button class="sort-btn">추천순</button>
+        <button class="sort-btn">판매량순</button>
+        <button class="sort-btn">평점순</button>
+        <button class="sort-btn">높은 가격순</button>
+        <button class="sort-btn">낮은 가격순</button>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════
+         상품 그리드
+    ════════════════════════════════════ -->
+    <section class="product-grid-section">
+	  <div class="product-grid">
+	
+		<!-- prod-card를 a 링크로 변경, productId를 쿼리 파라미터로 전달 -->
+		<a class="prod-card" 
+		   th:each="product : ${productList}"
+		   th:href="@{/user/product/product-detail(productId=${product.productId})}">
+		  <div class="prod-img-box">
+		    <img th:if="${product.imageUrl != null}"
+		         th:src="${product.imageUrl}"
+		         th:alt="${product.name}"
+		         class="prod-img">
+		    <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
+		  </div>
+		  <div class="prod-body">
+		    <p class="prod-name" th:text="${product.name}">Text</p>
+		    <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + '원'">$0</p>
+		  </div>
+		</a>
+		
+		<!-- 상품이 없을 때 -->
+		<p th:if="${#lists.isEmpty(productList)}" class="no-product">상품이 없습니다.</p>
+		</div>
+		</section>
+		
+    <!-- ════════════════════════════════════
+         페이지네이션
+    ════════════════════════════════════ -->
+    <nav class="pagination">
+      <a href="#" class="page-btn page-btn--prev">← Previous</a>
+
+      <a href="#" class="page-num page-num--active">1</a>
+      <a href="#" class="page-num">2</a>
+      <a href="#" class="page-num">3</a>
+      <span class="page-ellipsis">...</span>
+      <a href="#" class="page-num">67</a>
+      <a href="#" class="page-num">68</a>
+
+      <a href="#" class="page-btn page-btn--next">Next →</a>
+    </nav>
+
+  </main>
+</html>

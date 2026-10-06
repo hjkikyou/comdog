@@ -1,0 +1,39 @@
+/* =============================================
+   COMMON.CSS — 사이트 공통 폰트 및 컬러 변수
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+:root {
+    /* comdog 메인 브랜드 컬러 */
+    --color-accent:  #6D3AFF;
+    --color-grad:    linear-gradient(135deg, #37C8C3 0%, #6D3AFF 100%);
+
+    /* 텍스트 및 배경 컬러 */
+    --color-text:    #333;
+    --color-muted:   #888;
+    --color-border:  #e5e7eb;
+    --bg-light:      #fafafa;
+    --bg-white:      #ffffff;
+    --bg-gray:       #f3f4f6;
+
+
+/* 레트로 팝 테마 컬러 팔레트 */
+    --bg-mint: #38efbd;
+    --bg-purple: #7e57c2;
+    --retro-purple: #5b21b6; /* 주요 테두리 및 텍스트 색상 */
+    --retro-purple-light: #8b5cf6;
+    --retro-yellow: #fde047; /* 강조 버튼 색상 */
+    --retro-yellow-hover: #facc15;
+    --window-bg: #ffffff;
+    --text-main: #1e1b4b;
+    --text-sub: #4c1d95;
+    --border-width: 3px;
+    --shadow-offset: 6px;
+}
+
+
+body {
+    /* 사이트 전체 기본 폰트 적용 */
+    font-family: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
+    color: var(--color-text);
+}

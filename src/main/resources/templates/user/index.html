@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base-layout}">
+  <head>
+  	<link rel="stylesheet" href="/css/main.css">
+  </head>
+
+    <main layout:fragment="container" class="main-container">
+        <section class="hero-section">
+            <div class="hero-placeholder"><div class="placeholder-box"></div></div>
+            <div class="hero-placeholder"><div class="placeholder-box"></div></div>
+            <div class="hero-placeholder"><div class="placeholder-box"></div></div>
+        </section>
+
+        <div class="controls">
+            <span class="arrow">❮</span>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <span class="arrow">❯</span>
+        </div>
+
+        <section class="quick-links">
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+            <div class="quick-item"></div>
+        </section>
+
+        <section class="featured-section">
+            <div class="video-placeholder"><div class="play-btn"></div></div>
+            <div class="featured-text">
+                <h2>Bibendum amet at<br>molestie mattis.</h2>
+                <p>Rhoncus morbi et augue nec, in id ullamcorper at sit.<br>Condimentum sit nunc in eros scelerisque sed. Commodo<br>in viverra nunc, ullamcorper et. Non, amet, aliquet<br>scelerisque nullam sagittis, pulvinar.</p>
+            </div>
+        </section>
+
+        <section class="card-section">
+            <div class="card">Shadow 06</div>
+            <div class="card">Shadow 06</div>
+            <div class="card">Shadow 06</div>
+            <div class="card">Shadow 06</div>
+            <div class="card">Shadow 06</div>
+        </section>
+
+        <div class="filter-tab-bar">
+            <button class="tab-btn dropdown">구매/렌탈 ▾</button>
+            <button class="tab-btn purple-active">💜 PC</button>
+            <button class="tab-btn">💜 모니터</button>
+            <button class="tab-btn">💜 노트북</button>
+            <button class="tab-btn">💜 스마트기기</button>
+            <button class="tab-btn">💜 사무/주변기기</button>
+            <button class="tab-btn">💜 서버/워크스테이션</button>
+            <button class="tab-btn">⚙️ 조립PC</button>
+            
+        </div>
+
+        <section>
+            <div class="section-header">
+                <div class="section-title-group">
+                    <h3>BEST 인기상품</h3>
+                </div>
+                <a href="#" class="btn-more">더보기 ❯</a>
+            </div>
+            
+            <div class="product-grid">
+                <div class="prod-card type-large">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-category">Category</div>
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</div>
+                        <div class="profile-area">
+                            <div class="profile-circle"></div>
+                            <div class="profile-info">
+                                <div class="profile-name">Jane Doe</div>
+                                <div class="profile-role">Senior Designer</div>
+                            </div>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="c-btn btn-primary">Button Text</button>
+                            <button class="c-btn btn-outline">Button Text</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="section-header">
+                <div class="section-title-group">
+                    <h3>일반/사무용PC 추천상품</h3>
+                </div>
+                <a href="#" class="btn-more">더보기 ❯</a>
+            </div>
+            
+            <div class="product-grid">
+                <div class="prod-card type-large">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-category">Category</div>
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</div>
+                        <div class="profile-area">
+                            <div class="profile-circle"></div>
+                            <div class="profile-info">
+                                <div class="profile-name">Jane Doe</div>
+                                <div class="profile-role">Senior Designer</div>
+                            </div>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="c-btn btn-primary">Button Text</button>
+                            <button class="c-btn btn-outline">Button Text</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section>
+            <div class="section-header">
+                <div class="section-title-group">
+                    <h3>게임용PC 추천상품</h3>
+                </div>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <a href="#" class="btn-more" style="margin-right: 15px;">더보기 ❯</a>
+                    <button class="tab-btn" style="padding:4px 10px; font-size:11px;">🎮 PUBG</button>
+                    <button class="tab-btn" style="padding:4px 10px; font-size:11px;">🦹 오버워치</button>
+                    <button class="tab-btn" style="padding:4px 10px; font-size:11px;">🔫 GTA5</button>
+                    <button class="tab-btn dropdown" style="padding:4px 10px; font-size:11px;">고사양 게임 ▾</button>
+                </div>
+            </div>
+            
+            <div class="product-grid">
+                <div class="prod-card type-large">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-category">Category</div>
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</div>
+                        <div class="profile-area">
+                            <div class="profile-circle"></div>
+                            <div class="profile-info">
+                                <div class="profile-name">Jane Doe</div>
+                                <div class="profile-role">Senior Designer</div>
+                            </div>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="c-btn btn-primary">Button Text</button>
+                            <button class="c-btn btn-outline">Button Text</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+                <div class="prod-card type-standard">
+                    <div class="prod-img-box"><div class="placeholder-box" style="width:70px; height:70px;"></div></div>
+                    <div class="prod-info-box">
+                        <div class="prod-title">Title</div>
+                        <div class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</div>
+                        <a href="#" class="prod-more-link">More Info ➔</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <div class="footer-blocks">
+            <div class="footer-block-item"></div>
+            <div class="footer-block-item"></div>
+            <div class="footer-block-item"></div>
+            <div class="footer-block-item"></div>
+        </div>
+
+    </main>
+
+</html>

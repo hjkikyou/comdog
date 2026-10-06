@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원 정보 수정</title>
+</head>
+<body>
+	<form th:action="@{|/admin/member/update/${viewMember.id}|}" method="post">
+		<div>
+			<div><label>사용자 고유번호</label></div>
+			<div th:text="${viewMember.id}"></div>
+		</div>
+		<div>
+			<div><label>이메일</label></div>
+			<div><input type="email" name="email" th:value="${viewMember.email}" required></div>
+		</div>
+		<div>
+			<div><label>비밀번호</label></div>
+			<div><input type="password" name="password" th:value="${viewMember.password}" required></div>
+		</div>
+		<div>
+			<div><label>성명</label></div>
+			<div><input type="text" name="name" th:value="${viewMember.name}" required></div>
+		</div>
+		<div>
+			<div><label>연락처</label></div>
+			<div><input type="tel" name="phone" th:value="${viewMember.phone}"></div>
+		</div>
+		<div>
+			<div><label>회원 구분</label></div>
+			<div>
+				<select name="userType">
+					<option value="PERSONAL" th:selected="${viewMember.userType == 'PERSONAL'}">개인 회원 (PERSONAL)</option>
+					<option value="BUSINESS" th:selected="${viewMember.userType == 'BUSINESS'}">기업 회원 (BUSINESS)</option>
+				</select>
+			</div>
+		</div>
+		<div>
+			<div><label>구독 여부</label></div>
+			<div>
+				<input type="radio" name="isSubscribed" value="1" th:checked="${viewMember.isSubscribed == true}"> 구독함
+				<input type="radio" name="isSubscribed" value="0" th:checked="${viewMember.isSubscribed == false}"> 구독안함
+			</div>
+		</div>
+		<div>
+			<div><button type="submit">변경</button></div>
+			<div><a th:href="@{/admin/member/list}">취소</a></div>
+		</div>
+	</form>
+</body>
+</html>
