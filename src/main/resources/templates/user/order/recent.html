@@ -140,13 +140,7 @@
         </div>
     </div>
 
-    <div class="recent-pagination">
-        <button type="button" class="p-arrow btn-prev">‹</button>
-        <button type="button" class="p-num active">1</button>
-        <button type="button" class="p-num">2</button>
-        <button type="button" class="p-num">3</button>
-        <button type="button" class="p-arrow btn-next">›</button>
-    </div>
+    <div th:replace="~{fragments/pagination :: pager('.recent-table-wrapper .table-tbody > .table-row', 10)}"></div>
 
 </main>
 

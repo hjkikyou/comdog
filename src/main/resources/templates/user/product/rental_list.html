@@ -8,6 +8,25 @@
 
   <main layout:fragment="container" class="rental-container">
 
+    <section class="product-section">
+      <div class="section-header">
+        <h2 class="section-title" th:text="|${categoryName} 대여 상품|">대여 상품</h2>
+      </div>
+      <div class="product-grid">
+        <div class="prod-card" th:each="product : ${productList}" th:if="${product.isRentable == 'Y'}">
+          <div class="prod-img-box">
+            <img th:if="${!#strings.isEmpty(product.imageUrl)}" th:src="${product.imageUrl}" th:alt="${product.name}" style="width:100%;height:100%;object-fit:contain;">
+            <div th:if="${#strings.isEmpty(product.imageUrl)}" class="img-placeholder" role="img" aria-label="등록된 이미지 없음"></div>
+          </div>
+          <div class="prod-body">
+            <p class="prod-name" th:text="${product.name}">상품명</p>
+            <p class="prod-desc" th:text="${product.description}">상품 설명</p>
+            <a th:href="@{/user/product/product-detail(productId=${product.productId})}" class="prod-link">상세 보기 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════
          히어로 배너 섹션
     ════════════════════════════════════ -->

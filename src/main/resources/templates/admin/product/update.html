@@ -5,6 +5,12 @@
 </head>
 <body>
 <form th:action="@{|/admin/product/update/${viewProduct.productId}|}" method="post">
+	<div th:replace="~{fragments/product-category :: selector(${viewProduct.categoryId})}"></div>
+	<div>
+		<label>현재 대표 이미지</label>
+		<img th:if="${!#strings.isEmpty(viewProduct.imageUrl)}" th:src="${viewProduct.imageUrl}" th:alt="${viewProduct.name}" width="200" height="160" style="object-fit:contain;">
+		<span th:if="${#strings.isEmpty(viewProduct.imageUrl)}">이미지 없음</span>
+	</div>
 	<div>
 		<div><label>상품번호</label></div>
 		<div th:text="${viewProduct.productId}"></div>
@@ -38,5 +44,6 @@
 		<div><a th:href="@{/admin/product/list}">취소</a></div>
 	</div>
 </form>
+<script th:src="@{/js/product-category.js}"></script>
 </body>
 </html>

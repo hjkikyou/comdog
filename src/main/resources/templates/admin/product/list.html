@@ -14,6 +14,7 @@
 		<table border="1">
 			<thead>
 				<tr>
+					<th>대표 이미지</th>
 					<th>상품명</th>
 					<th>브랜드</th>
 					<th>모델명</th>
@@ -26,10 +27,14 @@
 			</thead>
 			<tbody>
 				<tr th:if="${viewProductList.isEmpty()}">
-					<td colspan="8" style="text-align: center;">등록된 상품이 없습니다.</td>
+					<td colspan="9" style="text-align: center;">등록된 상품이 없습니다.</td>
 				</tr>
 
-				<tr th:unless="${viewProductList.isEmpty()}" th:each="item : ${viewProductList}">
+				<tr data-page-item th:unless="${viewProductList.isEmpty()}" th:each="item : ${viewProductList}">
+					<td>
+						<img th:if="${!#strings.isEmpty(item.imageUrl)}" th:src="${item.imageUrl}" th:alt="${item.name}" width="100" height="80" style="object-fit:contain;">
+						<span th:if="${#strings.isEmpty(item.imageUrl)}">이미지 없음</span>
+					</td>
 					<td th:text="${item.name}">상품명</td>
 					<td th:text="${item.brand}">브랜드</td>
 					<td th:text="${item.modelName}">모델명</td>
@@ -45,6 +50,7 @@
 				</tr>
 			</tbody>
 			</table>
+<div th:replace="~{fragments/pagination :: pager('tbody > tr[data-page-item]', 10)}"></div>
 	</div>
 	<div>
 		<div><a th:href="@{/admin/product/add}">상품 추가</a></div>

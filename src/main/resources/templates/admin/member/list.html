@@ -31,7 +31,7 @@
 			<tr th:if="${viewMemberList.isEmpty()}">
    				 <td colspan="9" style="text-align: center;">등록된 회원이 없습니다.</td>
 			</tr>
-				<tr th:unless="${viewMemberList.isEmpty()}" th:each="item : ${viewMemberList}">
+				<tr data-page-item th:unless="${viewMemberList.isEmpty()}" th:each="item : ${viewMemberList}">
 				    <td th:text="${item.email}">이메일</td>    				    
 				    <td th:text="${item.password}">비밀번호</td>   				    
 				    <td th:text="${item.name}">성명</td>   				    
@@ -46,6 +46,7 @@
 				</tr>
 			</tbody>
 		</table>
+<div th:replace="~{fragments/pagination :: pager('tbody > tr[data-page-item]', 10)}"></div>
 	</div>
 	
 				<div>

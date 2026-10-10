@@ -27,15 +27,15 @@
         <!-- ── 좌측: 이미지 갤러리 ── -->
         <div class="gallery">
             <div class="gallery-main">
-                <img th:if="${product.imageUrl != null}"
+                <img th:if="${!#strings.isEmpty(product.imageUrl)}"
                      th:src="${product.imageUrl}" th:alt="${product.name}"
                      class="gallery-main-img">
-                <div th:unless="${product.imageUrl != null}" class="img-placeholder--lg"></div>
+                <div th:if="${#strings.isEmpty(product.imageUrl)}" class="img-placeholder--lg" role="img" aria-label="등록된 이미지 없음"></div>
             </div>
             <div class="gallery-thumbs">
-                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
-                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
-                <div class="thumb"><div class="img-placeholder--thumb"></div></div>
+                <div class="thumb" th:if="${!#strings.isEmpty(product.imageUrl)}">
+                    <img th:src="${product.imageUrl}" th:alt="${product.name}" style="width:100%;height:100%;object-fit:contain;">
+                </div>
             </div>
         </div>
 

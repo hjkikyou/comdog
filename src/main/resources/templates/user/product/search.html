@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <title>상품 검색 - COMDOG</title>
+    <link rel="stylesheet" th:href="@{/css/purchase_list.css}">
+</head>
+<main layout:fragment="container" class="pc-list-container">
+    <h1>상품 검색</h1>
+    <form th:action="@{/user/product/search}" method="get">
+        <input type="hidden" name="categoryId" th:value="${categoryId}">
+        <input type="hidden" name="sort" th:value="${sort}">
+        <input type="search" name="keyword" th:value="${keyword}" placeholder="상품명 검색" aria-label="상품명">
+        <button type="submit">검색</button>
+    </form>
+    <p th:text="|${categoryName} · 검색 결과 ${#lists.size(productList)}개|">검색 결과</p>
+    <div th:replace="~{fragments/product-sort :: tabs('/user/product/search', ${categoryId}, ${keyword}, ${sort})}"></div>
+    <div class="product-grid">
+        <a class="prod-card" th:each="product : ${productList}"
+           th:href="@{/user/product/product-detail(productId=${product.productId})}">
+            <div class="prod-img-box">
+                <img th:if="${!#strings.isEmpty(product.imageUrl)}" th:src="${product.imageUrl}" th:alt="${product.name}" class="prod-img">
+                <div th:if="${#strings.isEmpty(product.imageUrl)}" class="img-placeholder--sm" role="img" aria-label="등록된 이미지 없음"></div>
+            </div>
+            <div class="prod-body">
+                <p class="prod-name" th:text="${product.name}">상품명</p>
+                <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 1, 'COMMA') + '원'}">가격</p>
+            </div>
+        </a>
+    </div>
+    <p th:if="${#lists.isEmpty(productList)}">검색 결과가 없습니다. 다른 상품명으로 검색해보세요.</p>
+<div th:replace="~{fragments/pagination :: pager('.product-grid > .prod-card', 12)}"></div>
+</main>
+</html>

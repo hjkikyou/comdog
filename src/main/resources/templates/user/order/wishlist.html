@@ -153,9 +153,7 @@
     </div>
 
     <div class="pagination-wrapper">
-        <div class="pagination">
-            <button type="button" class="page-link active">1</button>
-        </div>
+        <div th:replace="~{fragments/pagination :: pager('.wishlist-grid > .product-card', 12)}"></div>
     </div>
 
 </main>

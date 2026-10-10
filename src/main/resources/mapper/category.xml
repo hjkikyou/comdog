@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="category">
+    <select id="findAll" resultType="com.comdog.c2d.domain.category.CategoryDto">
+        SELECT category_id, name, parent_id FROM category
+        ORDER BY CASE WHEN parent_id IS NULL THEN
+            CASE category_id WHEN 1 THEN 1 WHEN 3 THEN 2 WHEN 4 THEN 3
+                WHEN 5 THEN 4 WHEN 6 THEN 5 WHEN 7 THEN 6 WHEN 2 THEN 7 WHEN 8 THEN 8 ELSE 9 END
+            ELSE 10 END, category_id
+    </select>
+</mapper>

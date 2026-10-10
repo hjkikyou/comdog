@@ -26,6 +26,8 @@ public class ProductController {
 	@GetMapping("/purchase_list")
     public String getPurchaseList(
     		@RequestParam(name="categoryId", required = false) Long categoryId,
+			@RequestParam(name="keyword", defaultValue="") String keyword,
+			@RequestParam(name="sort", defaultValue="recommended") String sort,
     		Model model){
 		
 		// 1. 카테고리 번호 없이 주소창에 직접 치고 들어오면 메인 페이지로 돌려보냅니다.
@@ -34,17 +36,34 @@ public class ProductController {
         }
         
         // 2. 꼬리표가 정상적으로 있다면 해당 카테고리(+하위) 상품만 조회합니다.
-        List<ProductDto> products = service.findProductsWithSubCategories(categoryId);
+        List<ProductDto> products = service.searchPurchasableProducts(categoryId, keyword, sort);
         
         // 3. 카테고리 이름 넘기기
         String categoryName = service.findCategoryNameById(categoryId);
         
         model.addAttribute("productList", products);
         model.addAttribute("categoryName", categoryName);
+		model.addAttribute("categoryId", categoryId);
+		model.addAttribute("keyword", keyword.strip());
+		model.addAttribute("sort", ProductSort.normalize(sort));
 		
         return "user/product/purchase_list";
     }
 	
+	@GetMapping("/search")
+	public String search(
+			@RequestParam(name="categoryId", required=false) Long categoryId,
+			@RequestParam(name="keyword", defaultValue="") String keyword,
+			@RequestParam(name="sort", defaultValue="recommended") String sort,
+			Model model) {
+		model.addAttribute("productList", service.searchPurchasableProducts(categoryId, keyword, sort));
+		model.addAttribute("sort", ProductSort.normalize(sort));
+		model.addAttribute("keyword", keyword.strip());
+		model.addAttribute("categoryId", categoryId);
+		model.addAttribute("categoryName", categoryId == null ? "전체" : service.findCategoryNameById(categoryId));
+		return "user/product/search";
+	}
+
 	// 대여 목록도 똑같이 처리
     @GetMapping("/rental_list")
     public String getRentalList(

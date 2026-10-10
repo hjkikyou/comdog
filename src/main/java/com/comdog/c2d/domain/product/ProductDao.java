@@ -5,6 +5,7 @@ import java.util.List;
 import com.comdog.c2d.domain.product.dto.ProductDto;
 
 public interface ProductDao {
+	List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword, String sort);
 	
 	//*관리자용*//
 	

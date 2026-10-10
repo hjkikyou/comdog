@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="selector(selectedId)" class="category-selector">
+    <p th:if="${categoryError}" th:text="${categoryError}" role="alert"></p>
+    <label>대분류 <select data-level="0" required><option value="">선택하세요</option></select></label>
+    <label>중분류 <select data-level="1" disabled><option value="">선택하세요</option></select></label>
+    <label>소분류 <select data-level="2" disabled><option value="">선택하세요</option></select></label>
+    <input type="hidden" name="categoryId" th:value="${selectedId}">
+    <select data-category-source hidden disabled aria-hidden="true">
+        <option th:each="category : ${categories}" th:value="${category.categoryId}"
+                th:attr="data-parent=${category.parentId}" th:text="${category.name}"></option>
+    </select>
+    <p data-category-message aria-live="polite"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="pager(items, size)">
+    <link rel="stylesheet" th:href="@{/css/pagination.css}">
+    <nav class="common-pagination" data-pagination th:attr="data-items=${items},data-page-size=${size}" aria-label="페이지 선택"></nav>
+    <script th:src="@{/js/pagination.js}" defer></script>
+</div>
+</body>
+</html>

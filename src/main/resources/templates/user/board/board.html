@@ -109,17 +109,7 @@
       </div>
 
       <div class="board-footer">
-        <div class="pagination-retro">
-          <a href="#" class="page-btn prev-all">◀◀</a>
-          <a href="#" class="page-btn prev">◀</a>
-          <a href="#" class="page-num active">1</a>
-          <a href="#" class="page-num">2</a>
-          <a href="#" class="page-num">3</a>
-          <a href="#" class="page-num">4</a>
-          <a href="#" class="page-num">5</a>
-          <a href="#" class="page-btn next">▶</a>
-          <a href="#" class="page-btn next-all">▶▶</a>
-        </div>
+        <div th:replace="~{fragments/pagination :: pager('.board-list > .list-row', 10)}"></div>
 
         <div class="status-bar-group">
           <span class="status-text">SYSTEM READY</span>

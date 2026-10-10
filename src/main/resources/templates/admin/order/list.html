@@ -34,7 +34,7 @@
                     <td colspan="9" style="text-align: center; padding: 20px;">등록된 주문 내역이 없습니다.</td>
                 </tr>
             
-                <tr th:unless="${viewOrderList == null or viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
+                <tr data-page-item th:unless="${viewOrderList == null or viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
                     
                     <td th:text="${order.orderId}">1</td>
                     
@@ -71,6 +71,7 @@
             </tfoot>
             
         </table>
+<div th:replace="~{fragments/pagination :: pager('tbody > tr[data-page-item]', 10)}"></div>
     </div>
     
     	<div>

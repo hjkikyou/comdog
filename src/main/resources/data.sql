@@ -107,6 +107,77 @@ INSERT INTO category (category_id, name, parent_id) VALUES
 (87, '케이스 / 쿨러 / 튜닝', 8);        -- [구매 전용] 고객 취향을 타는 외관용/소모성 부품
 
 
+-- 추가 중분류 및 소분류
+INSERT INTO category (category_id, name, parent_id) VALUES
+(15, '일체형 PC', 1),
+(44, '경량 노트북', 4),
+(45, '2-in-1 노트북', 4),
+(54, '스마트폰', 5),
+(65, '입력기기', 6),
+(66, '음향기기', 6),
+(67, '외장 저장장치', 6),
+(68, '네트워크기기', 6),
+(211, '기본 사무용', 21),
+(212, '학습/인강용', 21),
+(221, '영상편집용', 22),
+(222, '설계/3D용', 22),
+(241, 'AI/딥러닝용', 24),
+(242, '개발용', 24),
+(511, '일반 태블릿', 51),
+(512, '펜 지원 태블릿', 51),
+(521, '스마트워치', 52),
+(522, '스마트밴드', 52),
+(531, 'VR 기기', 53),
+(532, 'AR 기기', 53),
+(611, '프린터', 61),
+(612, '복합기', 61),
+(613, '스캐너', 61),
+(621, '빔프로젝터', 62),
+(622, '웹캠', 62),
+(623, '화상회의 장비', 62),
+(631, 'USB 허브', 63),
+(632, '도킹스테이션', 63),
+(641, '케이블', 64),
+(642, '충전기/어댑터', 64),
+(643, '거치대/받침대', 64),
+(644, '멀티탭', 64),
+(651, '키보드', 65),
+(652, '마우스', 65),
+(653, '키보드/마우스 세트', 65),
+(654, '펜타블렛', 65),
+(661, '스피커', 66),
+(662, '헤드셋', 66),
+(663, '마이크', 66),
+(671, '외장 SSD', 67),
+(672, '외장 HDD', 67),
+(673, 'USB 메모리', 67),
+(674, '메모리카드', 67),
+(681, '공유기', 68),
+(682, '스위치', 68),
+(683, '무선랜 어댑터', 68),
+(711, '타워형 서버', 71),
+(712, '랙형 서버', 71),
+(721, '데스크톱 워크스테이션', 72),
+(722, '모바일 워크스테이션', 72),
+(731, 'NAS', 73),
+(732, '스토리지 시스템', 73),
+(811, '데스크톱 CPU', 81),
+(812, '서버/워크스테이션 CPU', 81),
+(821, '일반/게이밍 그래픽카드', 82),
+(822, '전문 작업용 그래픽카드', 82),
+(831, '데스크톱 메모리', 83),
+(832, '노트북 메모리', 83),
+(833, '서버 메모리', 83),
+(841, '데스크톱 메인보드', 84),
+(842, '서버/워크스테이션 메인보드', 84),
+(851, '내장 SSD', 85),
+(852, '내장 HDD', 85),
+(861, 'ATX 파워', 86),
+(862, 'SFX 파워', 86),
+(871, 'PC 케이스', 87),
+(872, 'CPU 쿨러', 87),
+(873, '케이스 팬/튜닝', 87);
+
 -- 5. 상품 (PC 하드웨어 및 부품)
 -- 컬럼: 구매가능여부, 판매가, 대여가능여부, 대표렌탈가, 재고, 설명, 추천여부, 조회수, 렌탈수
 INSERT INTO product (
@@ -399,283 +470,274 @@ INSERT INTO product (
 
 --======이미지 경로=======--
 -- 예시 데이터 --
--- UPDATE product SET image_url = '/images/product/MacBook Air 15 M3.jpg'        WHERE product_id = 2; //노트북
-UPDATE product SET image_url = '/images/product/rtx4090-workstation.jpg' WHERE product_id = 3;
-UPDATE product SET image_url = '/images/product/rog-4070.jpg'           WHERE product_id = 4;
--- UPDATE product SET image_url = '/images/product/lg-4k-monitor.jpg'      WHERE product_id = 5; //모니터
--- UPDATE product SET image_url = '/images/product/LG 그램북 AI 2026.jpg'       WHERE product_id = 6; //노트북 
--- UPDATE product SET image_url = '/images/product/레노버 씽크패드 X1 카본 Gen 13.jpg'        WHERE product_id = 7; //노트북 
--- UPDATE product SET image_url = '/images/product/intel-nuc.jpg'          WHERE product_id = 8; //PC
--- UPDATE product SET image_url = '/images/product/lg-gaming-monitor.jpg'  WHERE product_id = 9; //모니터
-UPDATE product SET image_url = '/images/product/mac-studio.jpg'         WHERE product_id = 10;
-UPDATE product SET image_url = '/images/product/rtx4090.jpg'            WHERE product_id = 11;
-UPDATE product SET image_url = '/images/product/ddr5-ram.jpg'           WHERE product_id = 12;
--- UPDATE product SET image_url = '/images/product/galaxy-tab.jpg'           WHERE product_id = 13; //스마트 기기
-UPDATE product SET image_url = '/images/product/ipad.jpg'           WHERE product_id = 14;
--- UPDATE product SET image_url = '/images/product/applewatch.jpg'           WHERE product_id = 15; //스마트 기기
--- UPDATE product SET image_url = '/images/product/meta-vr.jpg'           WHERE product_id = 16; //스마트 기기
-UPDATE product SET image_url = '/images/product/canonprint.jpg'           WHERE product_id = 17;
-UPDATE product SET image_url = '/images/product/sonyvim.jpg'           WHERE product_id = 18;
-UPDATE product SET image_url = '/images/product/dragonfly.jpg'           WHERE product_id = 19;
-UPDATE product SET image_url = '/images/product/hdmi.jpg'           WHERE product_id = 20;
+UPDATE product SET image_url = NULL WHERE product_id = 3;
+UPDATE product SET image_url = NULL           WHERE product_id = 4;
+UPDATE product SET image_url = NULL         WHERE product_id = 10;
+UPDATE product SET image_url = NULL            WHERE product_id = 11;
+UPDATE product SET image_url = NULL           WHERE product_id = 12;
+UPDATE product SET image_url = NULL           WHERE product_id = 14;
+UPDATE product SET image_url = NULL           WHERE product_id = 17;
+UPDATE product SET image_url = NULL           WHERE product_id = 18;
+UPDATE product SET image_url = NULL           WHERE product_id = 19;
+UPDATE product SET image_url = NULL           WHERE product_id = 20;
 
 
 
 --1.PC
-UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-24-2024-M4.jpg'  WHERE product_id = 100; 
-UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-27-2020-i7.jpg' WHERE product_id = 101;
-UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-27-2019-i9.jpg' WHERE product_id = 102;
-UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-G3-1998.jpg' WHERE product_id = 103;
-UPDATE product SET image_url = '/images/product/desktop/Apple-Macintosh-1984.jpg' WHERE product_id = 104;
-UPDATE product SET image_url = '/images/product/desktop/Apple-MacMini-2023-M2.jpg' WHERE product_id = 105;
+UPDATE product SET image_url = '/images/products/desktop/Apple-iMac-24-2024-M4.jpg'  WHERE product_id = 100; 
+UPDATE product SET image_url = '/images/products/desktop/Apple-iMac-27-2020-i7.jpg' WHERE product_id = 101;
+UPDATE product SET image_url = '/images/products/desktop/Apple-iMac-27-2019-i9.jpg' WHERE product_id = 102;
+UPDATE product SET image_url = '/images/products/desktop/Apple-iMac-G3-1998.jpg' WHERE product_id = 103;
+UPDATE product SET image_url = '/images/products/desktop/Apple-Macintosh-1984.jpg' WHERE product_id = 104;
+UPDATE product SET image_url = '/images/products/desktop/Apple-MacMini-2023-M2.jpg' WHERE product_id = 105;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 110;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 111;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 112;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 113;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 114;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 110;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 111;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 112;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 113;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 114;
 
--- UPDATE product SET image_url = '/images/product/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 120;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 121;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 122;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 123;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 124;
+-- UPDATE product SET image_url = '/images/products/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 120;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 121;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 122;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 123;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 124;
 
-UPDATE product SET image_url = '/images/product/desktop/Lenovo-Thinkcentre-Neo-30t-Gen5-12K8S00A00.jpg' WHERE product_id = 130;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 131;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 132;
+UPDATE product SET image_url = '/images/products/desktop/Lenovo-Thinkcentre-Neo-30t-Gen5-12K8S00A00.jpg' WHERE product_id = 130;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 131;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 132;
 
-UPDATE product SET image_url = '/images/product/desktop/ASUS-TUFGaming-Ryzen5-TM500MH-R560W.jpg' WHERE product_id = 140;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 141;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 142;
+UPDATE product SET image_url = '/images/products/desktop/ASUS-TUFGaming-Ryzen5-TM500MH-R560W.jpg' WHERE product_id = 140;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 141;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 142;
 
-UPDATE product SET image_url = '/images/product/desktop/HP-Omen-35L-GT16-1001KL-Ryzen7-9800X3D.jpg' WHERE product_id = 150;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 151;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 152;
+UPDATE product SET image_url = '/images/products/desktop/HP-Omen-35L-GT16-1001KL-Ryzen7-9800X3D.jpg' WHERE product_id = 150;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 151;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 152;
 
 
 --2.조립PC
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 200;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 201;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 202;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 203;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 204;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 200;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 201;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 202;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 203;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 204;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 210;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 211;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 212;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 213;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 214;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 210;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 211;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 212;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 213;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 214;
 
--- UPDATE product SET image_url = '/images/product/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 220;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 221;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 222;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 223;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 224;
+-- UPDATE product SET image_url = '/images/products/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 220;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 221;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 222;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 223;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 224;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 230;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 231;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 232;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 230;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 231;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 232;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 240;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 241;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 242;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 240;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 241;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 242;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 250;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 251;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 252;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 250;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 251;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 252;
 
 
 
 
 --3.모니터
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 300;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 301;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 302;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 303;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 304;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 300;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 301;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 302;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 303;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 304;
 
-UPDATE product SET image_url = '/images/product/monitor/삼성-모니터-S24C750P-61cm.jpg' WHERE product_id = 310;
-UPDATE product SET image_url = '/images/product/monitor/삼성-오디세이-OLED-G8-G80SH-4K-240Hz-LS27HG802S.jpg' WHERE product_id = 311;
-UPDATE product SET image_url = '/images/product/monitor/삼성-뷰피니티-S8-S85TH-5K2K-WUHD-LS40H852.jpg' WHERE product_id = 312;
-UPDATE product SET image_url = '/images/product/monitor/삼성-오디세이-OLED-G8-G81SF-4K-240HZ-LS32FG812.jpg' WHERE product_id = 313;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 314;
+UPDATE product SET image_url = '/images/products/monitor/삼성-모니터-S24C750P-61cm.jpg' WHERE product_id = 310;
+UPDATE product SET image_url = '/images/products/monitor/삼성-오디세이-OLED-G8-G80SH-4K-240Hz-LS27HG802S.jpg' WHERE product_id = 311;
+UPDATE product SET image_url = '/images/products/monitor/삼성-뷰피니티-S8-S85TH-5K2K-WUHD-LS40H852.jpg' WHERE product_id = 312;
+UPDATE product SET image_url = '/images/products/monitor/삼성-오디세이-OLED-G8-G81SF-4K-240HZ-LS32FG812.jpg' WHERE product_id = 313;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 314;
 
-UPDATE product SET image_url = '/images/product/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 320;
-UPDATE product SET image_url = '/images/product/monitor/LG-울트라HD-4K-모니터.jpg' WHERE product_id = 321;
-UPDATE product SET image_url = '/images/product/monitor/LG-울트라기어-evo-AI-올레드-게이밍모니터-GX9-5K.jpg' WHERE product_id = 322;
-UPDATE product SET image_url = '/images/product/monitor/LG-울트라기어-게이밍모니터-QHD.jpg' WHERE product_id = 323;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 324;
+UPDATE product SET image_url = '/images/products/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 320;
+UPDATE product SET image_url = '/images/products/monitor/LG-울트라HD-4K-모니터.jpg' WHERE product_id = 321;
+UPDATE product SET image_url = '/images/products/monitor/LG-울트라기어-evo-AI-올레드-게이밍모니터-GX9-5K.jpg' WHERE product_id = 322;
+UPDATE product SET image_url = '/images/products/monitor/LG-울트라기어-게이밍모니터-QHD.jpg' WHERE product_id = 323;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 324;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 330;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 331;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 332;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 330;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 331;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 332;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 340;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 341;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 342;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 340;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 341;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 342;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 350;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 351;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 352;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 350;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 351;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 352;
 
 
 --4.노트북 
-UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 400;
-UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 401;
-UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 402;
-UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 403;
-UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 404;
+UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 400;
+UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 401;
+UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 402;
+UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 403;
+UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 404;
 
-UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 410;
-UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 411;
-UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 412;
-UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 413;
-UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 414;
+UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 410;
+UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 411;
+UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 412;
+UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 413;
+UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 414;
 
-UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 420;
-UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 421;
-UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 422;
-UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 423;
-UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 424;
+UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 420;
+UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 421;
+UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 422;
+UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 423;
+UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 424;
 
-UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 430;
-UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 431;
-UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 432;
+UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 430;
+UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 431;
+UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 432;
 
-UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 440;
-UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 441;
-UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 442;
+UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 440;
+UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 441;
+UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 442;
 
-UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 450;
-UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 451;
-UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 452;
+UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 450;
+UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 451;
+UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 452;
 
 
 --5.스마트 기기 
-UPDATE product SET image_url = '/images/product/device/Apple-iPad-Pro13-2025-M5-스탠다드글래스.jpg'  WHERE product_id = 500;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 501;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 502;
-UPDATE product SET image_url = '/images/product/device/AppleWatch-11-GPS-스페이스그레이-알루미늄46mm-블랙스포츠밴드.jpg' WHERE product_id = 503;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 504;
+UPDATE product SET image_url = '/images/products/device/Apple-iPad-Pro13-2025-M5-스탠다드글래스.jpg'  WHERE product_id = 500;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 501;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 502;
+UPDATE product SET image_url = '/images/products/device/AppleWatch-11-GPS-스페이스그레이-알루미늄46mm-블랙스포츠밴드.jpg' WHERE product_id = 503;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 504;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 510;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 511;
-UPDATE product SET image_url = '/images/product/device/삼성-갤럭시탭-S10-Lite-128GB-그레이-WIFI.jpg' WHERE product_id = 512;
-UPDATE product SET image_url = '/images/product/device/Samsung-GalaxyWatch-8-Classic-SM-L500N-46mm-Black-Bluetooth.jpg' WHERE product_id = 513;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 514;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 510;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 511;
+UPDATE product SET image_url = '/images/products/device/삼성-갤럭시탭-S10-Lite-128GB-그레이-WIFI.jpg' WHERE product_id = 512;
+UPDATE product SET image_url = '/images/products/device/Samsung-GalaxyWatch-8-Classic-SM-L500N-46mm-Black-Bluetooth.jpg' WHERE product_id = 513;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 514;
 
-UPDATE product SET image_url = '/images/product/device/Meta-Quest-3S-128GB-VR.jpg' WHERE product_id = 520;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 521;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 522;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 523;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 524;
+UPDATE product SET image_url = '/images/products/device/Meta-Quest-3S-128GB-VR.jpg' WHERE product_id = 520;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 521;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 522;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 523;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 524;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 530;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 531;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 532;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 530;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 531;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 532;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 540;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 541;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 542;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 540;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 541;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 542;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 550;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 551;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 552;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 550;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 551;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 552;
 
 
 --6.사무/주변기기
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 600;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 601;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 602;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 603;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 604;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 600;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 601;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 602;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 603;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 604;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 610;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 611;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 612;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 613;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 614;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 610;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 611;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 612;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 613;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 614;
 
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 620;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 621;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 622;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 623;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 624;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 620;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 621;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 622;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 623;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 624;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 630;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 631;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 632;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 630;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 631;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 632;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 640;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 641;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 642;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 640;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 641;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 642;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 650;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 651;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 652;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 650;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 651;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 652;
 
 --7. 서버/워크스테이션
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 700;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 701;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 702;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 703;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 704;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 700;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 701;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 702;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 703;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 704;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 710;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 711;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 712;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 713;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 714;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 710;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 711;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 712;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 713;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 714;
 
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 720;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 721;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 722;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 723;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 724;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 720;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 721;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 722;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 723;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 724;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 730;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 731;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 732;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 730;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 731;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 732;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 740;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 741;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 742;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 740;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 741;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 742;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 750;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 751;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 752;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 750;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 751;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 752;
 
 --8. 기타 PC 부품들 
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 800;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 801;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 802;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 803;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 804;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 800;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 801;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 802;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 803;
+-- UPDATE product SET image_url = '/images/products/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 804;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 810;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 811;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 812;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 813;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 814;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 810;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 811;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 812;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 813;
+-- UPDATE product SET image_url = '/images/products/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 814;
 
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 820;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 821;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 822;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 823;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 824;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 820;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 821;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 822;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 823;
+-- UPDATE product SET image_url = '/images/products/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 824;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 830;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 831;
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 832;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 830;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 831;
+-- UPDATE product SET image_url = '/images/products/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 832;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 840;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 841;
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 842;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 840;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 841;
+-- UPDATE product SET image_url = '/images/products/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 842;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 850;
--- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 851;
--- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 852;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 850;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 851;
+-- UPDATE product SET image_url = '/images/products/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 852;
 
 
 

@@ -10,6 +10,14 @@ import com.comdog.c2d.domain.product.dto.ProductDto;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
+	@Override
+	public List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword, String sort) {
+		java.util.Map<String, Object> params = new java.util.HashMap<>();
+		params.put("categoryId", categoryId);
+		params.put("sort", ProductSort.normalize(sort));
+		params.put("keyword", keyword.replace("!", "!!").replace("%", "!%").replace("_", "!_"));
+		return sql.selectList("product.searchPurchasableProducts", params);
+	}
 
 	@Autowired
 	SqlSession sql;

@@ -5,6 +5,8 @@ import java.util.List;
 import com.comdog.c2d.domain.product.dto.ProductDto;
 
 public interface ProductService {
+		List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword);
+		List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword, String sort);
 		
 		//조회
 		List<ProductDto> findAllProducts(); // 💡 컨트롤러에서 호출한 이름과 똑같이 변경!

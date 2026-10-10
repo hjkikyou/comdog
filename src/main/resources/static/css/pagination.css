@@ -1,0 +1,12 @@
+[data-page-hidden] { display: none !important; }
+.filter-bar, main form:has(input[name="keyword"]) { scroll-margin-top: 24px; }
+.common-pagination[hidden] { display: none !important; }
+.common-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px; padding-top: 16px; margin: 16px 0; }
+.common-pagination button { border: 0; border-radius: 6px; background: transparent; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: background-color .15s, color .15s; }
+.common-pagination .page-btn { padding: 7px 14px; color: #6b7280; }
+.common-pagination .page-num { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; padding: 0; color: #374151; }
+.common-pagination button:not(:disabled):hover { background: #f3f4f6; color: #111827; }
+.common-pagination button[aria-current="page"] { background: #111827; color: #fff; font-weight: 700; }
+.common-pagination button[aria-current="page"]:hover { background: #1f2937; color: #fff; }
+.common-pagination button:disabled { opacity: .4; cursor: default; }
+.common-pagination button:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }

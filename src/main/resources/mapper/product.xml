@@ -4,6 +4,43 @@
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
 
+    <select id="searchPurchasableProducts" resultMap="ProductResultMap">
+        <if test="categoryId != null">
+            WITH RECURSIVE category_tree AS (
+                SELECT category_id FROM category WHERE category_id = #{categoryId}
+                UNION ALL
+                SELECT c.category_id FROM category c
+                JOIN category_tree t ON c.parent_id = t.category_id
+            )
+        </if>
+        SELECT * FROM product
+        WHERE is_deleted = 'N' AND is_purchasable = 'Y'
+        <if test="categoryId != null">
+            AND category_id IN (SELECT category_id FROM category_tree)
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND name LIKE CONCAT('%', #{keyword}, '%') ESCAPE '!'
+        </if>
+        ORDER BY
+        <choose>
+            <when test="sort == 'newest'">created_at DESC,</when>
+            <when test="sort == 'sales'">
+                (SELECT COALESCE(SUM(oi.count), 0) FROM order_item oi
+                 JOIN orders o ON o.order_id = oi.order_id
+                 WHERE oi.product_id = product.product_id
+                   AND o.order_status IN ('결제완료', '배송중', '배송완료')) DESC,
+            </when>
+            <when test="sort == 'rating'">
+                (SELECT COALESCE(AVG(r.rating), 0) FROM review r
+                 WHERE r.product_id = product.product_id) DESC,
+            </when>
+            <when test="sort == 'price_desc'">base_price DESC,</when>
+            <when test="sort == 'price_asc'">base_price ASC,</when>
+            <otherwise>is_recommended DESC, created_at DESC,</otherwise>
+        </choose>
+        product_id DESC
+    </select>
+
     <!-- ════════════════════════════════
          상품 공통 resultMap
     ════════════════════════════════ -->
@@ -44,17 +81,16 @@
 
     <!-- 카테고리(하위 포함) 상품 목록 -->
     <select id="findProductsWithSubCategories" resultMap="ProductResultMap">
+        WITH RECURSIVE category_tree AS (
+            SELECT category_id FROM category WHERE category_id = #{categoryId}
+            UNION ALL
+            SELECT c.category_id FROM category c
+            JOIN category_tree t ON c.parent_id = t.category_id
+        )
         SELECT *
         FROM product
         WHERE is_deleted = 'N'
-          AND (
-              category_id = #{categoryId}
-              OR category_id IN (
-                  SELECT category_id
-                  FROM category
-                  WHERE parent_id = #{categoryId}
-              )
-          )
+          AND category_id IN (SELECT category_id FROM category_tree)
         ORDER BY product_id DESC
     </select>
 

@@ -47,20 +47,24 @@
 
             <!-- 검색창 -->
             <div class="search-area">
-                <div class="search-box">
-                    <select class="search-select">
-                        <option>전체</option>
-                        <option>데스크탑</option>
-                        <option>노트북</option>
-                        <option>모니터</option>
-                        <option>조립 PC</option>
+                <form class="search-box" th:action="@{/user/product/search}" method="get">
+                    <select class="search-select" name="categoryId">
+                        <option value="">전체</option>
+                        <option value="1">PC</option>
+                        <option value="3">모니터</option>
+                        <option value="4">노트북</option>
+                        <option value="5">스마트기기</option>
+                        <option value="6">사무/주변기기</option>
+                        <option value="7">서버/워크스테이션</option>
+                        <option value="2">조립 PC</option>
+                        <option value="8">PC 부품/업그레이드</option>
                     </select>
                     <span class="search-divider"></span>
-                    <input type="text" class="search-input" placeholder="상품명을 검색하세요">
+                    <input type="search" name="keyword" class="search-input" placeholder="상품명을 검색하세요">
                     <button type="submit" class="btn-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                </div>
+                </form>
             </div>
 
             <!-- 우측 아이콘 영역 -->
@@ -282,6 +286,23 @@
 				        </div>
 				    </li>
 				
+				    <li class="menu-item menu-item--dropdown">
+				        <a href="#">PC 부품/업그레이드</a>
+				        <div class="dropdown-panel">
+				            <div class="dropdown-sections">
+				                <a th:href="@{/user/product/purchase_list(categoryId=8)}" class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text"><p class="ds-title">PC 부품/업그레이드 구매</p></div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				                <a th:href="@{/user/product/rental_list(categoryId=8)}" class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text"><p class="ds-title">PC 부품/업그레이드 대여</p></div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>
+				        </div>
+				    </li>
 				    <li class="menu-divider">|</li>
 						<li class="menu-item menu-item--dropdown">
 						    <a href="#">comdog 전용관</a>

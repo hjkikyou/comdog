@@ -74,7 +74,7 @@
                     <td colspan="11" style="text-align: center; padding: 30px;">등록된 계약 내역이 없습니다.</td>
                 </tr>
             
-                <tr th:unless="${viewContractList == null or viewContractList.isEmpty()}" th:each="item : ${viewContractList}">
+                <tr data-page-item th:unless="${viewContractList == null or viewContractList.isEmpty()}" th:each="item : ${viewContractList}">
                     <td th:text="${item.contractId}">1</td>
                     <td th:text="${item.memberId}">101</td>
                     <td th:text="${item.orderId}">5001</td>
@@ -112,6 +112,7 @@
                 </tr>
             </tbody>
         </table>
+<div th:replace="~{fragments/pagination :: pager('tbody > tr[data-page-item]', 10)}"></div>
         
         <div style="text-align: right;">
             <a th:href="@{/admin}" class="btn-back">메인으로 돌아가기</a>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:fragment="tabs(route, selectedCategory, searchKeyword, selectedSort)"
+      class="sort-tabs" th:action="@{${route}}" method="get">
+    <input type="hidden" name="categoryId" th:value="${selectedCategory}">
+    <input type="hidden" name="keyword" th:value="${searchKeyword}">
+    <button type="submit" name="sort" value="recommended" class="sort-btn"
+            th:classappend="${selectedSort == null or selectedSort == 'recommended'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == null or selectedSort == 'recommended'}">추천순</button>
+    <button type="submit" name="sort" value="newest" class="sort-btn"
+            th:classappend="${selectedSort == 'newest'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == 'newest'}">최신순</button>
+    <button type="submit" name="sort" value="sales" class="sort-btn"
+            th:classappend="${selectedSort == 'sales'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == 'sales'}">판매량순</button>
+    <button type="submit" name="sort" value="rating" class="sort-btn"
+            th:classappend="${selectedSort == 'rating'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == 'rating'}">평점순</button>
+    <button type="submit" name="sort" value="price_desc" class="sort-btn"
+            th:classappend="${selectedSort == 'price_desc'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == 'price_desc'}"><span aria-hidden="true">↑</span> 높은 가격순</button>
+    <button type="submit" name="sort" value="price_asc" class="sort-btn"
+            th:classappend="${selectedSort == 'price_asc'} ? 'sort-btn--active'"
+            th:attr="aria-pressed=${selectedSort == 'price_asc'}"><span aria-hidden="true">↓</span> 낮은 가격순</button>
+</form>
+</body>
+</html>

@@ -317,17 +317,7 @@
             </div><!-- /.card-grid -->
 
             <!-- ── 페이지네이션 ── -->
-            <nav class="pagination" aria-label="페이지 네비게이션">
-                <button class="page-btn arrow">«</button>
-                <button class="page-btn arrow">‹</button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn">4</button>
-                <button class="page-btn">5</button>
-                <button class="page-btn arrow">›</button>
-                <button class="page-btn arrow">»</button>
-            </nav>
+            <div th:replace="~{fragments/pagination :: pager('.section-event-list .card-grid > .list-card', 12)}"></div>
 
         </section>
 
@@ -337,14 +327,6 @@
         // 기타 버튼 토글
         document.querySelectorAll('.etc-btn').forEach(btn => {
             btn.addEventListener('click', () => btn.classList.toggle('active'));
-        });
-
-        // 페이지네이션
-        document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.page-btn:not(.arrow)').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
         });
     </script>
 </body>

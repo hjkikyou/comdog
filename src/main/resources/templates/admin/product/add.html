@@ -5,47 +5,56 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
-		<label>카테고리</label>
-		<select name="categoryId" required>
-			<option value="">선택하세요</option>
-			<option th:each="category : ${categories}"
-					th:value="${category.categoryId}"
-					th:text="${category.name}">
-			</option>
-		</select>
+	<form method="post"
+				enctype="multipart/form-data"
+				th:object="${viewProduct}">
+
+		<div th:replace="~{fragments/product-category :: selector(${viewProduct.categoryId})}"></div>
 		<div>
 			<div><label>상품명:</label></div>
-			<div><input type="text" name="name"></div>
+			<div><input type="text" th:field="*{name}"></div>
 		</div>
 		<div>
 			<div><label>브랜드:</label></div>
-			<div><input type="text" name="brand"></div>
+			<div><input type="text" th:field="*{brand}"></div>
 		</div>
 		<div>
 			<div><label>모델명:</label></div>
-			<div><input type="text" name="modelName"></div>
+			<div><input type="text" th:field="*{modelName}"></div>
 		</div>
 		<div>
 			<div><label>출고가(원 단위):</label></div>
-			<div><input type="number" name="basePrice"></div>
+			<div><input type="number" th:field="*{basePrice}"></div>
 		</div>
 		<div>
 			<div><label>재고 수량</label></div>
-			<div><input type="number" name="stockQuantity"></div>
+			<div><input type="number" th:field="*{stockQuantity}"></div>
 		</div>
 		<div>
 			<div><label>상품 상세 설명</label></div>
-			<div><input type="text" name="description"></div>
+			<div><textarea th:field="*{description}"></textarea></div>
 		</div>
 		<div>
 			<div><button>등록</button></div>
 			<div><a href="list">취소</a></div>
 		</div>
-	
+		<div>
+			<label for="image">대표 이미지</label>
+			<input id ="image"
+						type="file"
+						name="image"
+						accept="image/jpeg,image/png">	
+		</div>
+
+		<p th:if="${uploadError}"
+			th:text="${uploadError}"
+			role="alert"></p>
+
+		<button type="submit">등록</button>
 	
 	</form>
 
 
+<script th:src="@{/js/product-category.js}"></script>
 </body>
 </html>

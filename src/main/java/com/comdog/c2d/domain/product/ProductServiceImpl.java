@@ -8,9 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.comdog.c2d.domain.contract.ContractDao;
 import com.comdog.c2d.domain.product.dto.ProductDto;
+import com.comdog.c2d.domain.category.CategoryService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+	@Override
+	public List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword) {
+		return searchPurchasableProducts(categoryId, keyword, "recommended");
+	}
+	@Override
+	public List<ProductDto> searchPurchasableProducts(Long categoryId, String keyword, String sort) {
+		return productDao.searchPurchasableProducts(categoryId,
+				keyword == null ? "" : keyword.strip(), ProductSort.normalize(sort));
+	}
+	@Autowired
+	CategoryService categoryService;
 
 	@Autowired
 	ProductDao productDao; // 상품테이블
@@ -27,6 +39,9 @@ public class ProductServiceImpl implements ProductService {
 	// 추가
 	@Override
 	public void add(ProductDto item) {
+		categoryService.validateSelection(item.getCategoryId(), null);
+		if (item.getIsPurchasable() == null) item.setIsPurchasable("Y");
+		if (item.getIsRentable() == null) item.setIsRentable("Y");
 		productDao.add(item);
 	}
 
@@ -38,6 +53,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void update(ProductDto product) {
+		ProductDto previous = productDao.findProductById(product.getProductId());
+		if (previous == null) throw new IllegalArgumentException("상품을 찾을 수 없습니다.");
+		categoryService.validateSelection(product.getCategoryId(), previous.getCategoryId());
+		if (product.getIsPurchasable() == null) product.setIsPurchasable(previous.getIsPurchasable());
+		if (product.getIsRentable() == null) product.setIsRentable(previous.getIsRentable());
+		if (product.getRentalPrice() == null) product.setRentalPrice(previous.getRentalPrice());
+		if (product.getImageUrl() == null) product.setImageUrl(previous.getImageUrl());
 		productDao.update(product);
 	}
 

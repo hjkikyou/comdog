@@ -100,16 +100,7 @@
       </th:block>
     </div>
 
-    <div class="pagination">
-      <a href="#" class="page-arrow">&larr; Previous</a>
-      <a href="#" class="page-num active">1</a>
-      <a href="#" class="page-num">2</a>
-      <a href="#" class="page-num">3</a>
-      <span class="page-ellipsis">...</span>
-      <a href="#" class="page-num">67</a>
-      <a href="#" class="page-num">68</a>
-      <a href="#" class="page-arrow">Next &rarr;</a>
-    </div>
+    <div th:replace="~{fragments/pagination :: pager('.bundle-list > .pc-bundle', 12)}"></div>
 
   </main>
 </html>

@@ -59,19 +59,14 @@
          검색 + 정렬 필터바
     ════════════════════════════════════ -->
     <div class="filter-bar">
-      <div class="list-search-box">
-        <input type="text" class="list-search-input" placeholder="Search">
-        <span class="list-search-icon">🔍</span>
-      </div>
+      <form class="list-search-box" th:action="@{/user/product/purchase_list}" method="get">
+        <input type="hidden" name="categoryId" th:value="${categoryId}">
+        <input type="hidden" name="sort" th:value="${sort}">
+        <input type="search" name="keyword" th:value="${keyword}" class="list-search-input" placeholder="상품명 검색">
+        <button type="submit" class="list-search-icon" aria-label="상품 검색">🔍</button>
+      </form>
 
-      <div class="sort-tabs">
-        <button class="sort-btn sort-btn--active">✓ 최신순</button>
-        <button class="sort-btn">추천순</button>
-        <button class="sort-btn">판매량순</button>
-        <button class="sort-btn">평점순</button>
-        <button class="sort-btn">높은 가격순</button>
-        <button class="sort-btn">낮은 가격순</button>
-      </div>
+      <div th:replace="~{fragments/product-sort :: tabs('/user/product/purchase_list', ${categoryId}, ${keyword}, ${sort})}"></div>
     </div>
 
     <!-- ════════════════════════════════════
@@ -85,11 +80,11 @@
 		   th:each="product : ${productList}"
 		   th:href="@{/user/product/product-detail(productId=${product.productId})}">
 		  <div class="prod-img-box">
-		    <img th:if="${product.imageUrl != null}"
+		    <img th:if="${!#strings.isEmpty(product.imageUrl)}"
 		         th:src="${product.imageUrl}"
 		         th:alt="${product.name}"
 		         class="prod-img">
-		    <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
+		    <div th:if="${#strings.isEmpty(product.imageUrl)}" class="img-placeholder--sm" role="img" aria-label="등록된 이미지 없음"></div>
 		  </div>
 		  <div class="prod-body">
 		    <p class="prod-name" th:text="${product.name}">Text</p>
@@ -98,25 +93,14 @@
 		</a>
 		
 		<!-- 상품이 없을 때 -->
-		<p th:if="${#lists.isEmpty(productList)}" class="no-product">상품이 없습니다.</p>
+		<p th:if="${#lists.isEmpty(productList)}" class="no-product" th:text="${#strings.isEmpty(keyword) ? '상품이 없습니다.' : '검색 결과가 없습니다.'}">상품이 없습니다.</p>
 		</div>
 		</section>
 		
     <!-- ════════════════════════════════════
          페이지네이션
     ════════════════════════════════════ -->
-    <nav class="pagination">
-      <a href="#" class="page-btn page-btn--prev">← Previous</a>
-
-      <a href="#" class="page-num page-num--active">1</a>
-      <a href="#" class="page-num">2</a>
-      <a href="#" class="page-num">3</a>
-      <span class="page-ellipsis">...</span>
-      <a href="#" class="page-num">67</a>
-      <a href="#" class="page-num">68</a>
-
-      <a href="#" class="page-btn page-btn--next">Next →</a>
-    </nav>
+    <div th:replace="~{fragments/pagination :: pager('.product-grid > .prod-card', 12)}"></div>
 
   </main>
 </html>

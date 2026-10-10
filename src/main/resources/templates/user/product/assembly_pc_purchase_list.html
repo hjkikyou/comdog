@@ -38,25 +38,19 @@
     </section>
 
     <div class="filter-bar">
-      <div class="search-box">
-        <input type="text" placeholder="Search" class="search-input">
-        <button class="search-btn">
+      <form class="search-box" th:action="@{/user/product/purchase_list}" method="get">
+        <input type="hidden" name="categoryId" value="2">
+        <input type="search" name="keyword" placeholder="조립PC 상품명 검색" class="search-input">
+        <button type="submit" class="search-btn" aria-label="조립PC 검색">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </button>
-      </div>
+      </form>
 
-      <div class="sort-buttons">
-        <button class="sort-btn active">✓ 최신순</button>
-        <button class="sort-btn">추천순</button>
-        <button class="sort-btn">판매량순</button>
-        <button class="sort-btn">평점순</button>
-        <button class="sort-btn">높은 가격순</button>
-        <button class="sort-btn">낮은 가격순</button>
-      </div>
+      <div th:replace="~{fragments/product-sort :: tabs('/user/product/purchase_list', 2, '', 'recommended')}"></div>
     </div>
 
     <div class="bundle-list">
@@ -113,16 +107,7 @@
       </th:block>
     </div>
 
-    <div class="pagination">
-      <a href="#" class="page-arrow">&larr; Previous</a>
-      <a href="#" class="page-num active">1</a>
-      <a href="#" class="page-num">2</a>
-      <a href="#" class="page-num">3</a>
-      <span class="page-ellipsis">...</span>
-      <a href="#" class="page-num">67</a>
-      <a href="#" class="page-num">68</a>
-      <a href="#" class="page-arrow">Next &rarr;</a>
-    </div>
+    <div th:replace="~{fragments/pagination :: pager('.bundle-list > .pc-bundle', 12)}"></div>
 
   </main>
 </html>

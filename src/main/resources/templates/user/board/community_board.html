@@ -124,15 +124,7 @@
 
     <!-- ── 하단 바: 페이지네이션 + 글쓰기 ── -->
     <div class="board-footer">
-      <nav class="pagination" th:if="${totalPages > 0}">
-        <a th:href="@{/community(page=1)}" class="page-btn page-arrow" th:classappend="${currentPage == 1} ? 'disabled'">&laquo;</a>
-        <a th:each="p : ${#numbers.sequence(startPage, endPage)}"
-           th:href="@{/community(page=${p})}"
-           class="page-btn"
-           th:classappend="${p == currentPage} ? 'active'"
-           th:text="${p}">1</a>
-        <a th:href="@{/community(page=${totalPages})}" class="page-btn page-arrow" th:classappend="${currentPage == totalPages} ? 'disabled'">&raquo;</a>
-      </nav>
+      <div th:replace="~{fragments/pagination :: pager('tbody > .board-row:not(.row-notice):not(.row-empty)', 10)}"></div>
       <div class="footer-right">
         <a th:href="@{/community/write}" class="write-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
